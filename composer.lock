@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1c39b41b2ca3c5be11d1b83a5136cce",
+    "content-hash": "f0a61403319a2241123ca097ce19a20d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2511,6 +2511,173 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "spatie/enum",
+            "version": "3.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/enum.git",
+                "reference": "d776fdb965c1aea288d192f87aa1cf506f590e22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/enum/zipball/d776fdb965c1aea288d192f87aa1cf506f590e22",
+                "reference": "d776fdb965c1aea288d192f87aa1cf506f590e22",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.9.1",
+                "larapack/dd": "^1.1",
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "^3.12"
+            },
+            "suggest": {
+                "fzaninotto/faker": "To use the enum faker provider",
+                "phpunit/phpunit": "To use the enum assertions"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Enum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brent@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tom Witkowski",
+                    "email": "dev@gummibeer.de",
+                    "homepage": "https://gummibeer.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Enums",
+            "homepage": "https://github.com/spatie/enum",
+            "keywords": [
+                "enum",
+                "enumerable",
+                "spatie"
+            ],
+            "support": {
+                "docs": "https://docs.spatie.be/enum",
+                "issues": "https://github.com/spatie/enum/issues",
+                "source": "https://github.com/spatie/enum"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-17T12:42:36+00:00"
+        },
+        {
+            "name": "spatie/laravel-enum",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-enum.git",
+                "reference": "a49ce4c05f95e037017d4b3b63a5fbbbb38e0dd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-enum/zipball/a49ce4c05f95e037017d4b3b63a5fbbbb38e0dd2",
+                "reference": "a49ce4c05f95e037017d4b3b63a5fbbbb38e0dd2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/database": "^8.0",
+                "illuminate/http": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4 || ^8.0",
+                "spatie/enum": "^3.5.0"
+            },
+            "conflict": {
+                "bensampo/laravel-enum": "*"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.9.1",
+                "orchestra/testbench": "^5.0 || ^6.0",
+                "phpunit/phpunit": "^9.3",
+                "vimeo/psalm": "^3.12"
+            },
+            "suggest": {
+                "fzaninotto/faker": "^1.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Enum\\Laravel\\EnumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Enum\\Laravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brent@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tom Witkowski",
+                    "email": "dev@gummibeer.de",
+                    "homepage": "https://gummibeer.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Enum support",
+            "homepage": "https://github.com/spatie/laravel-enum",
+            "keywords": [
+                "enum",
+                "laravel",
+                "laravel-enum",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-enum/issues",
+                "source": "https://github.com/spatie/laravel-enum/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-24T11:49:26+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

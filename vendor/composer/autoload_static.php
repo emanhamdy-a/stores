@@ -90,6 +90,8 @@ class ComposerStaticInited94a00db4cbf5f242744e0fece7b485
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\Enum\\Laravel\\' => 20,
+            'Spatie\\Enum\\' => 12,
         ),
         'R' => 
         array (
@@ -315,6 +317,14 @@ class ComposerStaticInited94a00db4cbf5f242744e0fece7b485
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\Enum\\Laravel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-enum/src',
+        ),
+        'Spatie\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/enum/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -526,6 +536,7 @@ class ComposerStaticInited94a00db4cbf5f242744e0fece7b485
         'App\\Http\\Controllers\\Dashboard\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProfileController.php',
         'App\\Http\\Controllers\\Dashboard\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/SettingsController.php',
         'App\\Http\\Controllers\\Dashboard\\TagsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/TagsController.php',
+        'App\\Http\\Controllers\\Site\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/HomeController.php',
         'App\\Http\\Interfaces\\RepositoryInterface' => __DIR__ . '/../..' . '/app/Http/Interfaces/RepositoryInterface.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -4346,6 +4357,26 @@ class ComposerStaticInited94a00db4cbf5f242744e0fece7b485
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\Enum\\Enum' => __DIR__ . '/..' . '/spatie/enum/src/Enum.php',
+        'Spatie\\Enum\\EnumDefinition' => __DIR__ . '/..' . '/spatie/enum/src/EnumDefinition.php',
+        'Spatie\\Enum\\Exceptions\\DuplicateLabelsException' => __DIR__ . '/..' . '/spatie/enum/src/Exceptions/DuplicateLabelsException.php',
+        'Spatie\\Enum\\Exceptions\\DuplicateValuesException' => __DIR__ . '/..' . '/spatie/enum/src/Exceptions/DuplicateValuesException.php',
+        'Spatie\\Enum\\Exceptions\\UnknownEnumMethod' => __DIR__ . '/..' . '/spatie/enum/src/Exceptions/UnknownEnumMethod.php',
+        'Spatie\\Enum\\Exceptions\\UnknownEnumProperty' => __DIR__ . '/..' . '/spatie/enum/src/Exceptions/UnknownEnumProperty.php',
+        'Spatie\\Enum\\Faker\\FakerEnumProvider' => __DIR__ . '/..' . '/spatie/enum/src/Faker/FakerEnumProvider.php',
+        'Spatie\\Enum\\Laravel\\Casts\\Cast' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Casts/Cast.php',
+        'Spatie\\Enum\\Laravel\\Casts\\EnumCast' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Casts/EnumCast.php',
+        'Spatie\\Enum\\Laravel\\Casts\\EnumCollectionCast' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Casts/EnumCollectionCast.php',
+        'Spatie\\Enum\\Laravel\\Commands\\MakeEnum' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Commands/MakeEnum.php',
+        'Spatie\\Enum\\Laravel\\Enum' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Enum.php',
+        'Spatie\\Enum\\Laravel\\EnumServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-enum/src/EnumServiceProvider.php',
+        'Spatie\\Enum\\Laravel\\Exceptions\\NotNullableEnumField' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Exceptions/NotNullableEnumField.php',
+        'Spatie\\Enum\\Laravel\\Faker\\FakerEnumProvider' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Faker/FakerEnumProvider.php',
+        'Spatie\\Enum\\Laravel\\Http\\EnumRequest' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Http/EnumRequest.php',
+        'Spatie\\Enum\\Laravel\\Http\\Middleware\\TransformEnums' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Http/Middleware/TransformEnums.php',
+        'Spatie\\Enum\\Laravel\\Http\\Requests\\TransformsEnums' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Http/Requests/TransformsEnums.php',
+        'Spatie\\Enum\\Laravel\\Rules\\EnumRule' => __DIR__ . '/..' . '/spatie/laravel-enum/src/Rules/EnumRule.php',
+        'Spatie\\Enum\\Phpunit\\EnumAssertions' => __DIR__ . '/..' . '/spatie/enum/src/Phpunit/EnumAssertions.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Color' => __DIR__ . '/..' . '/symfony/console/Color.php',
