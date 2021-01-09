@@ -8,7 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Services\VerificationServices;
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -30,15 +31,16 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+    public $sms_services;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(VerificationServices $sms_services)
     {
-        $this->middleware('guest');
+      $this->middleware('guest');
+      $this -> sms_services = $sms_services;
     }
 
     /**
@@ -49,11 +51,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+      return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'mobile' => ['required', 'string','max:50', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+      ]);
     }
 
     /**
@@ -64,10 +66,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+      try {
+
+        DB::beginTransaction();
+        $verification = [];
+        $user = User::create([
+          'name' => $data['name'],
+          'mobile' => $data['mobile'],
+          'password' => Hash::make($data['password']),
         ]);
+
+        // send OTP SMS code
+        // set generate new code
+
+        $verification['user_id'] = $user->id;
+        $verification_data =  $this->sms_services->setVerificationCode($verification);
+
+        $message = $this->sms_services->getSMSVerifyMessageByAppName($verification_data -> code );
+
+        //save this code in verifcation table
+        //done
+        //send code to user mobile by sms gateway
+        // note  there are no gateway credentails in config file
+         # app(VictoryLinkSms::class) -> sendSms($user -> mobile,$message);
+
+        DB::commit();
+        return  $user;
+        //send to user  mobile
+      }catch(\Exception $ex){
+        DB::rollback();
+      }
+
     }
 }

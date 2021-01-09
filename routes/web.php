@@ -10,10 +10,6 @@ Route::get('test', function () {
 });
 
 
-Route::get('/', function(){
-  return view('welcome');
-})->name('home');
-
 Route::get('/home', [HomeController::class,'home'])
   ->name('home');
 

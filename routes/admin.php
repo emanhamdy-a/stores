@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\BrandsController;
 use App\Http\Controllers\Dashboard\TagsController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\AttributesController;
+use App\Http\Controllers\Dashboard\SliderController;
 
 Route::group([
   'prefix' => LaravelLocalization::setLocale(),
@@ -132,7 +133,7 @@ Route::group([
     });
     ##################### end products  ###################
 
-    ####################### attrributes routes #######################
+    ####################### attrributes routes ################
     Route::group(['prefix' => 'attributes'], function () {
       Route::get('/', [AttributesController::class,'index'])
         ->name('admin.attributes');
@@ -148,6 +149,18 @@ Route::group([
         ->name('admin.attributes.update');
     });
     ####################  end attributes  ####################
+
+    #################### sliders #######################
+    Route::group(['prefix' => 'sliders'], function () {
+      Route::get('/', [SliderController::class,'addImages'])
+        ->name('admin.sliders.create');
+      Route::post('images', [SliderController::class,'saveSliderImages'])
+        ->name('admin.sliders.images.store');
+      Route::post('images/db', [SliderController::class,'saveSliderImagesDB'])
+        ->name('admin.sliders.images.store.db');
+
+    });
+    #################### end sliders  #########################
   });
 
 
