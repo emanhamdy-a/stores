@@ -15,9 +15,9 @@ class AddRoleIdColmunToAdminsTable extends Migration
   {
     Schema::table('admins', function (Blueprint $table) {
       $table->bigInteger('role_id')->after('email');
-      $table->foreign('role_id')
-      ->references('id')->on('roles')
-      ->onDelete('cascade');
+      // $table->foreign('role_id')
+      // ->references('id')->on('roles')
+      // ->onDelete('cascade');
     });
   }
 

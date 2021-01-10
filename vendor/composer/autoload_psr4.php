@@ -39,6 +39,7 @@ return array(
     'Symfony\\Component\\ErrorHandler\\' => array($vendorDir . '/symfony/error-handler'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'Spatie\\Multitenancy\\' => array($vendorDir . '/spatie/laravel-multitenancy/src'),
     'Spatie\\Enum\\Laravel\\' => array($vendorDir . '/spatie/laravel-enum/src'),
     'Spatie\\Enum\\' => array($vendorDir . '/spatie/enum/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
