@@ -7,6 +7,8 @@ use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\WishlistController;
 use App\Http\Controllers\Site\CartController;
+use App\Http\Controllers\Site\ProductReviewController;
+use App\Http\Controllers\Site\PaymentController;
 
 
 Route::group([
@@ -29,7 +31,9 @@ Route::group([
     Route::group(['prefix' => 'cart'], function () {
       Route::get('/', [CartController::class,'getIndex'])
         ->name('site.cart.index');
-      Route::post('/cart/add/{slug?}', [CartController::class,'postAdd'])
+      Route::get('/add/{slug?}', [CartController::class,'postAdd'])
+        ->name('site.cart.add');
+      Route::post('/add/{slug?}', [CartController::class,'postAdd'])
         ->name('site.cart.add');
       Route::post('/update/{slug}', [CartController::class,'postUpdate'])
         ->name('site.cart.update');
@@ -47,7 +51,6 @@ Route::group([
       Route::post('verify-user/',
       [VerificationCodeController::class ,'verify'])
         ->name('verify-user');
-
       Route::get('verify',
       [VerificationCodeController::class ,'getVerifyPage'])
       ->name('get.verification.form');
@@ -59,12 +62,20 @@ Route::group([
       Route::get('wishlist/products', [WishlistController::class,'index'])
         ->name('wishlist.products.index');
 
+      Route::get('products/{productId}/reviews',  [ProductReviewController::class,'index'])
+        ->name('products.reviews.index');
+      Route::post('products/{productId}/reviews',[ProductReviewController::class,'store'])
+        ->name('products.reviews.store');
+      Route::get('payment/{amount}', [PaymentController::class,'getPayments'])
+       -> name('payment');
+      Route::post('payment', [PaymentController::class,'processPayment'])
+       -> name('payment.process');
+
     });
 
 
     // must be authenticated user and verified
-    Route::group(['middleware' => 'verifyUser']
-      , function () {
+    Route::group(['middleware' => 'verifyUser'], function () {
       Route::get('profile', function () {
           return 'You Are Authenticated ';
       });
@@ -74,8 +85,8 @@ Route::group([
 
   // guest
 
-  Route::group(['namespace'=>'Site',
-  'middleware'=>'guest','prefix'=>'site'],function(){
+  Route::group(['namespace'=>'Site', 'middleware'=>'guest','prefix'=>'site']
+    ,function(){
 
     Route::get('hi', function () {
       return 'Hello';

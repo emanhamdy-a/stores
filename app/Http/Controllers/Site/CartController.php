@@ -28,10 +28,10 @@ class CartController extends Controller
      * @param Basket $basket
      * @param Product $product
      */
+
     public function __construct(Basket $basket)
     {
         $this->basket = $basket;
-
     }
 
     /**
@@ -55,16 +55,17 @@ class CartController extends Controller
      */
     public function postAdd(Request $request)
     {
-         $slug =$request -> product_slug ;
-         $product = Product::where('slug', $slug)->firstOrFail();
+      $slug =$request -> product_slug ;
+      $product = Product::where('slug', $slug)->firstOrFail();
 
-        try {
-            $this->basket->add($product, $request->quantity ?? 1);
-        } catch (QuantityExceededException $e) {
-            return 'Quantity Exceeded';  // must be trans as the site is multi languages
-        }
+      try {
+        $this->basket->add($product, $request->qty ?? 1);
+      } catch (QuantityExceededException $e) {
+          return 'Quantity Exceeded';
+          // must be trans as the site is multi languages
+      }
 
-        return 'Product added successfully to the card ';
+      return 'Product added successfully to the card ';
     }
 
     /**

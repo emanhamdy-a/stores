@@ -199,9 +199,9 @@
               <nav class="pagination row justify-content-around">
                 <div class="col col-xs-12 col-lg-6 col-md-12">
 
-  <span class='showing'>
-  Showing 1-4 of 4 item(s)
-  </span>
+                  <span class='showing'>
+                  Showing 1-4 of 4 item(s)
+                  </span>
 
                 </div>
                 <div class="col col-xs-12 col-lg-6 col-md-12">

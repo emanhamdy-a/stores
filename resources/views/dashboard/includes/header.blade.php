@@ -74,7 +74,7 @@
           </li>
           <li class="dropdown dropdown-notification nav-item">
             <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-              <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">5</span>
+              <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow notification-counter">5</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
               <li class="dropdown-menu-header">
@@ -82,7 +82,8 @@
                   <span class="grey darken-2">Notifications</span>
                 </h6>
                 <span
-                  class="notification-tag badge badge-default badge-danger float-right m-0">5 New</span>
+                  class="notification-tag badge badge-default badge-danger float-right m-0">
+                  <span class='notification-counter'> 5 </span>New</span>
               </li>
               <li class="scrollable-container media-list w-100">
                 <a href="javascript:void(0)">

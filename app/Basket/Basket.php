@@ -45,6 +45,8 @@ class Basket
 	public function add(Product $product, $quantity)
 	{
 		if ($this->has($product)) {
+      return $product;
+
 			$quantity = $this->get($product)['quantity'] + $quantity;
 		}
 
@@ -147,6 +149,7 @@ class Basket
 	*/
 	public function has(Product $product)
 	{
+
 		return $this->storage->exists($product->id);
 	}
 

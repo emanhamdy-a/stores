@@ -72,13 +72,18 @@
                 <div class="col-lg-7 col-md-8 col-xs-12 mt-sm-20">
                   <div class="product-information">
                     <div class="product-actions">
-                      <form action="products.reviews.store',$product -> id )}}"
-                          method="post" id="add-to-cart-or-refresh" class="row">
+                      <!-- add to cart -->
+                      <form action="{{route('site.cart.add',$product -> slug )}}"
+                          method="get" id="add-to-cart-or-refresh" class="row">
                         @csrf
                         <input type="hidden" name="id_product" value="{{$product -> id }}"
                              id="product_page_product_id">
 
-                        <div class="productdetail-right col-12 col-lg-6 col-md-6">
+                        <input type="hidden" name="product_slug" value="{{$product -> slug }}">
+
+                        <input type="submit" value='add-to-cart'>
+                        <div
+                          class="productdetail-right col-12 col-lg-6 col-md-6">
                           <div class="product-reviews">
                             <div id="product_comments_block_extra">
                               <div class="comments_note">
@@ -126,7 +131,6 @@
 
                           </div>
 
-
                           <div class="in_border end">
 
                             <div class="sku">
@@ -159,26 +163,27 @@
                             </div>
                           </div>
 
-
                           <div id="_desktop_productcart_detail">
                             <div class="product-add-to-cart in_border">
                               <div class="add">
-                                <button class="btn btn-primary add-to-cart"
-                                    data-button-action="add-to-cart" type="submit">
+                                <a class="btn btn-primary add-to-cart"
+                                    id="addToCart"
+                                    data-link-action="{{$product -> slug}}"
+                                    href="{{route('site.cart.add',$product -> slug )}}">
                                   <div class="icon-cart">
                                     <i class="shopping-cart"></i>
                                   </div>
                                   <span>Add to cart</span>
-                                </button>
+                                </a>
                               </div>
 
-                              <a class="addToWishlist  wishlistProd_22" href="#"
+                              <a class="addToWishlist  wishlistProd_22"
+                                href="#"
                                  data-product-id="{{$product -> id}}"
                               >
                                 <i class="fa fa-heart"></i>
                                 <span>Add to Wishlist</span>
                               </a>
-
 
                               <div class="clearfix"></div>
 
@@ -188,7 +193,6 @@
                               </div>
                             </div>
                           </div>
-
 
                           <input class="product-refresh ps-hidden-by-js" name="refresh"
                                type="submit" value="Refresh">
@@ -302,7 +306,8 @@
                     </div>
 
 
-                    <div class="modal fade in" id="new_comment_form" tabindex="-1" role="dialog"
+                    <div class="modal fade in" id="new_comment_form"
+                     tabindex="-1" role="dialog"
                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -315,6 +320,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
+                          <!-- /end new_comment_form_content -->
                             <form id="id_new_comment_form" action="#">
                               <div class="product row no-gutters">
                                 <div class="product-image col-4">
@@ -391,7 +397,8 @@
                                   </div>
                                 </div>
                               </div>
-                            </form><!-- /end new_comment_form_content -->
+                            </form>
+                          <!-- /end new_comment_form_content -->
                           </div>
                         </div>
                       </div>
@@ -480,13 +487,14 @@
                         <div class="product-groups">
                           <div class="product-group-price">
                             <div class="product-price-and-shipping">
-                               <span itemprop="price"
-                                   class="price">{{$_product -> special_price ?? $_product -> price }}</span>
+                              <span itemprop="price"
+                                class="price">
+                                {{$_product -> special_price ?? $_product -> price }}
+                              </span>
                               @if($_product -> special_price)
                                 <span
                                   class="regular-price">{{$_product -> price}}</span>
                               @endif
-
                             </div>
                           </div>
                           <div class="product-comments">
@@ -541,6 +549,7 @@
       $('.alert-modal').css("display", "none");
       $('.alert-modal2').css("display", "none");
     });
+
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -566,6 +575,26 @@
             $('.alert-modal').css('display', 'block');
           else
             $('.alert-modal2').css('display', 'block');
+        }
+      });
+
+    });
+
+    $(document).on('click', '#addToCart', function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: 'post',
+        url: $(this).attr('href'),
+        data: {
+          'product_slug': "{{$product -> slug}}",
+          'qty': $('#quantity_wanted').val(),
+        },
+        success: function (data) {
+            $('.alert-text').html(data);
+            $('.alert-modal').css('display', 'block');
+        },
+        error: function(){
+
         }
       });
     });
