@@ -20,9 +20,26 @@ if (!function_exists('uploadImage')) {
  }
 }
 
-// if (!function_exists('unlink_image')) {
-//   function unlink_image($image){
-//     unlink($image);
-//     return true;
-//  }
-// }
+if (!function_exists('active_menu')) {
+	function active_menu($link,$req_seg=null) {
+    if($req_seg == null){
+
+      if(Request::segment(3) == $link && $link == ''){
+        return ['open', 'active'];
+      }
+
+      if (preg_match('/'.$link.'/i',Request::segment(3)) && $link !== '') {
+        return ['open', 'active'];
+      } else {
+        return ['', ''];
+      }
+
+    }else{
+      if (preg_match('/'.$link.'/i',Request::segment($req_seg))) {
+        return ['open', 'active'];
+      } else {
+        return ['', ''];
+      }
+    }
+	}
+}

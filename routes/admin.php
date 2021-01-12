@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\BrandsController;
 use App\Http\Controllers\Dashboard\TagsController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\AttributesController;
+use App\Http\Controllers\Dashboard\OptionsController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\UsersController;
@@ -52,7 +53,7 @@ Route::group([
 
     #################### categories routes ####################
 
-    Route::group(['prefix' => 'main_categories' , 'middleware' => 'can:main_categories'], function () {
+    Route::group(['prefix' => 'main_categories' , 'middleware' => 'can:categories'], function () {
 
       Route::get('/', [MainCategoriesController::class,'index'])
         ->name('admin.maincategories');
@@ -152,6 +153,24 @@ Route::group([
         ->name('admin.attributes.update');
     });
     ####################  end attributes  ####################
+
+    #################### attributes options #######################
+    Route::group(['prefix' => 'options'], function () {
+      Route::get('/' , [OptionsController::class,'index'])->
+        name('admin.options');
+      Route::get('create' , [OptionsController::class,'create'])->
+        name('admin.options.create');
+      Route::post('store' , [OptionsController::class,'store'])->
+        name('admin.options.store');
+        ///
+      Route::get('delete/{id}',[OptionsController::class,'destroy'])
+         -> name('admin.options.delete');
+      Route::get('edit/{id}' , [OptionsController::class,'edit'])->
+        name('admin.options.edit');
+      Route::post('update/{id}' , [OptionsController::class,'update'])->
+        name('admin.options.update');
+    });
+    #################### end attributes options  ##################
 
     #################### sliders #######################
     Route::group(['prefix' => 'sliders' , 'middleware' => 'can:sliders'], function () {

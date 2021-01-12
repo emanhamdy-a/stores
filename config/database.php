@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'tenant',//env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'),//'tenant',//
 
     /*
     |--------------------------------------------------------------------------

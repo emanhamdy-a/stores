@@ -65,7 +65,6 @@ class BrandsController extends Controller
 
         //get specific categories and its translations
         $brand = Brand::find($id);
-
         if (!$brand)
             return redirect()->route('admin.brands')->with(['error' => 'هذا الماركة غير موجود ']);
 

@@ -34,18 +34,19 @@ class SettingsController extends Controller
 
   public function updateShippingMethods(ShippingsRequest $request, $id)
   {
-    try {
+
       $shipping_method = Setting::find($id);
 
       DB::beginTransaction();
       $shipping_method->update(['plain_value' => $request->plain_value]);
       //save translations
+      app()->setLocale('fr');
       $shipping_method->value = $request->value;
       // $shipping_method->translation($request->lang)->value = $request->value;
       $shipping_method->save();
-
       DB::commit();
       return redirect()->back()->with(['success' => 'تم التحديث بنجاح']);
+      try {
     } catch (\Exception $ex) {
       return redirect()->back()->with(['error' => 'هناك خطا ما يرجي المحاولة فيما بعد']);
       DB::rollback();
