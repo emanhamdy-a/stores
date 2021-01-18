@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Product;
-use App\Http\Requests;
 use App\Basket\Basket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Exceptions\QuantityExceededException;
 use DB;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
 class CartController extends Controller
 {

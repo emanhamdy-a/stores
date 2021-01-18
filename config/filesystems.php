@@ -56,20 +56,26 @@ return [
         ],
         'brands' => [
           'driver' => 'local',
-          'root' => public_path('assets/images/brands'),
+          'root' => public_path('images/brands'),
           'url' => env('APP_URL') . '/storage',
           'visibility' => 'public',
         ],
 
         'products' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/products'),
+            'root' => public_path('images/products'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'sliders' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/sliders'),
+            'root' => public_path('images/sliders'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+        'categories' => [
+            'driver' => 'local',
+            'root' => public_path('images/categories'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],

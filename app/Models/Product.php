@@ -109,12 +109,15 @@ class Product extends Model
         return $this->hasMany(Option::class, 'product_id');
     }
 
-    //////
-    ///
 
     public function images()
     {
         return $this->hasMany(Image::class, 'product_id');
+    }
+
+    public function photos()
+    {
+      return $this->morphMany('App\Models\Photo', 'photoable');
     }
 
     public function hasStock($quantity)
@@ -133,7 +136,7 @@ class Product extends Model
     }
 
 
-public function getTotal($converted = true)
+  public function getTotal($converted = true)
     {
         return $total =  $this->special_price ?? $this -> price;
 

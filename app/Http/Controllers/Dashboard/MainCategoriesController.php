@@ -1,20 +1,30 @@
 <?php
-
 namespace App\Http\Controllers\Dashboard;
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests\MainCategoryRequest;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use DB;
+use App\Models\photo;
+use App\Models\Category;
+use App\Repositories\Repository;
+use App\UploadImage\LocalStorage;
+use App\Http\Controllers\Controller;
+use App\Http\Enumerations\CategoryType;
+use App\Http\Requests\MainCategoryRequest;
 
 class MainCategoriesController extends Controller
 {
+  protected $repository;
+  protected $upload;
+  protected $disc='categories';
+
+  public function __construct(Category $category,photo $photo)
+  {
+    $this->repository   = new Repository($category);
+    $this->upload       = new LocalStorage($photo);
+    $this->upload->disc = $this->disc;
+  }
 
   public function index()
   {
-    $categories = Category::with('_parent')->orderBy('id','DESC')
-    -> paginate(PAGINATION_COUNT);
+    $categories=$this->repository->all();
     return view('dashboard.categories.index', compact('categories'));
   }
 
@@ -31,97 +41,139 @@ class MainCategoriesController extends Controller
 
       DB::beginTransaction();
 
-      //validation
+      //add to request if is active
+      $this->repository->is_active($request);
 
-      if (!$request->has('is_active'))
-        $request->request->add(['is_active' => 0]);
-      else
-        $request->request->add(['is_active' => 1]);
-
-      if($request -> type == 1 && $request->parent_id < 1 )// CategoryType::mainCategory) //main category
+      if($request -> type == 1 && CategoryType::mainCategory)
       {
         $request->request->add(['parent_id' => null]);
       }
 
-
-      $category = Category::create($request->except('_token'));
+      $category =$this->repository->create($request->except('_token'));
 
       $category->name = $request->name;
-      $category->save();
 
-      return redirect()->route('admin.maincategories')->with(['success' => 'تم ألاضافة بنجاح']);
+      if($category->save() && $request->has('image')){
+        $this->storeimage($request->image,$category->id);
+      }
+
       DB::commit();
 
+      return redirect()->route('admin.maincategories')->with([
+        'success' => __('admin/categories.created')]);
+
     } catch (\Exception $ex) {
-      DB::rollback();
-      return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+       DB::rollback();
+      return redirect()->route('admin.maincategories')->with([
+        'error' => __('admin/categories.error try later')]);
     }
 
   }
-
 
   public function edit($id)
   {
-
-    //get specific categories and its translations
     $category = Category::orderBy('id', 'DESC')->find($id);
 
     if (!$category)
-      return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
+      return redirect()->route('admin.maincategories')->with([
+        'error' => __('admin/categories.not found')]);
 
     return view('dashboard.categories.edit', compact('category'));
-
   }
 
-
-  public function update( MainCategoryRequest $request,$id)
+  public function update(MainCategoryRequest $request,$id)
   {
     try {
 
+      DB::beginTransaction();
+
       $category = Category::find($id);
       if (!$category)
-        return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود']);
+        return redirect()->route('admin.maincategories')->with([
+          'error' => __('admin/categories.not found') ]);
 
-      if (!$request->has('is_active'))
-        $request->request->add(['is_active' => 0]);
-      else
-        $request->request->add(['is_active' => 1]);
+      $this->repository->is_active($request);
 
-
-      if($request -> type == 1 && $request->parent_id < 1 )// CategoryType::mainCategory) //main category
+      if($request -> type == 1 && CategoryType::mainCategory)
       {
         $request->request->add(['parent_id' => null]);
       }
 
-      $category->update($request->all());
+      $this->repository->update($request->all(),$category);
 
       $category->name = $request->name;
-      $category->save();
-      return redirect()->route('admin.maincategories')->with(['success' => 'تم ألتحديث بنجاح']);
+
+      if($category->save()){
+
+        if($request->has('image')){
+          $this->storeimage($request->image,$category->id);
+          $this->deleteimage($category);
+        }
+
+      }
+
+      DB::commit();
+
+      return redirect()->route('admin.maincategories')->with([
+        'success' => __('admin/categories.updated')]);
+
     } catch (\Exception $ex) {
 
-      return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+      DB::rollback();
+
+      return redirect()->route('admin.maincategories')->with([
+        'error' => __('admin/categories.error try later')]);
     }
 
   }
-
 
   public function destroy($id)
   {
 
     try {
-      //get specific categories and its translations
-      $category = Category::orderBy('id', 'DESC')->find($id);
+
+      $category = Category::find($id);
 
       if (!$category)
-        return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
+        return redirect()->route('admin.maincategories')
+          ->with(['error' => __('admin/categories.not found')]);
 
+      $this->deleteimage($category);
+
+      // delete category
       $category->delete();
 
-      return redirect()->route('admin.maincategories')->with(['success' => 'تم  الحذف بنجاح']);
+      return redirect()->route('admin.maincategories')
+        ->with(['success' => __('admin/categories.deleted')]);
 
     } catch (\Exception $ex) {
-      return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+      return $ex;
+      return redirect()->route('admin.maincategories')
+        ->with(['error' => __('admin/categories.error try later')]);
+    }
+  }
+
+  public function storeimage($request_image,$id){
+    if($storeas= $this->upload->move($request_image)){
+      $data=[
+        'photoable_id'  =>$id,
+        'photoable_type'=>'App\Models\Category',
+        'filename'      =>$storeas['hashname'],
+      ];
+      Photo::create($data);
+    }
+  }
+
+  public function deleteimage($category){
+    if(!empty($category->photo->filename)){
+
+      $filename=$category->photo->filename;
+      // delete image from database
+      if($category->photo->delete()){
+        // delete image from path
+        $this->upload->unlinkimage($filename);
+      }
+
     }
   }
 

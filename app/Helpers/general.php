@@ -20,6 +20,7 @@ if (!function_exists('uploadImage')) {
  }
 }
 
+
 if (!function_exists('active_menu')) {
 	function active_menu($link,$req_seg=null) {
     if($req_seg == null){

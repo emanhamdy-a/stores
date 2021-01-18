@@ -22,7 +22,10 @@ class CategoryFactory extends Factory
   public function definition()
   {
     return [
-      'name' => $this->faker->word(),
+      'name:ar' => $this->faker->word(),
+      'name:en' => $this->faker->word(),
+      'name:fr' => $this->faker->word(),
+      'name:es' => $this->faker->word(),
       'slug' => $this->faker->slug(),
       'is_active' => $this->faker->boolean(),
     ];

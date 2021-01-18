@@ -32,15 +32,15 @@ class UniqueAttributeName implements Rule
     public function passes($attribute, $value)
     {
 
-        if($this -> attributeId) //edit form
-            $attribute = AttributeTranslation::where('name', $value)->where('attribute_id','!=',$this->attributeId) -> first();
-        else  //creation form
-            $attribute = AttributeTranslation::where('name', $value)->first();
+      if($this -> attributeId) //edit form
+          $attribute = AttributeTranslation::where('name', $value)->where('attribute_id','!=',$this->attributeId) -> first();
+      else  //creation form
+          $attribute = AttributeTranslation::where('name', $value)->first();
 
-        if ($attribute)
-            return false;
-        else
-            return true;
+      if ($attribute)
+          return false;
+      else
+          return true;
 
     }
 
@@ -51,6 +51,6 @@ class UniqueAttributeName implements Rule
      */
     public function message()
     {
-        return ' this name already exists  before';
+        return __('admin/attributes.name unique');
     }
 }

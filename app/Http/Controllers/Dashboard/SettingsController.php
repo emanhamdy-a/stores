@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\ShippingsRequest;
 use App\Models\Setting;
 use DB;
@@ -40,7 +39,7 @@ class SettingsController extends Controller
       DB::beginTransaction();
       $shipping_method->update(['plain_value' => $request->plain_value]);
       //save translations
-      app()->setLocale('fr');
+      app()->setLocale($request->lang);
       $shipping_method->value = $request->value;
       // $shipping_method->translation($request->lang)->value = $request->value;
       $shipping_method->save();

@@ -1,6 +1,7 @@
 <?php
 
 return [
+  'home' => 'الرئيسيه',
   'settings' => 'الاعدادت',
   'shipping methods' => 'وسائل التوصيل',
   'main slider'  => 'السليدر الرئيسية ',

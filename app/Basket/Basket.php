@@ -46,7 +46,6 @@ class Basket
 	{
 		if ($this->has($product)) {
       return $product;
-
 			$quantity = $this->get($product)['quantity'] + $quantity;
 		}
 

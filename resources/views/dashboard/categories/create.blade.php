@@ -5,21 +5,8 @@
     <div class="content-wrapper">
       <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-          <div class="row breadcrumbs-top">
-            <div class="breadcrumb-wrapper col-12">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">الرئيسية </a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="{{route('admin.maincategories')}}"> الاقسام
-                    الرئيسية
-                  </a>
-                </li>
-                <li class="breadcrumb-item active"> أضافه قسم رئيسي
-                </li>
-              </ol>
-            </div>
-          </div>
+          <h3 class="content-header-title">
+           {{__('admin\categories.add category')}} </h3>
         </div>
       </div>
       <div class="content-body">
@@ -30,16 +17,14 @@
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title"
-                    id="basic-layout-form"> أضافة قسم رئيسي </h4>
+                    id="basic-layout-form">
+                    {{__('admin\categories.add category')}}</h4>
                   <a class="heading-elements-toggle"><i
                       class="la la-ellipsis-v font-medium-3"></i>
                   </a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                       <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -53,24 +38,25 @@
                         enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
-                        <label> صوره القسم </label>
+                        <label> {{__('admin\categories.category image')}}</label>
                         <label id="projectinput7" class="file center-block">
-                          <input type="file" id="file" name="photo">
+                          <input type="file"  name="image">
                           <span class="file-custom"></span>
                         </label>
-                        @error('photo')
+                        @error('image')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
 
                       <div class="form-body">
 
-                        <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                        <h4 class="form-section"><i class="ft-home"></i>
+                        {{__('admin\categories.category data')}}
+                        </h4>
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="projectinput1"> اسم القسم
-                              </label>
+                              <label for="projectinput1"> {{__('admin\categories.category name')}} </label>
                               <input type="text" id="name"
                                    class="form-control"
                                    placeholder="  "
@@ -84,8 +70,7 @@
 
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="projectinput1"> اسم بالرابط
-                              </label>
+                              <label for="projectinput1"> {{__('admin\categories.slug')}}</label>
                               <input type="text" id="name"
                                    class="form-control"
                                    placeholder="  "
@@ -101,12 +86,12 @@
                         <div class="row hidden col-12" id="cats_list" >
                           <div class="col-12">
                             <div class="form-group">
-                              <label for="projectinput1"> اختر القسم الرئيسي
+                              <lable for="projectinput1">                            {{__('admin\categories.choose main category')}}
                               </label>
                               <select name="parent_id"
                                 class="select2 form-control col-12">
-                                <option label=" " value=''>
-                                 من فضلك أختر القسم
+                                <option value='' class='dark'>
+                                {{__('admin\categories.choose main category')}}
                                 </option>
                                   @if($categories && $categories -> count() > 0)
                                     @foreach($categories as $category)
@@ -131,7 +116,7 @@
                                    class="switchery" data-color="success"
                                    checked/>
                               <label for="switcheryColor4"
-                                   class="card-title ml-1">الحالة </label>
+                                   class="card-title ml-1">{{__('admin\categories.status')}} </label>
 
                               @error("is_active")
                               <span class="text-danger">{{$message }}</span>
@@ -151,7 +136,7 @@
 
                               <label
                                 class="card-title ml-1">
-                                قسم رئيسي
+                                {{__('admin\categories.main category')}}
                               </label>
 
                             </div>
@@ -167,22 +152,24 @@
 
                               <label
                                 class="card-title ml-1">
-                                قسم فرعي
+                                {{__('admin\categories.sub category')}}
                               </label>
 
                             </div>
                           </div>
                         </div>
+
+                        @include('dashboard.includes.language_select')
                       </div>
 
 
                       <div class="form-actions">
                         <button type="button" class="btn btn-warning mr-1"
                             onclick="history.back();">
-                          <i class="ft-x"></i> تراجع
+                          <i class="ft-x"></i> {{__('admin\categories.cancel')}}
                         </button>
                         <button type="submit" class="btn btn-primary">
-                          <i class="la la-check-square-o"></i> تحديث
+                          <i class="la la-check-square-o"></i> {{__('admin\categories.save')}}
                         </button>
                       </div>
                     </form>

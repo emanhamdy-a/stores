@@ -72,7 +72,7 @@ Route::group([
     });
     ##################### end categories    #####################
 
-    ###################### brands routes , 'middleware' => 'can:brands'######################
+    #####################  brands routes   ######################
     Route::group(['prefix' => 'brands' , 'middleware' => 'can:brands'],
     function () {
       Route::get('/', [BrandsController::class,'index'])
@@ -91,7 +91,7 @@ Route::group([
     ###################### end brands   #######################
 
 
-    ###################### Tags tags ,'middleware' => 'can:tags'#######################
+    ###################### Tags tags    #######################
     Route::group(['prefix' => 'tags'  , 'middleware' => 'can:tags'],
     function () {
       Route::get('/', [TagsController::class,'index'])
@@ -195,6 +195,8 @@ Route::group([
       Route::get('/edit/{id}', [RolesController::class,'edit']) ->name('admin.roles.edit') ;
       Route::post('update/{id}', [RolesController::class,'update'])
         ->name('admin.roles.update');
+      Route::get('delete/{id}',[RolesController::class,'destroy'])
+      -> name('admin.roles.delete');
       });
     #################### end roles ########################
 
@@ -209,6 +211,12 @@ Route::group([
         ->name('admin.users.create');
       Route::post('/store', [UsersController::class,'store'])
         ->name('admin.users.store');
+      Route::get('/edit/{id}', [UsersController::class,'edit'])
+        ->name('admin.users.edit') ;
+      Route::post('update/{id}', [UsersController::class,'update'])
+        ->name('admin.users.update');
+      Route::get('delete/{id}',[UsersController::class,'destroy'])
+        -> name('admin.users.delete');
     });
 
   });

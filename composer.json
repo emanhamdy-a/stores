@@ -12,6 +12,7 @@
         "astrotomic/laravel-translatable": "^11.9",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "fzaninotto/faker": "^1.9",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.0",
@@ -23,7 +24,6 @@
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
-        "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3"
@@ -45,7 +45,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files":[
-          "app/Helpers/general.php"
+          "app/Helpers/general.php",
+          "app/Helpers/permissions.php"
         ]
     },
     "autoload-dev": {

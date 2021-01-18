@@ -1,0 +1,46 @@
+<?php
+
+return [
+  'options'       => 'Options',
+  'update option' => 'Update option',
+  'create option' => 'Create new option',
+  'home'          => 'Home',
+  'name'          => 'Name',
+  'price'         => 'Price',
+  'product'       => 'product',
+  'attribute'     => 'attribute',
+  'actions'       => 'Actions',
+  'edit'          => 'Edit',
+  'delete'        => 'Delete',
+  'all options'   => 'All options',
+  'choose product' => 'Choose product',
+  'please choose product' => 'Please choose product',
+  'choose attribute' => 'Choose attribute',
+  'please choose attribute' => 'Please choose attribute',
+  'add option'    => 'Add option',
+  'option name'   => 'option name',
+  'option data'   => 'option data',
+  'main option'   => 'Main option',
+  'sub option'    => 'Sub option',
+  'save'          => 'Save',
+  'cancel'        => 'Cancel',
+  'language'      => 'language',
+  'active'        => 'Active',
+  'not active'    => 'Not active',
+  'not found'     => 'option not found',
+  'error try later' => 'Some thing worng try again',
+  'deleted'       => 'option deleted successfully',
+  'created'       => 'option created successfully',
+  'updated'       => 'option updated successfully',
+
+  //option validation
+
+  'name required'   => 'option name is required',
+  'price required'  =>  'option price is required',
+  'price number'  =>  'option price most be number',
+  'product required'  =>  'choose product please',
+  'product exist'  =>  'choose exists product',
+  'attribute exist'  =>  'choose attribute please',
+  'attribute exist'  =>  'choose exists product',
+];
+

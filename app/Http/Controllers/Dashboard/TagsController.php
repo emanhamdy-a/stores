@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BrandRequest;
-use App\Http\Requests\MainCategoryRequest;
+use App\Repositories\Repository;
 use App\Http\Requests\TagsRequest;
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 use DB;
 
 class TagsController extends Controller
 {
 
+  protected $repository;
+
+  public function __construct(Tag $tag)
+  {
+    $this->repository   = new Repository($tag);
+  }
+
   public function index()
   {
-    $tags = Tag::orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);
+    $tags = $this->repository->all();
     return view('dashboard.tags.index', compact('tags'));
   }
 
@@ -30,27 +33,32 @@ class TagsController extends Controller
   public function store(TagsRequest $request)
   {
 
-    DB::beginTransaction();
+    try{
+      DB::beginTransaction();
 
-    //validation
-    $tag = Tag::create(['slug' => $request -> slug]);
+      $tag =$this->repository->create($request->except('_token'));
 
-    //save translations
-    $tag->name = $request->name;
-    $tag->save();
-    DB::commit();
-    return redirect()->route('admin.tags')->with(['success' => 'تم ألاضافة بنجاح']);
+      $tag->name = $request->name;
+      $tag->save();
+
+      DB::commit();
+      return redirect()->route('admin.tags')->with([
+        'success' => __('admin/tags.created')]);
+    }catch (\Exception $ex) {
+      DB::rollback();
+      return redirect()->route('admin.tags')->with(['error' =>  __('admin/tags.error try later')]);
+    }
+
   }
 
 
   public function edit($id)
   {
 
-    //get specific categories and its translations
-      $tag = Tag::find($id);
+    $tag = Tag::find($id);
 
     if (!$tag)
-      return redirect()->route('admin.tags')->with(['error' => 'هذا الماركة غير موجود ']);
+      return redirect()->route('admin.tags')->with(['error' =>  __('admin/tags.not found')]);
 
     return view('dashboard.tags.edit', compact('tag'));
 
@@ -64,23 +72,23 @@ class TagsController extends Controller
        $tag = Tag::find($id);
 
       if (!$tag)
-        return redirect()->route('admin.tags')->with(['error' => 'هذا الماركة غير موجود']);
+        return redirect()->route('admin.tags')->with(['error' => __('admin/tags.not found')]);
 
       DB::beginTransaction();
 
-      $tag->update($request->except('_token', 'id'));
+      $tag =$this->repository->update($request->all(),$tag);
 
       //save translations
       $tag->name = $request->name;
       $tag->save();
 
       DB::commit();
-      return redirect()->route('admin.tags')->with(['success' => 'تم ألتحديث بنجاح']);
+      return redirect()->route('admin.tags')->with(['success' => __('admin/tags.updated')]);
 
     } catch (\Exception $ex) {
 
       DB::rollback();
-      return redirect()->route('admin.tags')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+      return redirect()->route('admin.tags')->with(['error' => __('admin/tags.error try later')]);
     }
 
   }
@@ -89,18 +97,18 @@ class TagsController extends Controller
   public function destroy($id)
   {
     try {
-      //get specific categories and its translations
+      //get specific tags and its translations
       $tags = Tag::find($id);
 
       if (!$tags)
-        return redirect()->route('admin.tags')->with(['error' => 'هذا الماركة غير موجود ']);
+        return redirect()->route('admin.tags')->with(['error' =>__('admin/tags.not found')]);
 
       $tags->delete();
 
-      return redirect()->route('admin.tags')->with(['success' => 'تم  الحذف بنجاح']);
+      return redirect()->route('admin.tags')->with(['success' =>__('admin/tags.deleted')]);
 
     } catch (\Exception $ex) {
-      return redirect()->route('admin.tags')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+      return redirect()->route('admin.tags')->with(['error' => __('admin/tags.error try later')]);
     }
   }
 

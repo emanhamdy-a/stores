@@ -6,18 +6,8 @@
     <div class="content-wrapper">
       <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-          <div class="row breadcrumbs-top">
-            <div class="breadcrumb-wrapper col-12">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">الرئيسية </a>
-                </li>
-                <li class="breadcrumb-item"><a href=""> الاقسام الرئيسية </a>
-                </li>
-                <li class="breadcrumb-item active">
-                  تعديل - {{$category -> name}}
-                </li>
-              </ol>
-            </div>
+          <h3 class="content-header-title">
+           {{__('admin\categories.update category')}} </h3>
           </div>
         </div>
       </div>
@@ -29,16 +19,13 @@
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title" id="basic-layout-form">
-                    تعديل قسم رئيسي
+                  {{ __('admin/categories.update category') }}
                   </h4>
                   <a class="heading-elements-toggle"><i
                       class="la la-ellipsis-v font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                       <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -50,37 +37,37 @@
                         action="{{route('admin.maincategories.update',$category->id)}}"
                         method="POST"
                         enctype="multipart/form-data">
-                      @csrf
-
+                        @csrf
                       <input name="id" value="{{$category -> id}}" type="hidden">
-
                       <div class="form-group">
                         <div class="text-center">
-                          <img
-                            src=""
-                            class="rounded-circle  height-150" alt="صورة القسم  ">
+                          <img src="{{url('/').'/images/categories/'.$category  -> photo->filename }}"
+                            class="rounded-circle  height-150" alt="{{ __('admin/categories.category image') }}">
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label> صوره القسم </label>
+                        <label> {{ __('admin/categories.category image') }} </label>
                         <label id="projectinput7" class="file center-block">
-                          <input type="file" id="file" name="photo">
+                          <input type="file" id="file" name="image">
                           <span class="file-custom"></span>
                         </label>
-                        @error('photo')
+                        @error('image')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
 
                       <div class="form-body">
 
-                        <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                        <h4 class="form-section"><i class="ft-home"></i>
+                        {{ __('admin/categories.category data') }}
+                        </h4>
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="projectinput1"> اسم القسم
-                                 </label>
+                              <label for="projectinput1">
+                                {{ __('admin/categories.name') }}
+                              </label>
                               <input type="text" id="name"
                                    class="form-control"
                                    placeholder="  "
@@ -94,7 +81,8 @@
 
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="projectinput1"> اسم بالرابط
+                              <label for="projectinput1">
+                              {{ __('admin/categories.slug') }}
                               </label>
                               <input type="text" id="name"
                                    class="form-control"
@@ -111,12 +99,13 @@
                         <div class="row hidden col-12" id="cats_list_edit" >
                           <div class="col-12">
                             <div class="form-group">
-                              <label for="projectinput1"> اختر القسم الرئيسي
+                              <label for="projectinput1">
+                                {{ __('admin/categories.choose main category') }}
                               </label>
                               <select name="parent_id"
                                 class="select2 form-control col-12">
                                 <option label=" " value=''>
-                                 من فضلك أختر القسم
+                                {{ __('admin/categories.choose main category') }}
                                 </option>
                                   @if($categories=\App\Models\Category::all())
                                     @foreach($categories as $category)
@@ -141,7 +130,8 @@
                                    class="switchery" data-color="success"
                                    @if($category -> is_active == 1)checked @endif/>
                                 <label for="switcheryColor4"
-                                  class="card-title ml-1">الحالة
+                                  class="card-title ml-1">
+                                  {{ __('admin/categories.status') }}
                                 </label>
 
                               @error("is_active")
@@ -149,47 +139,50 @@
                               @enderror
                             </div>
                           </div>
-                        </div>
+                          <div class="col-md-3">
+                            <div class="form-group mt-1">
+                              <input type="radio"
+                                    name="type"
+                                    value="1"
+                                    checked
+                                    class="switchery swith_type_edit"
+                                    data-color="success"
+                              />
+                              <label
+                                class="card-title ml-1">
+                                {{ __('admin/categories.main category') }}
+                              </label>
+                            </div>
+                          </div>
 
-                        <div class="col-md-3">
-                          <div class="form-group mt-1">
-                            <input type="radio"
-                                  name="type"
-                                  value="1"
-                                  checked
-                                  class="switchery swith_type_edit"
-                                  data-color="success"
-                            />
-                            <label
-                              class="card-title ml-1">
-                              قسم رئيسي
-                            </label>
+                          <div class="col-md-3">
+                            <div class="form-group mt-1">
+                              <input type="radio"
+                                    name="type"
+                                    value="2"
+                                    class="switchery swith_type_edit" data-color="success"
+                              />
+                              <label
+                                class="card-title ml-1">
+                                {{ __('admin/categories.sub category') }}
+                              </label>
+                            </div>
                           </div>
                         </div>
 
-                        <div class="col-md-3">
-                          <div class="form-group mt-1">
-                            <input type="radio"
-                                  name="type"
-                                  value="2"
-                                  class="switchery swith_type_edit" data-color="success"
-                            />
-                            <label
-                              class="card-title ml-1">
-                              قسم فرعي
-                            </label>
-                          </div>
-                        </div>
+                        @include('dashboard.includes.language_select')
+
                       </div>
-
 
                       <div class="form-actions">
                         <button type="button" class="btn btn-warning mr-1"
                             onclick="history.back();">
-                          <i class="ft-x"></i> تراجع
+                          <i class="ft-x"></i>
+                            {{ __('admin/categories.cancel') }}
                         </button>
                         <button type="submit" class="btn btn-primary">
-                          <i class="la la-check-square-o"></i> تحديث
+                          <i class="la la-check-square-o"></i>
+                            {{ __('admin/categories.save') }}
                         </button>
                       </div>
                     </form>

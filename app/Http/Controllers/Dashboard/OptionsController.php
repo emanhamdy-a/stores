@@ -2,123 +2,123 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Http\Enumerations\CategoryType;
-use App\Http\Requests\GeneralProductRequest;
-use App\Http\Requests\MainCategoryRequest;
-use App\Http\Requests\OptionsRequest;
-use App\Http\Requests\ProductImagesRequest;
-use App\Http\Requests\ProductPriceValidation;
-use App\Http\Requests\ProductStockRequest;
-use App\Models\Attribute;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Image;
+use DB;
 use App\Models\Option;
 use App\Models\Product;
-use App\Models\Tag;
-use Illuminate\Http\Request;
-use DB;
+use App\Models\Category;
+use App\Models\Attribute;
+use App\Repositories\Repository;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\OptionsRequest;
 
 class OptionsController extends Controller
 {
 
-    public function index()
-    {
-        $options = Option::with(['product' => function ($prod) {
-            $prod->select('id');
-        }, 'attribute' => function ($attr) {
-            $attr->select('id');
-        }])->select('id', 'product_id', 'attribute_id', 'price')->paginate(PAGINATION_COUNT);
+  protected $repository;
 
-        return view('dashboard.options.index', compact('options'));
-    }
+  public function __construct(Option $option)
+  {
+    $this->repository   = new Repository($option);
+  }
+  public function index()
+  {
+    $options = $this->repository->all();
+    return view('dashboard.options.index', compact('options'));
+  }
 
-    public function create()
-    {
-        $data = [];
-        $data['products'] = Product::active()->select('id')->get();
-        $data['attributes'] = Attribute::select('id')->get();
+  public function create()
+  {
+    $data = [];
+    $data['products'] = Product::active()->select('id')->get();
+    $data['attributes'] = Attribute::select('id')->get();
 
-        return view('dashboard.options.create', $data);
-    }
+    return view('dashboard.options.create', $data);
+  }
 
-    public function store(OptionsRequest $request)
-    {
+  public function store(OptionsRequest $request)
+  {
 
 
-        DB::beginTransaction();
+    try{
+      DB::beginTransaction();
 
-        //validation
-        $option = Option::create([
-            'attribute_id' => $request->attribute_id,
-            'product_id' => $request->product_id,
-            'price' => $request->price,
-        ]);
-        //save translations
-        $option->name = $request->name;
-        $option->save();
-        DB::commit();
+      $option =$this->repository->create($request->except('_token'));
 
-        return redirect()->route('admin.options')->with(['success' => 'تم ألاضافة بنجاح']);
-    }
+      $option->name = $request->name;
+      $option->save();
 
-    public function edit($optionId)
-    {
-
-        $data = [];
-         $data['option'] = Option::find($optionId);
-
-        if (!$data['option'])
-            return redirect()->route('admin.options')->with(['error' => 'هذه القيمة غير موجود ']);
-
-         $data['products'] = Product::active()->select('id')->get();
-        $data['attributes'] = Attribute::select('id')->get();
-
-        return view('dashboard.options.edit', $data);
-
-    }
-
-    public function update($id, OptionsRequest $request)
-    {
-        try {
-
-             $option = Option::find($id);
-
-            if (!$option)
-                return redirect()->route('admin.options')->with(['error' => 'هذا ألعنصر غير موجود']);
-
-            $option->update($request->only(['price','product_id','attribute_id']));
-            //save translations
-            $option->name = $request->name;
-            $option->save();
-
-            return redirect()->route('admin.options')->with(['success' => 'تم ألتحديث بنجاح']);
-        } catch (\Exception $ex) {
-
-            return redirect()->route('admin.options')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-        }
-
+      DB::commit();
+      return redirect()->route('admin.options')->with([
+        'success' => __('admin/options.created')]);
+    }catch (\Exception $ex) {
+      DB::rollback();
+      return redirect()->route('admin.options')->with(['error' =>  __('admin/options.error try later')]);
     }
 
 
-    public function destroy($id)
-    {
+  }
 
-        try {
-            //get specific categories and its translations
-            $category = Category::orderBy('id', 'DESC')->find($id);
+  public function edit($optionId)
+  {
 
-            if (!$category)
-                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
+    $data = [];
+     $data['option'] = Option::find($optionId);
 
-            $category->delete();
+    if (!$data['option'])
+      return redirect()->route('admin.options')->with([
+        'error' =>__('admin/options.not found')]);
 
-            return redirect()->route('admin.maincategories')->with(['success' => 'تم  الحذف بنجاح']);
+    $data['products'] = Product::active()->select('id')->get();
+    $data['attributes'] = Attribute::select('id')->get();
 
-        } catch (\Exception $ex) {
-            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-        }
+    return view('dashboard.options.edit', $data);
+
+  }
+
+  public function update($id, OptionsRequest $request)
+  {
+    try {
+
+      $option = Option::find($id);
+
+     if (!$option)
+       return redirect()->route('admin.options')->with(['error' => __('admin/options.not found')]);
+
+     DB::beginTransaction();
+
+     $option =$this->repository->update($request->all(),$option);
+
+     //save translations
+     $option->name = $request->name;
+     $option->save();
+
+     DB::commit();
+     return redirect()->route('admin.options')->with(['success' => __('admin/options.updated')]);
+
+    } catch (\Exception $ex) {
+
+      DB::rollback();
+      return redirect()->route('admin.options')->with(['error' => __('admin/options.error try later')]);
     }
+
+  }
+
+
+  public function destroy($id)
+  {
+    try {
+      $option = Option::findOrFail($id);
+
+      if (!$option)
+        return redirect()->route('admin.options')->with(['error' =>__('admin/options.not found')]);
+
+      $option->delete();
+
+      return redirect()->route('admin.options')->with(['success' =>__('admin/options.deleted')]);
+
+    } catch (\Exception $ex) {
+      return redirect()->route('admin.options')->with(['error' => __('admin/options.error try later')]);
+    }
+  }
 
 }

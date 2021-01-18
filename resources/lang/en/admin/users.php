@@ -1,0 +1,45 @@
+<?php
+
+return [
+  'users'         => 'Users',
+  'update user'   => 'Update user',
+  'create user'   => 'Create new user',
+  'name'          => 'Name',
+  'email'         => 'Email',
+  'password'      => 'Password',
+  'confirm password' => 'Confirm password',
+  'choose role'      => 'Choose role',
+  'please choose role' => 'Please choose role',
+  'role'          => 'Role',
+  'actions'       => 'Actions',
+  'edit'          => 'Edit',
+  'delete'        => 'Delete',
+  'all users'     => 'All users',
+  'add user'      => 'Add user',
+  'user name'     => 'User name',
+  'user data'     => 'User data',
+  'save'          => 'Save',
+  'cancel'        => 'Cancel',
+  'language'      => 'language',
+  'active'        => 'Active',
+  'not found'     => 'user not found',
+  'error try later' => 'Some thing worng try again',
+  'deleted'       => 'User deleted successfully',
+  'created'       => 'User created successfully',
+  'updated'       => 'User updated successfully',
+
+  //user validation
+
+  'name required'     =>   'please insert the name',
+  'name length'       =>   'name must be at lest 2 letters',
+  'role required'     =>   'please choose user permission',
+  'role numeric'      =>   'choose valid permission',
+  'role exists'       =>   'choose exists permission',
+  'vaild email'       =>   'insert vaild email',
+  'email required'    =>   'please insert the email',
+  'email unique'      =>   'this email is taken',
+  'password required' =>   'please insert password',
+  'password confirmed'=>   'password confirmation not match',
+  'password length'   =>   'password must be at lest 8 letters',
+];
+

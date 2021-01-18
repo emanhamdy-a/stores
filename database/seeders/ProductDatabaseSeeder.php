@@ -13,6 +13,19 @@ class ProductDatabaseSeeder extends Seeder
    */
   public function run()
   {
-    Product::factory()->count(20)->create();
+    // Product::factory()->count(20)->create();
+    for($i=1;$i<=18;$i++){
+      $products = Product::factory()->create();
+      Photo::factory()->create([
+        'filename' => $i .'.png'
+       ,'photoable_id' => $products->id
+       ,'photoable_type' => 'App\Models\Product'
+      ]);
+      Photo::factory()->create([
+        'filename' =>( $i * 2 ).'.png'
+        ,'photoable_id' => $products->id
+        ,'photoable_type' => 'App\Models\Product'
+      ]);
+    }
   }
 }

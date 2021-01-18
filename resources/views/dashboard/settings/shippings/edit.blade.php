@@ -77,23 +77,8 @@
                             @enderror
                           </div>
                           </div>
-                          <div class="col-12">
-                          <div class="form-group">
-                            <label for="projectinput1"> {{__('language')}} </label>
-                            <select name="lang" id="lang">
-                              <option value="{{getLang()}}">{{__('default')}}</option>
-                              <option value="ar"
-                                <?php if(getLang()==='ar') echo"selected";?> >
-                                {{__('arabic')}}</option>
-                              <option value="en"
-                                <?php if(getLang()==='en') echo"selected";?> >{{__('english')}}</option>
-                              <option value="fr"
-                                <?php if(getLang()==='fr') echo"selected";?> >{{__('frensh')}}</option>
-                              <option value="es"
-                                <?php if(getLang()==='es') echo"selected";?> >{{__('espanish')}}</option>
-                            </select>
-                          </div>
-                          </div>
+
+                          @include('dashboard.includes.language_select')
 
                         </div>
 

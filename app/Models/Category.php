@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
+use App\Models\Photo;
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 // use phpDocumentor\Reflection\Types\Self_;
 
 class Category extends Model
@@ -40,7 +42,7 @@ class Category extends Model
    * @var array
    */
   protected $casts = [
-     'is_active' => 'boolean',
+   'is_active' => 'boolean',
   ];
 
 
@@ -52,7 +54,7 @@ class Category extends Model
   }
 
   public function getActive(){
-     return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
+     return  $this -> is_active  == 0 ?  __('admin/categories.not active') : __('admin/categories.active') ;
   }
 
   public function _parent(){
@@ -71,6 +73,11 @@ class Category extends Model
   public function products()
   {
     return $this -> belongsToMany(Product::class,'product_categories');
+  }
+
+  public function photo()
+  {
+    return $this->morphOne(Photo::class, 'photoable');
   }
 
 }

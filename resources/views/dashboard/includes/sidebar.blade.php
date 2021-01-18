@@ -6,7 +6,8 @@
         <a href="{{route('admin.dashboard')}}">
         <i class="la la-mouse-pointer"></i>
           <span
-            class="menu-title" data-i18n="nav.add_on_drag_drop.main">الرئيسيه
+            class="menu-title" data-i18n="nav.add_on_drag_drop.main">
+            {{__('admin\sidebar.home')}}
           </span></a>
       </li>
 
@@ -157,7 +158,7 @@
             </span>
           </a>
           <ul class="menu-content {{ active_menu('sliders')[1] }}">
-            <li class=""><a class="menu-item" href=""
+            <li class=""><a class="menu-item" href="{{route('admin.sliders.create')}}"
                data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show all')}} </a>
             </li>
             <li><a class="menu-item" href="{{route('admin.sliders.create')}}"
@@ -169,7 +170,8 @@
       @endcan
 
       @can('roles')
-        <li class="nav-item {{ active_menu('roles')[0] }}"><a href=""><i class="la la-group"></i>
+        <li class="nav-item {{ active_menu('roles')[0] }}">
+          <a href=""><i class="la la-group"></i>
             <span class="menu-title" data-i18n="nav.dash.main"> {{__('admin\sidebar.roles')}}</span>
             <span
               class="badge badge badge-danger badge-pill float-right mr-2">
@@ -177,7 +179,8 @@
             </span>
           </a>
           <ul class="menu-content {{ active_menu('roles')[1] }}">
-            <li class=""><a class="menu-item" href=""
+            <li class="">
+              <a class="menu-item" href="{{route('admin.roles.index')}}"
                data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show all')}} </a>
             </li>
             <li><a class="menu-item" href="{{route('admin.roles.create')}}"
@@ -197,7 +200,7 @@
             </span>
           </a>
           <ul class="menu-content {{ active_menu('users')[1] }}">
-            <li class=""><a class="menu-item" href="admin.users')}}"
+            <li class=""><a class="menu-item" href="{{route('admin.users.index')}}"
                data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show all')}} </a>
             </li>
             <li><a class="menu-item" href="{{route('admin.users.create')}}"

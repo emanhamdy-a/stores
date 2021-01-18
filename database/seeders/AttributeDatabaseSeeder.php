@@ -13,6 +13,6 @@ class AttributeDatabaseSeeder extends Seeder
    */
   public function run()
   {
-    Attribute::factory()->count(10)->create();
+    Attribute::factory()->count(5)->create();
   }
 }
