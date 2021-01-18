@@ -34,20 +34,23 @@ class SettingsController extends Controller
   public function updateShippingMethods(ShippingsRequest $request, $id)
   {
 
-      $shipping_method = Setting::find($id);
+      $shipping_method = Setting::findOrFail($id);
 
       DB::beginTransaction();
+
       $shipping_method->update(['plain_value' => $request->plain_value]);
-      //save translations
+
       app()->setLocale($request->lang);
+
       $shipping_method->value = $request->value;
-      // $shipping_method->translation($request->lang)->value = $request->value;
+
       $shipping_method->save();
+
       DB::commit();
-      return redirect()->back()->with(['success' => 'تم التحديث بنجاح']);
+      return redirect()->back()->with(['success' => __('admin/settings.updated')]);
       try {
     } catch (\Exception $ex) {
-      return redirect()->back()->with(['error' => 'هناك خطا ما يرجي المحاولة فيما بعد']);
+      return redirect()->back()->with(['error' => __('admin/settings.error')]);
       DB::rollback();
     }
   }

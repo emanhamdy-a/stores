@@ -32,11 +32,10 @@ class ShippingsRequest extends FormRequest
 
     public function messages()
     {
-        return [
-
-
-
-        ];
+      return [
+        'value.required'       => __('admin/settings.value required'),
+        'plain_value.numeric'  => __('admin/settings.plain_value numeric'),
+      ];
     }
 
 }

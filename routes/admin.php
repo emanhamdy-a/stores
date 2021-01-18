@@ -128,6 +128,14 @@ Route::group([
       Route::post('stock', [ProductsController::class,'saveProductStock'])
         ->name('admin.products.stock.store');
 
+      Route::get('edit/{id}', [ProductsController::class,'edit'])
+        ->name('admin.products.edit');
+      Route::get('delete/{id}', [ProductsController::class,
+        'destroy'])
+        ->name('admin.products.delete');
+      Route::post('update/{id}', [ProductsController::class,'update'])
+        ->name('admin.products.update');
+
       Route::get('images/{id}', [ProductsController::class,'addImages'])
         ->name('admin.products.images');
       Route::post('images', [ProductsController::class,'saveProductImages'])

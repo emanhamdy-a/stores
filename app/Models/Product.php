@@ -26,19 +26,19 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'brand_id',
-        'slug',
-        'sku',
-        'price',
-        'special_price',
-        'special_price_type',
-        'special_price_start',
-        'special_price_end',
-        'selling_price',
-        'manage_stock',
-        'qty',
-        'in_stock',
-        'is_active'
+      'brand_id',
+      'slug',
+      'sku',
+      'price',
+      'special_price',
+      'special_price_type',
+      'special_price_start',
+      'special_price_end',
+      'selling_price',
+      'manage_stock',
+      'qty',
+      'in_stock',
+      'is_active'
     ];
 
     /**
@@ -86,33 +86,37 @@ class Product extends Model
 
     public function getActive()
     {
-        return $this->is_active == 0 ? 'غير مفعل' : 'مفعل';
+      return $this->is_active == 0 ? 'غير مفعل' : 'مفعل';
     }
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'product_categories');
+      return $this->belongsToMany(Category::class, 'product_categories');
+    }
+
+    public function cat_ids()
+    {
+
     }
 
     public function scopeActive($query)
     {
-        return $query->where('is_active', 1);
+      return $query->where('is_active', 1);
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'product_tags');
+      return $this->belongsToMany(Tag::class, 'product_tags');
     }
 
     public function options()
     {
-        return $this->hasMany(Option::class, 'product_id');
+      return $this->hasMany(Option::class, 'product_id');
     }
-
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'product_id');
+      return $this->hasMany(Image::class, 'product_id');
     }
 
     public function photos()
@@ -122,24 +126,23 @@ class Product extends Model
 
     public function hasStock($quantity)
     {
-        return $this->qty >= $quantity;
+      return $this->qty >= $quantity;
     }
 
     public function outOfStock()
     {
-        return $this->qty === 0;
+      return $this->qty === 0;
     }
 
     public function inStock()
     {
-        return $this->qty >= 1;
+      return $this->qty >= 1;
     }
 
 
-  public function getTotal($converted = true)
+    public function getTotal($converted = true)
     {
-        return $total =  $this->special_price ?? $this -> price;
-
+      return $total =  $this->special_price ?? $this -> price;
     }
 
 }

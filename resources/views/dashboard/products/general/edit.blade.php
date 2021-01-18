@@ -6,7 +6,7 @@
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
         <div class="row breadcrumbs-top">
-        <h3 class="content-header-title">{{ __('admin/products.add product') }} </h3>
+        <h3 class="content-header-title">{{ __('admin/products.update product') }} </h3>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                {{ __('admin/products.add product') }}
+                {{ __('admin/products.update product') }}
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -34,23 +34,22 @@
                 <div class="card-body">
                   <form class="form"
                       action="{{route('admin.products.general.store')}}"
-                      method="POST"
-                      enctype="multipart/form-data">
+                      method="POST">
                     @csrf
                     <div class="form-body">
-
                       <h4 class="form-section"><i class="ft-home"></i>
                       {{ __('admin/products.product data') }}
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="projectinput1">{{ __('admin/products.name') }}
+                            <label for="projectinput1">
+                            {{ __('admin/products.name') }}
                             </label>
                             <input type="text" id="name"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('name')}}"
+                                  value="{{old('name') ?? $product -> name}}"
                                   name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -66,7 +65,7 @@
                             <input type="text"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('slug')}}"
+                                  value="{{old('slug') ?? $product -> slug}}"
                                   name="slug">
                             @error("slug")
                             <span class="text-danger">{{$message}}</span>
@@ -82,9 +81,9 @@
                             {{ __('admin/products.discreption') }}
                             </label>
                             <textarea  name="description" id="description"
-                                  class="form-control"
-                                  placeholder="  "
-                            >{{old('description')}}</textarea>
+                              class="form-control"
+                              placeholder="">
+                              {{old('description') ?? $product -> description}}</textarea>
                             @error("description")
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -99,7 +98,7 @@
                             <textarea  name="short_description" id="short-description"
                                     class="form-control"
                                     placeholder=""
-                            >{{old('short_description')}}</textarea>
+                            >{{old('short_description') ?? $product -> short_description}}</textarea>
 
                             @error("short_description")
                             <span class="text-danger">{{$message}}</span>
@@ -122,7 +121,8 @@
                                 @if($categories && $categories -> count() > 0)
                                   @foreach($categories as $category)
                                     <option
-                                      value="{{$category -> id }}">{{$category -> name}}</option>
+                                      value="{{$category -> id }}">
+                                      {{$category -> name}}</option>
                                   @endforeach
                                 @endif
                               </optgroup>
@@ -132,6 +132,9 @@
                             @enderror
                           </div>
                         </div>
+                         @foreach($product->options as $id)
+                          {{ print_r($id).'lllllllll' }}
+                         @endforeach
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -143,7 +146,7 @@
                                 @if($tags && $tags -> count() > 0)
                                   @foreach($tags as $tag)
                                     <option
-                                      value="{{$tag -> id }}">{{$tag -> name}}</option>
+                                      value="{{$tag -> id }}" >{{$tag -> name}}</option>
                                   @endforeach
                                 @endif
                               </optgroup>
