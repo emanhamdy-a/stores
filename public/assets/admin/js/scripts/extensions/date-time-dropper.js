@@ -36,9 +36,8 @@ $(document).ready(function(){
     // Lang
     $('#lang').dateDropper({
         dropWidth: 200,
-        lang: 'ar', // Arabic
-        format: 'Y-m-d'
-     });
+        lang: 'ar' // Arabic
+    });
 
     // Lock
     $('#lock').dateDropper({

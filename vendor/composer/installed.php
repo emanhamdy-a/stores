@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '375e89f4faccf300a3486a1005b33dceec000c3b',
+    'reference' => 'a4530fdb4cee0881bebb237b7047a30a2c3cb1ed',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -124,6 +124,13 @@
       ),
       'reference' => 'ca90a3291eee1538cd48ff25163240695bd95448',
     ),
+    'ergebnis/faker' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '1.9.2',
+      ),
+    ),
     'facade/flare-client-php' => 
     array (
       'pretty_version' => '1.3.7',
@@ -150,6 +157,15 @@
       array (
       ),
       'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
+    ),
+    'fakerphp/faker' => 
+    array (
+      'pretty_version' => 'v1.9.2',
+      'version' => '1.9.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '84220cf137a9344acffb10374e781fed785ff307',
     ),
     'fideloper/proxy' => 
     array (
@@ -180,12 +196,10 @@
     ),
     'fzaninotto/faker' => 
     array (
-      'pretty_version' => 'v1.9.2',
-      'version' => '1.9.2.0',
-      'aliases' => 
+      'replaced' => 
       array (
+        0 => '1.9.2',
       ),
-      'reference' => '848d8125239d7dbf8ab25cb7f054f1a630e68c2e',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -481,7 +495,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '375e89f4faccf300a3486a1005b33dceec000c3b',
+      'reference' => 'a4530fdb4cee0881bebb237b7047a30a2c3cb1ed',
+    ),
+    'laravel/legacy-factories' => 
+    array (
+      'pretty_version' => 'v1.1.0',
+      'version' => '1.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5e3fe2fd5fda64e20ea5c74c831a7346294e902a',
     ),
     'laravel/tinker' => 
     array (

@@ -2,106 +2,149 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\GeneralProductRequest;
-use App\Http\Requests\ProductImagesRequest;
-use App\Http\Requests\ProductPriceValidation;
-use App\Http\Requests\ProductStockRequest;
+use DB;
+use App\Models\Tag;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
-use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use DB;
+use App\Http\Controllers\Controller;
+use App\Repositories\ProductRepository;
+use App\Http\Requests\ProductStockRequest;
+use App\Http\Requests\ProductImagesRequest;
+use App\Http\Requests\GeneralProductRequest;
+use App\Http\Requests\ProductPriceValidation;
 
 class ProductsController extends Controller
 {
 
-  public function index()
+  protected $repository;
+
+  public function __construct(ProductRepository $repository)
   {
-    $products = Product::select('id','slug','price', 'created_at')->paginate(PAGINATION_COUNT);
-    return view('dashboard.products.general.index', compact('products'));
+    $this->repository = $repository;
   }
 
+  //get products
+  public function index()
+  {
+    $products = $this->repository->all();
+    return view('dashboard.products.general.index', compact('products'));
+  }
+  // go to create general data page
   public function create()
   {
-    $data = [];
-    $data['brands'] = Brand::active()->select('id')->get();
-    $data['tags'] = Tag::select('id')->get();
-    $data['categories'] = Category::active()->select('id')->get();
+    $data = $this->repository->create();
     return view('dashboard.products.general.create', $data);
   }
 
+  // save general data
   public function store(GeneralProductRequest $request)
   {
+    try{
 
+      DB::beginTransaction();
 
-    DB::beginTransaction();
+      $this->repository->store($request);
 
-    //validation
+      DB::commit();
 
-    if (!$request->has('is_active'))
-      $request->request->add(['is_active' => 0]);
-    else
-      $request->request->add(['is_active' => 1]);
-
-    $product = Product::create([
-      'slug' => $request->slug,
-      'brand_id' => $request->brand_id,
-      'is_active' => $request->is_active,
-    ]);
-    //save translations
-    $product->name = $request->name;
-    $product->description = $request->description;
-    $product->short_description = $request->short_description;
-    $product->save();
-
-    //save product categories
-
-    $product->categories()->attach($request->categories);
-
-    //save product tags
-
-    DB::commit();
-    return redirect()->route('admin.products')->with(['success' => 'تم ألاضافة بنجاح']);
-
-
+      return redirect()->route('admin.products')->with([
+        'success' => __('admin/products.product added')
+      ]);
+    }catch(\Exception $ex){
+      DB::rollback();
+      return redirect()->route('admin.products')->with([
+        'error' => __('admin/products.try later')
+      ]);
+    }
   }
 
+  // go to update general data page
+  public function edit($id)
+  {
+    $product = Product::findOrFail($id);
 
+    if (!$product)
+    return redirect()->route('admin.products')
+    ->with(['error' => __('admin/products.not found')]);
 
+    $data = $this->repository->edit($product);
+
+    return view('dashboard.products.general.edit',$data);
+  }
+
+  // update general data
+  public function update($id, GeneralProductRequest $request)
+  {
+    try{
+      DB::beginTransaction();
+
+      $this->repository->update($request);
+
+      DB::commit();
+      return redirect()->route('admin.products')->with([
+        'success' => __('admin/products.product updated')]);
+
+    }catch(\Exeption $ex){
+      DB::rollback();
+      return redirect()->route('admin.products')->with([
+        'error' => __('admin/products.try later')
+      ]);
+    }
+  }
+
+  // go to manage price page
   public function getPrice($product_id){
 
     return view('dashboard.products.prices.create') -> with('id',$product_id) ;
   }
 
+  // save product price data
   public function saveProductPrice(ProductPriceValidation $request){
 
     try{
 
-      Product::whereId($request -> product_id) -> update($request -> only(['price','special_price','special_price_type','special_price_start','special_price_end']));
+      $this->repository->savePrice($request);
 
-      return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-    }catch(\Exception $ex){
+      return redirect()->route('admin.products')->with([
+        'success' =>  __('admin/products.product updated')]);
 
+    }catch(\Exeption $ex){
+      DB::rollback();
+      return redirect()->route('admin.products')->with([
+        'error' => __('admin/products.try later')
+      ]);
     }
   }
 
+  // go to manage price page
   public function getStock($product_id){
 
     return view('dashboard.products.stock.create') -> with('id',$product_id) ;
   }
 
+  // save manage price data
   public function saveProductStock (ProductStockRequest $request){
 
+    try{
 
-      Product::whereId($request -> product_id) -> update($request -> except(['_token','product_id']));
+      $this->repository->saveStock($request);
 
-      return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
+      return redirect()->route('admin.products')->with([
+        'success' =>  __('admin/products.product updated')]);
+
+    }catch(\Exeption $ex){
+      DB::rollback();
+      return redirect()->route('admin.products')->with([
+        'error' => __('admin/products.try later')
+      ]);
+    }
 
   }
 
+  // go to add images page
   public function addImages($product_id){
     return view('dashboard.products.images.create')->withId($product_id);
   }
@@ -119,6 +162,7 @@ class ProductsController extends Controller
 
   }
 
+  //to save images to db
   public function saveProductImagesDB(ProductImagesRequest $request){
 
     try {
@@ -139,69 +183,23 @@ class ProductsController extends Controller
     }
   }
 
-  public function edit($id)
-  {
-    $product = Product::findOrFail($id);
-
-    if (!$product)
-    return redirect()->route('admin.products')
-    ->with(['error' => 'هذا المنتج غير موجود ']);
-    $data = [];
-    $data['product']=$product;
-    $data['brands'] = Brand::active()->select('id')->get();
-    $data['tags'] = Tag::select('id')->get();
-    $data['categories'] = Category::active()->select('id')->get();
-    return view('dashboard.products.general.edit',$data);
-    return view('dashboard.products.general.edit', compact('product'));
-
-  }
-
-
-  public function update($id, GeneralProductRequest $request)
-  {
-    try {
-
-      $category = Category::find($id);
-
-      if (!$category)
-        return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود']);
-
-      if (!$request->has('is_active'))
-        $request->request->add(['is_active' => 0]);
-      else
-        $request->request->add(['is_active' => 1]);
-
-      $category->update($request->all());
-
-      //save translations
-      $category->name = $request->name;
-      $category->save();
-
-      return redirect()->route('admin.maincategories')->with(['success' => 'تم ألتحديث بنجاح']);
-    } catch (\Exception $ex) {
-
-      return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-    }
-
-  }
-
-
   public function destroy($id)
   {
-
     try {
       $product = Product::findOrFail($id);
 
       if (!$product)
-        return redirect()->route('admin.products')->with(['error' => 'هذا القسم غير موجود ']);
+        return redirect()->route('admin.products')->with([
+          'error' => __('admin/product.not found')]);
 
-      $product->delete();
+      $this->repository->delete($product,$id);
 
-      return redirect()->route('admin.products')->with(['success' => 'تم  الحذف بنجاح']);
+      return redirect()->route('admin.products')->with([
+        'success' => __('admin/product.product deleted')]);
 
     } catch (\Exception $ex) {
-      return redirect()->route('admin.products')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+      return redirect()->route('admin.products')->with([
+        'error' => __('admin/product.try later')]);
     }
   }
-
 }

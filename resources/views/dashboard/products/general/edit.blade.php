@@ -121,8 +121,16 @@
                                 @if($categories && $categories -> count() > 0)
                                   @foreach($categories as $category)
                                     <option
-                                      value="{{$category -> id }}">
-                                      {{$category -> name}}</option>
+                                      value="{{$category -> id }}"
+                                      <?php
+                                      if(in_array($category->id,$product->cat_ids()->toArray())){
+                                        echo 'selected';
+                                      }
+                                      ?>
+                                    >
+                                      {{$category -> name}}
+
+                                    </option>
                                   @endforeach
                                 @endif
                               </optgroup>
@@ -132,9 +140,7 @@
                             @enderror
                           </div>
                         </div>
-                         @foreach($product->options as $id)
-                          {{ print_r($id).'lllllllll' }}
-                         @endforeach
+
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -146,7 +152,14 @@
                                 @if($tags && $tags -> count() > 0)
                                   @foreach($tags as $tag)
                                     <option
-                                      value="{{$tag -> id }}" >{{$tag -> name}}</option>
+                                      value="{{$tag -> id }}"
+                                      <?php
+                                      if(in_array($tag->id,$product->tag_ids()->toArray())){
+                                        echo 'selected';
+                                      }
+                                      ?>
+                                      >{{$tag -> name}}
+                                      </option>
                                   @endforeach
                                 @endif
                               </optgroup>
@@ -167,7 +180,14 @@
                                 @if($brands && $brands -> count() > 0)
                                   @foreach($brands as $brand)
                                     <option
-                                      value="{{$brand -> id }}">{{$brand -> name}}</option>
+                                      value="{{$brand -> id }}"
+                                      <?php
+                                        if($brand -> id == $product->brand -> id){
+                                          echo 'selected';
+                                        }
+                                      ?>
+                                      >{{$brand -> name}}
+                                    </option>
                                   @endforeach
                                 @endif
                               </optgroup>
@@ -177,6 +197,8 @@
                             @enderror
                           </div>
                         </div>
+                      </div>
+                      <div class="row">
                       </div>
 
                       <div class="row">

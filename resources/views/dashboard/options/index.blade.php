@@ -31,7 +31,7 @@
               <div class="card-content collapse show">
                 <div class="card-body card-dashboard">
                   <table
-                    class="table display nowrap table-striped table-bordered scroll-horizontal">
+                    class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
                     <thead class="">
                     <tr>
                       <th>{{__('admin\options.name')}}</th>
@@ -48,8 +48,8 @@
                         <tr>
                           <td>{{$option -> name}}</td>
                           <td>{{$option ->price}}</td>
-                          <td>{{$option ->product->name}}</td>
-                          <td>{{$option ->attribute->name}}</td>
+                          <td>{{$option ->product->name ?? ''}}</td>
+                          <td>{{$option ->attribute->name ?? ''}}</td>
                           <td>
                             <div class="btn-group" role="group"
                                 aria-label="Basic example">

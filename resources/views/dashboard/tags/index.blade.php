@@ -31,12 +31,12 @@
                 <div class="card-content collapse show">
                   <div class="card-body card-dashboard">
                     <table
-                      class="table display nowrap table-striped table-bordered ">
+                      class="table display nowrap table-striped table-bordered scroll-horizontal w-100">
                       <thead class="">
                       <tr>
-                      <th>{{__('admin\tags.name')}} </th>
-                      <th>{{__('admin\tags.status')}}</th>
-                      <th>{{__('admin\tags.actions')}}</th>
+                        <th>{{__('admin\tags.name')}} </th>
+                        <th>{{__('admin\tags.status')}}</th>
+                        <th>{{__('admin\tags.actions')}}</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -64,8 +64,6 @@
                         @endforeach
                       @endisset
 
-
-                      </tbody>
                     </table>
                     <div class="justify-content-center d-flex">
 

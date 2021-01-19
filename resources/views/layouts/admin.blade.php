@@ -124,6 +124,7 @@
 <script src="{{asset('assets/admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('assets/admin/vendors/js/extensions/dropzone.min.js')}}" type="text/javascript"></script>
+
 <script>
     var previousCounter = $('.notification-counter').text(); //8
     var notificationsCount = parseInt(previousCounter);
@@ -140,6 +141,7 @@
         $('.notification-counter').text(notificationsCount)
     });
 </script>
+
 <script>
     $('#meridians1').timeDropper({
         meridians: true,
@@ -189,6 +191,7 @@
         meridians: true,setCurrentTime: false
     });
 </script>
+
 @yield('script')
 </body>
 </html>

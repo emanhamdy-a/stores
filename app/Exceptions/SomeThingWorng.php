@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class SomeThingWorngy extends Exception
+class SomeThingWorng extends Exception
 {
 	/**
 	 * The message that will be shown if the exception has been thrown.

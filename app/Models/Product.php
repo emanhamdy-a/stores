@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use Translatable,
-        SoftDeletes
-        , HasFactory;
+      SoftDeletes
+      , HasFactory;
 
     /**
      * The relations to eager load on every query.
@@ -71,7 +71,6 @@ class Product extends Model
      * @var array
      */
 
-
     /**
      * The attributes that are translatable.
      *
@@ -81,7 +80,7 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class)->withDefault();
+        return $this->belongsTo(Brand::class,'brand_id' ,'id')->withDefault();
     }
 
     public function getActive()
@@ -96,6 +95,14 @@ class Product extends Model
 
     public function cat_ids()
     {
+      return $this->belongsToMany(Category::class, 'product_categories')
+      ->pluck('id');
+    }
+
+    public function tag_ids()
+    {
+      return $this->belongsToMany(Tag::class, 'product_tags')
+      ->pluck('id');
 
     }
 
@@ -138,7 +145,6 @@ class Product extends Model
     {
       return $this->qty >= 1;
     }
-
 
     public function getTotal($converted = true)
     {
