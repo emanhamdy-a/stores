@@ -64,8 +64,8 @@ return [
         ],
 
         'tenant' => [
-            // 'driver' => 'mysql',
-            'driver' => 'pgsql',
+            'driver' => 'mysql',
+            // 'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             // 'host' => env('DB_HOST', '127.0.0.1'),
             // 'port' => env('DB_PORT', '3306'),
@@ -119,7 +119,7 @@ return [
           'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'],"/") : null,
           'username' => isset($DATABASE_URL['user']) ? $DATABASE_URL['user'] : null,
           'password' => isset($DATABASE_URL['pass']) ? $DATABASE_URL['pass'] : null,
-          'charset' => 'utf8',
+          'charset' => 'utf8mb4',
           'prefix' => '',
           'prefix_indexes' => true,
           'schema' => 'public',
