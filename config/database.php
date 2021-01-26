@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$DATABASE_URL=parse_url('DATABASE_URL');
 return [
 
     /*
@@ -14,8 +14,8 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
-
-    'default' => env('DB_CONNECTION', 'mysql'),//'tenant',//
+    'default' => env('DB_CONNECTION', 'pgsql'),
+    //'default' => env('DB_CONNECTION', 'mysql'),//'tenant',//
 
     /*
     |--------------------------------------------------------------------------
@@ -64,14 +64,21 @@ return [
         ],
 
         'tenant' => [
-            'driver' => 'mysql',
+            // 'driver' => 'mysql',
+            'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => null,
+            // 'host' => env('DB_HOST', '127.0.0.1'),
+            // 'port' => env('DB_PORT', '3306'),
+            // 'database' => null,
             // 'database' => 'stores',
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            // 'username' => env('DB_USERNAME', 'forge'),
+            // 'password' => env('DB_PASSWORD', ''),
+            'host' => isset($DATABASE_URL['host']) ? $DATABASE_URL['host'] : null,
+            'port' => isset($DATABASE_URL['port']) ? $DATABASE_URL['port'] : null,
+            'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'],"/") : null,
+            'username' => isset($DATABASE_URL['user']) ? $DATABASE_URL['user'] : null,
+            'password' => isset($DATABASE_URL['pass']) ? $DATABASE_URL['pass'] : null,
+
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -105,18 +112,18 @@ return [
         ],
 
         'pgsql' => [
-            'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'schema' => 'public',
-            'sslmode' => 'prefer',
+          'driver' => 'pgsql',
+          'url' => env('DATABASE_URL'),
+          'host' => isset($DATABASE_URL['host']) ? $DATABASE_URL['host'] : null,
+          'port' => isset($DATABASE_URL['port']) ? $DATABASE_URL['port'] : null,
+          'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'],"/") : null,
+          'username' => isset($DATABASE_URL['user']) ? $DATABASE_URL['user'] : null,
+          'password' => isset($DATABASE_URL['pass']) ? $DATABASE_URL['pass'] : null,
+          'charset' => 'utf8',
+          'prefix' => '',
+          'prefix_indexes' => true,
+          'schema' => 'public',
+          'sslmode' => 'prefer',
         ],
 
         'sqlsrv' => [
