@@ -91,30 +91,6 @@ class AttributesController extends Controller
       DB::rollback();
       return redirect()->route('admin.attributes')->with(['error' => __('admin/attributes.error try later')]);
     }
-    try {
-      //validation
-
-      //update DB
-      $attribute = Attribute::find($id);
-
-      if (!$attribute)
-        return redirect()->route('admin.attributes')->with(['error' => 'هذا العنصر غير موجود']);
-
-
-      DB::beginTransaction();
-
-      //save translations
-      $attribute->name = $request->name;
-      $attribute->save();
-
-      DB::commit();
-      return redirect()->route('admin.attributes')->with(['success' => 'تم ألتحديث بنجاح']);
-
-    } catch (\Exception $ex) {
-
-      DB::rollback();
-      return redirect()->route('admin.attributes')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-    }
 
   }
 

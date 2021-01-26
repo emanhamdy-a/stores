@@ -113,35 +113,36 @@ Route::group([
     Route::group(['prefix' => 'products' , 'middleware' => 'can:products'], function () {
       Route::get('/', [ProductsController::class,'index'])
         ->name('admin.products');
+
       Route::get('general-information', [ProductsController::class,'create'])
         ->name('admin.products.general.create');
-      Route::post('store-general-information', [ProductsController::class,'store'])
+      Route::post('store-general-information'
+        , [ProductsController::class,'store'])
         ->name('admin.products.general.store');
+      Route::get('edit/{id}', [ProductsController::class,'edit'])
+      ->name('admin.products.edit');
+      Route::get('delete/{id}', [ProductsController::class,'destroy'])
+      ->name('admin.products.delete');
+      Route::post('update/{id}', [ProductsController::class,'update'])
+      ->name('admin.products.general.update');
 
       Route::get('price/{id}', [ProductsController::class,'getPrice'])
         ->name('admin.products.price');
       Route::post('price', [ProductsController::class,'saveProductPrice'])
         ->name('admin.products.price.store');
 
+
       Route::get('stock/{id}', [ProductsController::class,'getStock'])
         ->name('admin.products.stock');
       Route::post('stock', [ProductsController::class,'saveProductStock'])
         ->name('admin.products.stock.store');
 
-      Route::get('edit/{id}', [ProductsController::class,'edit'])
-        ->name('admin.products.edit');
-      Route::get('delete/{id}', [ProductsController::class,
-        'destroy'])
-        ->name('admin.products.delete');
-      Route::post('update/{id}', [ProductsController::class,'update'])
-        ->name('admin.products.update');
-
       Route::get('images/{id}', [ProductsController::class,'addImages'])
         ->name('admin.products.images');
-      Route::post('images', [ProductsController::class,'saveProductImages'])
+      Route::post('images/{id}', [ProductsController::class,'saveProductImages'])
         ->name('admin.products.images.store');
-      Route::post('images/db', [ProductsController::class,'saveProductImagesDB'])
-        ->name('admin.products.images.store.db');
+      Route::post('delete/images', [ProductsController::class,'deleteImage'])
+        ->name('admin.products.images.delete');
     });
     ##################### end products  ###################
 
@@ -186,8 +187,7 @@ Route::group([
         ->name('admin.sliders.create');
       Route::post('images', [SliderController::class,'saveSliderImages'])
         ->name('admin.sliders.images.store');
-      Route::post('images/db', [SliderController::class,'saveSliderImagesDB'])
-        ->name('admin.sliders.images.store.db');
+      Route::post('delete/images', [SliderController::class,'deleteImage'])->name('admin.sliders.images.delete');
 
     });
     #################### end sliders  #########################

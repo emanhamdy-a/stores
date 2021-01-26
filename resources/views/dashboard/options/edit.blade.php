@@ -124,7 +124,7 @@
                         </div>
 
                       </div>
-
+                      @include('dashboard.includes.language_select')
                     </div>
 
 

@@ -33,14 +33,36 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.products.general.store')}}"
-                      method="POST">
+                      action="{{route('admin.products.general.update',$product->id)}}"
+                      method="POST"
+                      enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name='id' value='{{ $product->id }}'>
                     <div class="form-body">
                       <h4 class="form-section"><i class="ft-home"></i>
                       {{ __('admin/products.product data') }}
                       </h4>
+                      <div class="form-group">
+                        <div class="text-center">
+                          <img src="{{url('/').'/images/products/'.$product  -> main_image ?? '' }}"
+                            class="rounded-circle  height-150" alt="{{ __('admin/categories.category image') }}">
+                        </div>
+                      </div>
                       <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label> {{__('admin/products.product main image')}}</label>
+                            <label id=""
+                              class="file center-block">
+                              <input type="file"  name="image">
+                              <span class="file-custom"></span>
+                            </label>
+                            @error('image')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                          </div>
+                        </div>
+
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -82,8 +104,7 @@
                             </label>
                             <textarea  name="description" id="description"
                               class="form-control"
-                              placeholder="">
-                              {{old('description') ?? $product -> description}}</textarea>
+                              placeholder="">{{old('description') ?? $product -> description}}</textarea>
                             @error("description")
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -95,7 +116,7 @@
                             <label for="projectinput1">
                             {{ __('admin/products.small discreption') }}
                             </label>
-                            <textarea  name="short_description" id="short-description"
+                            <textarea  name="short_description"
                                     class="form-control"
                                     placeholder=""
                             >{{old('short_description') ?? $product -> short_description}}</textarea>
@@ -105,11 +126,10 @@
                             @enderror
                           </div>
                         </div>
-
                       </div>
 
-
                       <div class="row" >
+
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -140,7 +160,7 @@
                             @enderror
                           </div>
                         </div>
-
+                        <div class="clearfix"></div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -169,6 +189,7 @@
                             @enderror
                           </div>
                         </div>
+                        <div class="clearfix"></div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -197,8 +218,10 @@
                             @enderror
                           </div>
                         </div>
+
                       </div>
                       <div class="row">
+
                       </div>
 
                       <div class="row">
@@ -222,6 +245,7 @@
 
 
                       </div>
+                      @include('dashboard.includes.language_select')
                     </div>
 
 

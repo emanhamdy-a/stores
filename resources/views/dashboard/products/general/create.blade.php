@@ -43,6 +43,19 @@
                       {{ __('admin/products.product data') }}
                       </h4>
                       <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label> {{ __('admin/products.product main image')}}</label>
+                            <label id=""
+                              class="file center-block">
+                              <input type="file"  name="image">
+                              <span class="file-custom"></span>
+                            </label>
+                            @error('image')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                          </div>
+                        </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">{{ __('admin/products.name') }}
@@ -96,7 +109,7 @@
                             <label for="projectinput1">
                             {{ __('admin/products.small discreption') }}
                             </label>
-                            <textarea  name="short_description" id="short-description"
+                            <textarea  name="short_description"
                                     class="form-control"
                                     placeholder=""
                             >{{old('short_description')}}</textarea>
@@ -132,6 +145,7 @@
                             @enderror
                           </div>
                         </div>
+                        <div class="clearfix"></div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -153,6 +167,7 @@
                             @enderror
                           </div>
                         </div>
+                        <div class="clearfix"></div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="projectinput1">
@@ -197,6 +212,7 @@
 
 
                       </div>
+                      @include('dashboard.includes.language_select')
                     </div>
 
 

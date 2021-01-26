@@ -68,6 +68,7 @@
                             </div>
                           </div>
                       </div>
+                      @include('dashboard.includes.language_select')
                     </div>
                     <div class="form-actions">
                       <button type="button" class="btn btn-warning mr-1"

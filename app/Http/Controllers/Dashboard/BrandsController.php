@@ -5,23 +5,20 @@ namespace App\Http\Controllers\Dashboard;
 use DB;
 use App\Models\Brand;
 use App\Models\photo;
+use App\Traits\PhotoableTrait;
 use App\Repositories\Repository;
-use App\UploadImage\LocalStorage;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 
 class BrandsController extends Controller
 {
-
+  use PhotoableTrait;
   protected $repository;
-  protected $upload;
-  protected $disc='brands';
 
-  public function __construct(Brand $brand,photo $photo)
+  public function __construct(Brand $brand)
   {
     $this->repository   = new Repository($brand);
-    $this->upload       = new LocalStorage($photo);
-    $this->upload->disc = $this->disc;
+    $this->disc='brands';
   }
 
   public function index()
@@ -120,7 +117,7 @@ class BrandsController extends Controller
 
   public function destroy($id)
   {
-
+    try {
       $brand = Brand::find($id);
 
       if (!$brand)
@@ -128,13 +125,13 @@ class BrandsController extends Controller
           'error' =>   __('admin/brands.not found')
         ]);
 
-      $this->deleteimage($brand);
-      $brand->delete();
+      if($this->deleteimage($brand)){
+        $brand->delete();
+      }
 
       return redirect()->route('admin.brands')->with([
         'success' =>  __('admin/brands.deleted')
       ]);
-try {
     } catch (\Exception $ex) {
       return redirect()->route('admin.brands')->with([
         'error' =>  __('admin/brands.error try later')
@@ -143,7 +140,7 @@ try {
   }
 
   public function storeimage($request_image,$id){
-    if($storeas= $this->upload->move($request_image)){
+    if($storeas= $this->move_to_folder($request_image)){
       $data=[
         'photoable_id'  =>$id,
         'photoable_type'=>'App\Models\Brand',
@@ -154,27 +151,16 @@ try {
   }
 
   public function deleteimage($brand){
-    if(!empty($brand->img()->filename)){
-      $filename=$brand->img()->filename;
+    if(!empty($brand->photo->filename)){
+        $filename=$brand->photo->filename;
       // delete image from database
-      $photo=Photo::where('photoable_id',$brand->id)->first();
-      if($photo->delete()){
+      if($brand->photo->delete()){
         // delete image from path
-        $this->upload->unlinkimage($filename);
+        $this->unlinkimage($filename);
+        return true;
       }
     }
+    return false;
   }
-
-  // public function deleteimage($brand){
-  //   if(!empty($brand->photo->filename)){
-        // $filename=$brand->photo->filename
-  //     // delete image from database
-  //     if($brand->photo->delete()){
-  //       // delete image from path
-  //       $this->upload->unlinkimage($filename);
-  //     }
-
-  //   }
-  // }
 
 }

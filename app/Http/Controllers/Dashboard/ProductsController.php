@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use DB;
-use App\Models\Tag;
-use App\Models\Brand;
-use App\Models\Image;
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\UploadImage\ProductImageStore;
 use App\Repositories\ProductRepository;
 use App\Http\Requests\ProductStockRequest;
 use App\Http\Requests\ProductImagesRequest;
@@ -18,12 +15,14 @@ use App\Http\Requests\ProductPriceValidation;
 
 class ProductsController extends Controller
 {
-
   protected $repository;
+  protected $upload;
 
-  public function __construct(ProductRepository $repository)
+  public function __construct(ProductRepository $repository,ProductImageStore $upload)
   {
     $this->repository = $repository;
+    $this->upload     = $upload;
+    $this->upload->disc       ='products';
   }
 
   //get products
@@ -32,6 +31,7 @@ class ProductsController extends Controller
     $products = $this->repository->all();
     return view('dashboard.products.general.index', compact('products'));
   }
+
   // go to create general data page
   public function create()
   {
@@ -45,6 +45,10 @@ class ProductsController extends Controller
     try{
 
       DB::beginTransaction();
+      if ($request->has('image')){
+        $data=$this->upload->move_to_folder($request->image);
+        $request->request->add(['main_image' => $data['hashname']]);
+      }
 
       $this->repository->store($request);
 
@@ -76,14 +80,19 @@ class ProductsController extends Controller
   }
 
   // update general data
-  public function update($id, GeneralProductRequest $request)
+  public function update($id,GeneralProductRequest $request)
   {
     try{
+      $product=Product::findOrFail($id);
       DB::beginTransaction();
-
-      $this->repository->update($request);
-
+      if ($request->has('image')){
+        $data=$this->upload->move_to_folder($request->image);
+        $request->request->add(['main_image' => $data['hashname']]);
+        $this->upload->unlinkimage($product->main_image);
+      }
       DB::commit();
+      $this->repository->update($id,$request);
+
       return redirect()->route('admin.products')->with([
         'success' => __('admin/products.product updated')]);
 
@@ -145,44 +154,30 @@ class ProductsController extends Controller
   }
 
   // go to add images page
-  public function addImages($product_id){
-    return view('dashboard.products.images.create')->withId($product_id);
+  public function addImages($product){
+    $product=Product::findOrFail($product);
+    return view('dashboard.products.images.create',compact('product'));
   }
 
-  //to save images to folder only
-  public function saveProductImages(Request $request ){
-
+  // move to folder and save images to db
+  public function saveProductImages(ProductImagesRequest $request,$product_id ){
     $file = $request->file('dzfile');
-    $filename = uploadImage('products', $file);
-
+    //move to folder
+    $data = $this->upload->move_to_folder($file);
+    //store to db
+    $fid  = $this->upload->storeImages($data['hashname'],$product_id);
     return response()->json([
-      'name' => $filename,
-      'original_name' => $file->getClientOriginalName(),
+      'status' =>200,
+      'msg' => __('admin/image.uploaded'),
+      'fid' => $fid,
+      'name' => $data['hashname'],
+      'original_name' => $data['name'],
     ]);
-
   }
 
-  //to save images to db
-  public function saveProductImagesDB(ProductImagesRequest $request){
-
-    try {
-      // save dropzone images
-      if ($request->has('document') && count($request->document) > 0) {
-        foreach ($request->document as $image) {
-          Image::create([
-            'product_id' => $request->product_id,
-            'photo' => $image,
-          ]);
-        }
-      }
-
-      return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-
-    }catch(\Exception $ex){
-
-    }
-  }
-
+  /**
+   * delete product
+   */
   public function destroy($id)
   {
     try {
@@ -192,6 +187,8 @@ class ProductsController extends Controller
         return redirect()->route('admin.products')->with([
           'error' => __('admin/product.not found')]);
 
+      $this->upload->deleteimages($id);
+      $this->upload->unlinkimage($product->main_image);
       $this->repository->delete($product,$id);
 
       return redirect()->route('admin.products')->with([
@@ -201,5 +198,12 @@ class ProductsController extends Controller
       return redirect()->route('admin.products')->with([
         'error' => __('admin/product.try later')]);
     }
+  }
+
+  /**
+   * delete on image
+   */
+  public function deleteImage(Request $request){
+    return $this->upload->deleteimage($request);
   }
 }

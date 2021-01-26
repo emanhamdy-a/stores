@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
-use App\Support\Storage\Contracts\StorageInterface;
 use App\Support\Storage\SessionStorage;
+use Illuminate\Support\ServiceProvider;
+use App\Support\Storage\Contracts\StorageInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+      Paginator::useBootstrap();
     }
 }

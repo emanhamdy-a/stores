@@ -3,23 +3,21 @@ namespace App\Http\Controllers\Dashboard;
 use DB;
 use App\Models\photo;
 use App\Models\Category;
+use App\Traits\PhotoableTrait;
 use App\Repositories\Repository;
-use App\UploadImage\LocalStorage;
 use App\Http\Controllers\Controller;
 use App\Http\Enumerations\CategoryType;
 use App\Http\Requests\MainCategoryRequest;
 
 class MainCategoriesController extends Controller
 {
+  use PhotoableTrait;
   protected $repository;
-  protected $upload;
-  protected $disc='categories';
 
-  public function __construct(Category $category,photo $photo)
+  public function __construct(Category $category)
   {
     $this->repository   = new Repository($category);
-    $this->upload       = new LocalStorage($photo);
-    $this->upload->disc = $this->disc;
+    $this->disc='categories';
   }
 
   public function index()
@@ -154,7 +152,7 @@ class MainCategoriesController extends Controller
   }
 
   public function storeimage($request_image,$id){
-    if($storeas= $this->upload->move($request_image)){
+    if($storeas= $this->move_to_folder($request_image)){
       $data=[
         'photoable_id'  =>$id,
         'photoable_type'=>'App\Models\Category',
@@ -171,7 +169,7 @@ class MainCategoriesController extends Controller
       // delete image from database
       if($category->photo->delete()){
         // delete image from path
-        $this->upload->unlinkimage($filename);
+        $this->unlinkimage($filename);
       }
 
     }

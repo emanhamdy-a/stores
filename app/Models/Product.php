@@ -28,6 +28,7 @@ class Product extends Model
     protected $fillable = [
       'brand_id',
       'slug',
+      'main_image',
       'sku',
       'price',
       'special_price',
@@ -126,9 +127,9 @@ class Product extends Model
       return $this->hasMany(Image::class, 'product_id');
     }
 
-    public function photos()
+    public function imagePath($val)
     {
-      return $this->morphMany('App\Models\Photo', 'photoable');
+        return $val ? asset('images/products/'.$val) : '';
     }
 
     public function hasStock($quantity)

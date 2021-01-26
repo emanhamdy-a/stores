@@ -22,7 +22,7 @@ class Attribute extends Model
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $fillable = ['name'];
 
 
     /**

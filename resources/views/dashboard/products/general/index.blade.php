@@ -4,12 +4,6 @@
 
   <div class="app-content content">
     <div class="content-wrapper">
-      <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2">
-          <h3 class="content-header-title">
-           {{__('admin\products.products')}} </h3>
-        </div>
-      </div>
       <div class="content-body">
         <!-- DOM - jQuery events table -->
         <section id="dom">
@@ -19,7 +13,8 @@
                 <div class="card-header">
                   <h4 class="card-title">{{__('admin\products.products')}} </h4>
                   <a class="heading-elements-toggle"><i
-                      class="la la-ellipsis-v font-medium-3"></i></a>
+                    class="la la-ellipsis-v font-medium-3"></i>
+                  </a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
                       <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
@@ -62,7 +57,7 @@
                                   {{ __('admin/products.price') }}
                               </a>
 
-                              <a href="{{route('admin.products.images',$product -> id)}}"
+                              <a href="{{route('admin.products.images',$product)}}"
                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
                                   {{ __('admin/products.images') }}
                               </a>
@@ -94,10 +89,10 @@
                                     {{ __('admin/products.delete') }}
                                   </a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item primary dropdown-item btn btn-outline-primary"
-                                    href="{{route('admin.products.update',$product->id)}}">
+                                  <!-- <a class="dropdown-item primary dropdown-item btn btn-outline-primary"
+                                    href="{{route('admin.products.general.update',$product->id)}}">
                                     {{ __('admin/products.view') }}
-                                  </a>
+                                  </a> -->
                                 </div>
                               </li>
                             </ul>

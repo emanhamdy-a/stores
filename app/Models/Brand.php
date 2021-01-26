@@ -48,10 +48,6 @@ class Brand extends Model
         return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
     }
 
-    public function  getPhotoAttribute($val){
-        return ($val !== null) ? asset('images/brands/' . $val) : "";
-    }
-
     public function products()
     {
         return $this->hasMany(Product::class, 'brand_id');
@@ -64,6 +60,6 @@ class Brand extends Model
     }
     public function photo()
     {
-      return $this->morphOne(Photo::class, 'photoable');
+      return $this->morphOne('App\Models\Photo', 'photoable');
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use DB;
 use App\Models\Option;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Attribute;
 use App\Repositories\Repository;
 use App\Http\Controllers\Controller;

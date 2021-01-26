@@ -19,10 +19,10 @@ class Image extends Model
 
     //
 
-    public function getPhotoAttribute($val)
-    {
 
-        return $val ? asset('assets/images/products/'.$val) : '';
-    }
+    // public function getPhotoAttribute($val)
+    // {
+    //     return $val ? asset('images/products/'.$val) : '';
+    // }
 
 }
