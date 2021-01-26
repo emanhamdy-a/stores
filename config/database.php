@@ -119,7 +119,7 @@ return [
           'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'],"/") : null,
           'username' => isset($DATABASE_URL['user']) ? $DATABASE_URL['user'] : null,
           'password' => isset($DATABASE_URL['pass']) ? $DATABASE_URL['pass'] : null,
-          'charset' => 'utf8mb4',
+          'charset' => 'utf8',
           'prefix' => '',
           'prefix_indexes' => true,
           'schema' => 'public',
