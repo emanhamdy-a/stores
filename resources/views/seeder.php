@@ -27,10 +27,9 @@ DB::table('setting_translations')->insert(    [
     ["id" => "4","setting_id" => "14","locale" => "ar","value" => "توصيل خارجي",],
 ]);
 DB::statement("ALTER SEQUENCE setting_translations_id_seq RESTART WITH 5");
-DB::statement("ALTER SEQUENCE category_translations_id_seq RESTART WITH 81");
 //categories
 DB::table('categories')->insert(    [
-    ["id" => "2","parent_id" => "","slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
+    ["id" => "2","parent_id" => null,"slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
     ["id" => "3","parent_id" => "","slug" => "quas-voluptatem-dicta-animi-quo-eum","is_active" => "1","created_at" => "2021-01-28 10:45:42","updated_at" => "2021-01-28 10:45:42",],
     ["id" => "4","parent_id" => "","slug" => "omnis-necessitatibus-molestiae-id-corrupti-adipisci-consectetur-aliquid-blanditiis","is_active" => "1","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
     ["id" => "5","parent_id" => "","slug" => "vel-iure-modi-et-deserunt-cupiditate-odio-ipsam","is_active" => "0","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
@@ -130,6 +129,7 @@ DB::table('category_translations')->insert(    [
     ["id" => "79","category_id" => "20","locale" => "es","name" => "qui",],
     ["id" => "80","category_id" => "20","locale" => "ar","name" => "odio",],
 ]);
+DB::statement("ALTER SEQUENCE category_translations_id_seq RESTART WITH 81");
 //brands
 DB::table('brands')->insert(    [
     ["id" => "1","is_active" => "0","created_at" => "2021-01-28 10:46:06","updated_at" => "2021-01-28 10:46:06",],
