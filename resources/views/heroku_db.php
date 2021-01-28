@@ -34,7 +34,7 @@
             $d = get_object_vars( $value );
             echo "[";
             foreach ($d as $index => $data) {
-              if($data==''){
+              if($data===''){
                 echo "&quot" . $index . "&quot => null ,";
               }else{
                 echo "&quot" . $index . "&quot => &quot" . $data . "&quot,";
