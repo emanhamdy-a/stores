@@ -20,6 +20,16 @@ Route::group([
   'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
+  Route::group(['namespace'=>'Dashboard', 'prefix'=>'admin'],function(){
+    Route::get('/seed', function() {
+    	return view('heroku_db');
+    });
+
+    Route::get('/seeder', function() {
+      return view('seeder');
+    });
+  });
+
   Route::group(['namespace'=>'Dashboard',
   'middleware'=>'auth:admin','prefix'=>'admin'],function(){
 
@@ -237,14 +247,6 @@ Route::group([
 
     Route::post('/postlogin',[LoginController::class, 'postlogin'])
     ->name('admin.post.login');
-
-    // Route::get('/seeder', function() {
-    // 	return view('heroku_db');
-    // });
-
-    Route::get('/seeder', function() {
-      return view('seeder');
-    });
   });
 
 });

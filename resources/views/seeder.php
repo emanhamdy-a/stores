@@ -356,8 +356,8 @@ DB::table('photos')->insert(    [
 DB::statement("ALTER SEQUENCE photos_id_seq RESTART WITH 31");
 //admins
 DB::table('admins')->insert(    [
-    ["id" => "1","name" => "eman","email" => "eman@example.com","role_id" => "1","password" => "$2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW","created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 10:45:21",],
-    ["id" => "3","name" => "ali","email" => "ali@example.com","role_id" => "1","password" => "$2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW","created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 12:54:56",],
+    ["id" => "1","name" => "eman","email" => "eman@example.com","role_id" => "1","password" => '$2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW',"created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 10:45:21",],
+    ["id" => "3","name" => "ali","email" => "ali@example.com","role_id" => "1","password" => '2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW',"created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 12:54:56",],
 ]);
 DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 4");
 //products
