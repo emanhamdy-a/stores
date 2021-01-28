@@ -53,13 +53,15 @@ class Brand extends Model
         return $this->hasMany(Product::class, 'brand_id');
     }
 
-    public function img(){
-      return \App\Models\Photo::where('photoable_id',$this -> id)
-      ->where('photoable_type','App\Models\Brand')
-      ->first();
-    }
     public function photo()
     {
       return $this->morphOne('App\Models\Photo', 'photoable');
+    }
+
+    public function img(){
+      $photo = new Photo;
+      return $photo->where('photoable_id',$this -> id)
+      ->where('photoable_type','App\Models\Brand')
+      ->first();
     }
 }
