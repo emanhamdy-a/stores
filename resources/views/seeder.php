@@ -29,10 +29,10 @@ DB::table('setting_translations')->insert(    [
 DB::statement("ALTER SEQUENCE setting_translations_id_seq RESTART WITH 5");
 //categories
 DB::table('categories')->insert(    [
-    ["id" => "2","parent_id" => ,"slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
-    ["id" => "3","parent_id" => ,"slug" => "quas-voluptatem-dicta-animi-quo-eum","is_active" => "1","created_at" => "2021-01-28 10:45:42","updated_at" => "2021-01-28 10:45:42",],
-    ["id" => "4","parent_id" => ,"slug" => "omnis-necessitatibus-molestiae-id-corrupti-adipisci-consectetur-aliquid-blanditiis","is_active" => "1","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
-    ["id" => "5","parent_id" => ,"slug" => "vel-iure-modi-et-deserunt-cupiditate-odio-ipsam","is_active" => "0","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
+    ["id" => "2","parent_id" => null,"slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
+    ["id" => "3","parent_id" => null,"slug" => "quas-voluptatem-dicta-animi-quo-eum","is_active" => "1","created_at" => "2021-01-28 10:45:42","updated_at" => "2021-01-28 10:45:42",],
+    ["id" => "4","parent_id" => null,"slug" => "omnis-necessitatibus-molestiae-id-corrupti-adipisci-consectetur-aliquid-blanditiis","is_active" => "1","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
+    ["id" => "5","parent_id" => null ,"slug" => "vel-iure-modi-et-deserunt-cupiditate-odio-ipsam","is_active" => "0","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
     ["id" => "6","parent_id" => "3","slug" => "ut-qui-voluptas-aut-est-quidem-necessitatibus-quasi-non","is_active" => "1","created_at" => "2021-01-28 10:45:46","updated_at" => "2021-01-28 10:45:46",],
     ["id" => "7","parent_id" => "4","slug" => "necessitatibus-suscipit-quia-quo-voluptatem-aspernatur-nesciunt-pariatur","is_active" => "1","created_at" => "2021-01-28 10:45:47","updated_at" => "2021-01-28 10:45:47",],
     ["id" => "8","parent_id" => "5","slug" => "vero-autem-dolores-quia-doloremque-eveniet-exercitationem","is_active" => "1","created_at" => "2021-01-28 10:45:48","updated_at" => "2021-01-28 10:45:48",],
