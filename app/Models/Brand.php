@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use App\Models\Product;
-use App\Models\Photo;
+// use App\Models\Photo;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -59,7 +59,7 @@ class Brand extends Model
     }
 
     public function img(){
-      $photo = new Photo;
+      $photo = new App\Models\Photo;
       return $photo->where('photoable_id',$this -> id)
       ->where('photoable_type','App\Models\Brand')
       ->first();
