@@ -54,7 +54,7 @@ class Brand extends Model
     }
 
     public function img(){
-      return Photo::where('photoable_id',$this -> id)
+      return \App\Models\Photo::where('photoable_id',$this -> id)
       ->where('photoable_type','App\Models\Brand')
       ->first();
     }
