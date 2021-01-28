@@ -16,7 +16,7 @@ class Photo extends Model
   ];
 
   public function photoable() {
-  	return $this->morphTo('App\Photo');
+  	return $this->morphTo('App\Models\Photo');
   }
 
 }
