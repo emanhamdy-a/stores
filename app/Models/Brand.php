@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\Photo;
 use App\Models\Product;
-// use App\Models\Photo;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,15 +53,13 @@ class Brand extends Model
         return $this->hasMany(Product::class, 'brand_id');
     }
 
+    public function img(){
+      return Photo::where('photoable_id',$this -> id)
+      ->where('photoable_type','App\Models\Brand')
+      ->first();
+    }
     public function photo()
     {
       return $this->morphOne('App\Models\Photo', 'photoable');
-    }
-
-    public function img(){
-      $photo = new Photo;
-      return $photo->where('photoable_id',$this -> id)
-      ->where('photoable_type','App\Models\Brand')
-      ->first();
     }
 }

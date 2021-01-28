@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-      <h3 class="content-header-title">{{__('admin\options.create option')}}</h3>
+      <h3 class="content-header-title">{{ __('admin\options.create option') }}</h3>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                <h3 class="content-header-title">{{__('admin\options.create option')}}</h3>
+                <h3 class="content-header-title">{{ __('admin\options.create option') }}</h3>
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -33,7 +33,7 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.options.store')}}"
+                      action="{{route('admin.options.store') }}"
                       method="POST"
                       enctype="multipart/form-data">
                     @csrf
@@ -43,19 +43,19 @@
                     <div class="form-body">
 
                       <h4 class="form-section"><i class="ft-home"></i>
-                      <h3 class="content-header-title">{{__('admin\options.option data')}}</h3>
+                      <h3 class="content-header-title">{{ __('admin\options.option data') }}</h3>
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            <h3 class="content-header-title">{{__('admin\options.name')}}</h3>
+                            <h3 class="content-header-title">{{ __('admin\options.name') }}</h3>
 
                                 </label>
                             <input type="text" id="name"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('name')}}"
+                                  value="{{old('name') }}"
                                   name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -66,13 +66,13 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            <h3 class="content-header-title">{{__('admin\options.price')}}</h3>
+                            <h3 class="content-header-title">{{ __('admin\options.price') }}</h3>
 
                             </label>
                             <input type="text" id="price"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('price')}}"
+                                  value="{{old('price') }}"
                                   name="price">
                             @error("price")
                             <span class="text-danger">{{$message}}</span>
@@ -86,12 +86,12 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            <h3 class="content-header-title">{{__('admin\options.choose product')}}</h3>
+                            <h3 class="content-header-title">{{ __('admin\options.choose product') }}</h3>
 
                             </label>
                             <select name="product_id" class="select2 form-control" >
                               <optgroup
-                              label="{{__('admin\options.please choose product')}} ">
+                              label="{{ __('admin\options.please choose product') }} ">
                                 @if($products && $products -> count() > 0)
                                   @foreach($products as $product)
                                     <option
@@ -109,11 +109,11 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\options.choose attribute')}}
+                            {{ __('admin\options.choose attribute') }}
                             </label>
                             <select name="attribute_id" class="select2 form-control" >
                               <optgroup
-                              label="{{__('admin\options.please choose attribute')}}">
+                              label="{{ __('admin\options.please choose attribute') }}">
                                 @if($attributes && $attributes -> count() > 0)
                                   @foreach($attributes as $attribute)
                                     <option
@@ -137,11 +137,11 @@
                       <button type="button" class="btn btn-warning mr-1"
                           onclick="history.back();">
                         <i class="ft-x"></i>
-                        {{__('admin\options.cancel')}}
+                        {{ __('admin\options.cancel') }}
                       </button>
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{__('admin\options.save')}}
+                        {{ __('admin\options.save') }}
                       </button>
                     </div>
                   </form>

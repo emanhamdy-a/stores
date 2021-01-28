@@ -8,7 +8,7 @@
         <div class="card-header border-0">
           <div class="card-title text-center">
             <div class="p-1">
-              <img src="{{asset('assets/front/images/logo.png')}}" alt="LOGO"/>
+              <img src="{{asset('assets/front/images/logo.png') }}" alt="LOGO"/>
 
             </div>
           </div>
@@ -21,12 +21,12 @@
         <div class="card-content">
           <div class="card-body">
             <form class="form-horizontal form-simple"
-              action="{{route('admin.post.login')}}" method="post"
+              action="{{route('admin.post.login') }}" method="post"
                 novalidate>
               @csrf
               <fieldset class="form-group position-relative has-icon-left mb-0">
                 <input type="text" name="email" class="form-control form-control-lg input-lg"
-                      value="{{old('email')}}" id="email" placeholder="أدخل البريد الالكتروني ">
+                      value="{{old('email') }}" id="email" placeholder="أدخل البريد الالكتروني ">
                 <div class="form-control-position">
                   <i class="ft-user"></i>
                 </div>

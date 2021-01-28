@@ -88,11 +88,11 @@
   clickable: true,
   addRemoveLinks: true,
   acceptedFiles: 'image/*',
-  dictFallbackMessage: "{{__('admin/image.browser dont support drag drop and multi files')}}",
+  dictFallbackMessage: "{{ __('admin/image.browser dont support drag drop and multi files') }}",
   // المتصفح الخاص بكم لا يدعم خاصيه تعدد الصوره والسحب والافلات
-  dictInvalidFileType:"{{ __('admin.image.cant upload this type of files')}}",
+  dictInvalidFileType:"{{ __('admin.image.cant upload this type of files') }}",
   dictCancelUpload: "{{ __('admin/image.delete image') }}",
-  dictCancelUploadConfirmation:"{{ __('admin/image.sure to cancel upload')}}",
+  dictCancelUploadConfirmation:"{{ __('admin/image.sure to cancel upload') }}",
   dictRemoveFile: "{{ __('admin/image.delete image') }}",
   dictMaxFilesExceeded: "{{ __('admin/images.cant upload this number of files') }}",
   headers: {

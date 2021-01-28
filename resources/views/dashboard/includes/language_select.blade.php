@@ -1,6 +1,6 @@
 <div class="col-12">
 <div class="form-group">
-  <label for="lang"> {{__('language')}} </label>
+  <label for="lang"> {{ __('language') }} </label>
   <select name="lang" class='form-control'>
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
       <option value="{{ $localeCode }}"

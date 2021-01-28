@@ -28,7 +28,7 @@
                 <div class="card-content collapse show">
                   <div class="card-body">
                     <form class="form"
-                        action="{{route('admin.sliders.images.store.db')}}"
+                        action="{{route('admin.sliders.images.store.db') }}"
                         method="POST"
                         enctype="multipart/form-data">
                       @csrf

@@ -11,7 +11,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">{{__('admin\products.products')}} </h4>
+                  <h4 class="card-title">{{ __('admin\products.products') }} </h4>
                   <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i>
                   </a>
@@ -31,10 +31,10 @@
                   class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
                     <thead class="">
                       <tr>
-                        <th>{{ __('admin/products.name')}}</th>
-                        <th> {{ __('admin/products.slug')}}</th>
-                        <th>{{ __('admin/products.status')}}</th>
-                        <th>{{ __('admin/products.price')}}</th>
+                        <th>{{ __('admin/products.name') }}</th>
+                        <th> {{ __('admin/products.slug') }}</th>
+                        <th>{{ __('admin/products.status') }}</th>
+                        <th>{{ __('admin/products.price') }}</th>
                         <th></th>
                         <th>{{ __('admin/products.actions') }}</th>
                       </tr>

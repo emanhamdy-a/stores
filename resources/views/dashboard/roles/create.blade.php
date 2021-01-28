@@ -30,7 +30,7 @@
         <div class="card-content collapse show">
           <div class="card-body">
           <form class="form"
-            action="{{route('admin.roles.store')}}"
+            action="{{route('admin.roles.store') }}"
             method="POST">
             @csrf
             <div class="form-body">
@@ -46,7 +46,7 @@
                 <input type="text" id="name"
                     class="form-control"
                     placeholder="  "
-                    value="{{old('name')}}"
+                    value="{{old('name') }}"
                     name="name">
                 @error("name")
                 <span class="text-danger">{{$message}}</span>

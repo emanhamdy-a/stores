@@ -51,7 +51,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label> {{__('admin/products.product main image')}}</label>
+                            <label> {{ __('admin/products.product main image') }}</label>
                             <label id=""
                               class="file center-block">
                               <input type="file"  name="image">

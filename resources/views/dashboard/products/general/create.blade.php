@@ -33,7 +33,7 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.products.general.store')}}"
+                      action="{{route('admin.products.general.store') }}"
                       method="POST"
                       enctype="multipart/form-data">
                     @csrf
@@ -45,7 +45,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label> {{ __('admin/products.product main image')}}</label>
+                            <label> {{ __('admin/products.product main image') }}</label>
                             <label id=""
                               class="file center-block">
                               <input type="file"  name="image">
@@ -63,7 +63,7 @@
                             <input type="text" id="name"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('name')}}"
+                                  value="{{old('name') }}"
                                   name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -79,7 +79,7 @@
                             <input type="text"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('slug')}}"
+                                  value="{{old('slug') }}"
                                   name="slug">
                             @error("slug")
                             <span class="text-danger">{{$message}}</span>
@@ -97,7 +97,7 @@
                             <textarea  name="description" id="description"
                                   class="form-control"
                                   placeholder="  "
-                            >{{old('description')}}</textarea>
+                            >{{old('description') }}</textarea>
                             @error("description")
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -112,7 +112,7 @@
                             <textarea  name="short_description"
                                     class="form-control"
                                     placeholder=""
-                            >{{old('short_description')}}</textarea>
+                            >{{old('short_description') }}</textarea>
 
                             @error("short_description")
                             <span class="text-danger">{{$message}}</span>

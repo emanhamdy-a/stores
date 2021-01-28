@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Models;
-use App\Models\Product;
 use App\Models\Photo;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

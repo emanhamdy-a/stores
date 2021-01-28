@@ -7,7 +7,7 @@
 
                 <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a itemprop="item" href="{{route('home')}}">
+                        <a itemprop="item" href="{{route('home') }}">
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1">
@@ -27,7 +27,7 @@
                     </div>
                     <section id="content" class="page-content">
                         <section class="login-form">
-                            <form method="POST" action="{{route('verify-user')}}">
+                            <form method="POST" action="{{route('verify-user') }}">
                                 @csrf
                                 <section>
                                     <div class="form-group row no-gutters">

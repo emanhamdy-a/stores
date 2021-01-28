@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title">{{__('admin\brands.update brand')}}</h3>
+        <h3 class="content-header-title">{{ __('admin\brands.update brand') }}</h3>
       </div>
     </div>
     <div class="content-body">
@@ -17,7 +17,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                  {{__('admin\brands.update brand')}}
+                  {{ __('admin\brands.update brand') }}
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -44,12 +44,12 @@
                         <img
                         src="{{url('/').'/images/brands/'.$brand  -> img()->filename }}"
                           class="rounded-circle  height-250"
-                          alt="{{__('admin\brands.image')}}">
+                          alt="{{ __('admin\brands.image') }}">
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label> {{__('admin\brands.image')}} </label>
+                      <label> {{ __('admin\brands.image') }} </label>
                       <label id="projectinput7" class="file center-block">
                         <input type="file" name="image">
                         <span class="file-custom"></span>
@@ -62,13 +62,13 @@
                     <div class="form-body">
 
                       <h4 class="form-section"><i class="ft-home"></i>
-                        {{__('admin\brands.brand data')}}
+                        {{ __('admin\brands.brand data') }}
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                              {{__('admin\brands.name')}}
+                              {{ __('admin\brands.name') }}
                             </label>
                             <input type="text" id="name"
                                   class="form-control"
@@ -89,7 +89,7 @@
                                   @if($brand -> is_active == 1)checked @endif />
                             <label for="switcheryColor4"
                                   class="card-title ml-1">
-                              {{__('admin\brands.status')}}
+                              {{ __('admin\brands.status') }}
                             </label>
 
                             @error("is_active")
@@ -105,11 +105,11 @@
                       <button type="button" class="btn btn-warning mr-1"
                           onclick="history.back();">
                         <i class="ft-x"></i>
-                        {{__('admin\brands.cancel')}}
+                        {{ __('admin\brands.cancel') }}
                       </button>
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{__('admin\brands.save')}}
+                        {{ __('admin\brands.save') }}
                       </button>
                     </div>
                   </form>

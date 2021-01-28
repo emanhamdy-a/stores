@@ -3,7 +3,7 @@
     <div class="row d-flex align-items-center">
       <div id="_desktop_logo"
          class="contentsticky_logo d-flex align-items-center justify-content-start col-lg-3 col-md-3">
-        <a href="{{route('home')}}">
+        <a href="{{route('home') }}">
           <img class="logo img-fluid"
              src="http://demo.bestprestashoptheme.com/savemart/modules/novthemeconfig/images/logos/logo-1.png"
              alt="Prestashop_Savemart">
@@ -25,7 +25,7 @@
                 class="header-icon-account"></i></a>
           </div>
           <div class="header_link_wishlist">
-            <a href="{{route('wishlist.products.index')}}" title="My Wishlists">
+            <a href="{{route('wishlist.products.index') }}" title="My Wishlists">
               <i class="header-icon-wishlist"></i>
             </a>
           </div>
@@ -33,7 +33,7 @@
             <div class="blockcart cart-preview active" data-refresh-url="">
               <div class="header-cart">
                 <div class="cart-left">
-                  <a href="{{route('site.cart.index')}}" title="My Wishlists">
+                  <a href="{{route('site.cart.index') }}" title="My Wishlists">
                     <div class="shopping-cart">
                       <i class="zmdi zmdi-shopping-cart"></i>
 

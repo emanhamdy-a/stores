@@ -29,7 +29,7 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.admins.store')}}"
+                      action="{{route('admin.admins.store') }}"
                       method="POST"
                       enctype="multipart/form-data">
                     @csrf
@@ -46,7 +46,7 @@
                             <input type="text" id="name"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('name')}}"
+                                  value="{{old('name') }}"
                                   name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -62,7 +62,7 @@
                             <input type="email" id="email"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('email')}}"
+                                  value="{{old('email') }}"
                                   name="email">
                             @error("email")
                             <span class="text-danger">{{$message}}</span>

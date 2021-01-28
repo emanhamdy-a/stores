@@ -6,7 +6,7 @@
 
                 <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a itemprop="item" href="{{route('home')}}">
+                        <a itemprop="item" href="{{route('home') }}">
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1">
@@ -136,7 +136,7 @@
                         <div class="row no-gutters">
                             <div class="col-md-10 offset-md-2">
                                 <div class="no-account">
-                                    <a href="{{route('login')}}" data-link-action="display-register-form">
+                                    <a href="{{route('login') }}" data-link-action="display-register-form">
                                         Have account? Login Here
                                     </a>
                                 </div>

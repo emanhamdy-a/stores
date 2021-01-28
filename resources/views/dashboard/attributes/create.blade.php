@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-      <h3 class="content-header-title">{{__('admin\attributes.create attribute')}}</h3>
+      <h3 class="content-header-title">{{ __('admin\attributes.create attribute') }}</h3>
       </div>
     </div>
     <div class="content-body">
@@ -17,7 +17,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                 {{__('admin\attributes.add attribute')}}
+                 {{ __('admin\attributes.add attribute') }}
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -32,7 +32,7 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.attributes.store')}}"
+                      action="{{route('admin.attributes.store') }}"
                       method="POST"
                       enctype="multipart/form-data">
                     @csrf
@@ -41,18 +41,18 @@
                     <div class="form-body">
 
                       <h4 class="form-section"><i class="ft-home"></i>
-                      {{__('admin\attributes.attribute data')}}
+                      {{ __('admin\attributes.attribute data') }}
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\attributes.name')}}
+                            {{ __('admin\attributes.name') }}
                             </label>
                             <input type="text" id="name"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('name')}}"
+                                  value="{{old('name') }}"
                                   name="name">
                             @error("name")
                             <span class="text-danger">{{$message}}</span>
@@ -71,11 +71,11 @@
                       <button type="button" class="btn btn-warning mr-1"
                           onclick="history.back();">
                         <i class="ft-x"></i>
-                        {{__('admin\attributes.cancel')}}
+                        {{ __('admin\attributes.cancel') }}
                       </button>
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{__('admin\attributes.save')}}
+                        {{ __('admin\attributes.save') }}
                       </button>
                     </div>
                   </form>

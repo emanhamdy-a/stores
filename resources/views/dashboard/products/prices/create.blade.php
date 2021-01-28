@@ -5,7 +5,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-      <h4 class="card-title">{{__('admin\products.product price')}} </h4>
+      <h4 class="card-title">{{ __('admin\products.product price') }} </h4>
       </div>
     </div>
     <div class="content-body">
@@ -16,7 +16,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                {{__('admin\products.product price')}}
+                {{ __('admin\products.product price') }}
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -31,7 +31,7 @@
               <div class="card-content collapse show">
                 <div class="card-body">
                   <form class="form"
-                      action="{{route('admin.products.price.store')}}"
+                      action="{{route('admin.products.price.store') }}"
                       method="POST"
                       enctype="multipart/form-data">
                     @csrf
@@ -40,18 +40,18 @@
                     <div class="form-body">
 
                       <h4 class="form-section"><i class="ft-home"></i>
-                      {{__('admin\products.product price data')}}
+                      {{ __('admin\products.product price data') }}
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\products.product price')}}
+                            {{ __('admin\products.product price') }}
                             </label>
                             <input type="number" id="price"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('price')}}"
+                                  value="{{old('price') }}"
                                   name="price">
                             @error("price")
                             <span class="text-danger">{{$message}}</span>
@@ -62,12 +62,12 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\products.specieal price')}}
+                            {{ __('admin\products.specieal price') }}
                             </label>
                             <input type="number"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('special_price')}}"
+                                  value="{{old('special_price') }}"
                                   name="special_price">
                             @error("special_price")
                             <span class="text-danger">{{$message}}</span>
@@ -80,10 +80,10 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\products.price type')}}
+                            {{ __('admin\products.price type') }}
                             </label>
                             <select name="special_price_type" class="select2 form-control" >
-                              <optgroup label="{{__('admin\products.product price')}} ">
+                              <optgroup label="{{ __('admin\products.product price') }} ">
                                 <option value="percent">precent</option>
                                 <option value="fixed">fixed</option>
                               </optgroup>
@@ -102,13 +102,13 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\products.start date')}}
+                            {{ __('admin\products.start date') }}
                             </label>
 
                             <input type="date" id="price"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('special_price_start')}}"
+                                  value="{{old('special_price_start') }}"
                                   name="special_price_start">
 
                             @error('special_price_start')
@@ -120,12 +120,12 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{__('admin\products.end date')}}
+                            {{ __('admin\products.end date') }}
                             </label>
                             <input type="date" id="price"
                                   class="form-control"
                                   placeholder="  "
-                                  value="{{old('special_price_end')}}"
+                                  value="{{old('special_price_end') }}"
                                   name="special_price_end">
 
                             @error('special_price_end')
@@ -139,11 +139,11 @@
                       <button type="button" class="btn btn-warning mr-1"
                           onclick="history.back();">
                         <i class="ft-x"></i>
-                        {{__('admin\products.cancel')}}
+                        {{ __('admin\products.cancel') }}
                       </button>
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{__('admin\products.save')}}
+                        {{ __('admin\products.save') }}
                       </button>
                     </div>
                   </form>

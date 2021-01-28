@@ -127,7 +127,7 @@
                 <section id="main">
                     <h1 class="page-title">Payment Methods</h1>
                     <div class="cart-grid row">
-                        <form class="needs-validation" method="post" action="{{route('payment.process')}}" novalidate="">
+                        <form class="needs-validation" method="post" action="{{route('payment.process') }}" novalidate="">
                                 @csrf
                             <hr class="mb-4">
                             <h4 class="mb-3">Payment</h4>

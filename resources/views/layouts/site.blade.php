@@ -14,11 +14,11 @@
     <meta name="keywords" content="">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
-    <link rel="icon" type="image/vnd.microsoft.icon" href="{{asset('assets/front/img/favicon.ico')}}?1531456858">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/img/favicon.ico')}}?1531456858">
-    <link href="{{asset('assets/front/css/css.css')}}?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
-    <link href="{{asset('assets/front/css/css-1.css')}}?family=Oswald:300,400,500,600,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/front/themes/vinova_savemart/assets/cache/theme-78026624.css')}}"
+    <link rel="icon" type="image/vnd.microsoft.icon" href="{{asset('assets/front/img/favicon.ico') }}?1531456858">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/img/favicon.ico') }}?1531456858">
+    <link href="{{asset('assets/front/css/css.css') }}?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
+    <link href="{{asset('assets/front/css/css-1.css') }}?family=Oswald:300,400,500,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/front/themes/vinova_savemart/assets/cache/theme-78026624.css') }}"
           type="text/css" media="all">
 
 
@@ -249,7 +249,7 @@
 
 
 <script type="text/javascript"
-        src="{{asset('assets/front/themes/vinova_savemart/assets/cache/bottom-3c96ed23.js')}}"></script>
+        src="{{asset('assets/front/themes/vinova_savemart/assets/cache/bottom-3c96ed23.js') }}"></script>
 
 @yield('scripts')
 

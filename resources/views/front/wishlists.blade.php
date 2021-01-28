@@ -8,7 +8,7 @@
 
                 <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a itemprop="item" href="{{route('home')}}">
+                        <a itemprop="item" href="{{route('home') }}">
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1">
@@ -252,7 +252,7 @@
 
             $.ajax({
                 type: 'delete',
-                url: "{{Route('wishlist.destroy')}}",
+                url: "{{Route('wishlist.destroy') }}",
                 data: {
                     'productId': $(this).attr('data-product-id'),
                 },
