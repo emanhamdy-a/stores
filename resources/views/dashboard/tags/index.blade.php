@@ -6,7 +6,7 @@
     <div class="content-wrapper">
       <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
-          <h3 class="content-header-title"> {{ __('admin\tags.tags') }} </h3>
+          <h3 class="content-header-title"> {{ __('admin/tags.tags') }} </h3>
         </div>
       </div>
       <div class="content-body">
@@ -34,9 +34,9 @@
                       class="table display nowrap table-striped table-bordered scroll-horizontal w-100">
                       <thead class="">
                       <tr>
-                        <th>{{ __('admin\tags.name') }} </th>
-                        <th>{{ __('admin\tags.status') }}</th>
-                        <th>{{ __('admin\tags.actions') }}</th>
+                        <th>{{ __('admin/tags.name') }} </th>
+                        <th>{{ __('admin/tags.status') }}</th>
+                        <th>{{ __('admin/tags.actions') }}</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -50,12 +50,12 @@
                               <div class="btn-group" role="group"
                                  aria-label="Basic example">
                                 <a href="{{route('admin.tags.edit',$tag -> id)}}"
-                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ __('admin\tags.edit') }}
+                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ __('admin/tags.edit') }}
                                 </a>
 
                                 <a href="{{route('admin.tags.delete',$tag -> id)}}"
                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
-                                  {{ __('admin\tags.delete') }}
+                                  {{ __('admin/tags.delete') }}
                                 </a>
 
                               </div>

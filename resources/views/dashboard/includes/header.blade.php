@@ -31,7 +31,7 @@
           <!-- user -->
           <li class="dropdown dropdown-user nav-item">
             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-            <span class="mr-1">{{ __('admin\header.hello') }}
+            <span class="mr-1">{{ __('admin/header.hello') }}
               <span class="user-name text-bold-700">
                 {{auth('admin')->user()->name}}
               </span>
@@ -42,10 +42,10 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="{{route('edit.profile') }}"><i
-                  class="ft-user"></i> {{ __('admin\header.edit profile') }} </a>
+                  class="ft-user"></i> {{ __('admin/header.edit profile') }} </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('admin.logout') }}">
-                <i class="ft-power"></i> {{ __('admin\header.sign out') }}</a>
+                <i class="ft-power"></i> {{ __('admin/header.sign out') }}</a>
             </div>
           </li>
           <!-- language -->
@@ -80,12 +80,12 @@
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
               <li class="dropdown-menu-header">
                 <h6 class="dropdown-header m-0">
-                  <span class="grey darken-2">{{ __('admin\header.notifications') }}</span>
+                  <span class="grey darken-2">{{ __('admin/header.notifications') }}</span>
                 </h6>
                 <span
                   class="notification-tag badge badge-default badge-danger float-right m-0">
                   <span class='notification-counter'> 5
-                    </span>{{ __('admin\header.new') }}</span>
+                    </span>{{ __('admin/header.new') }}</span>
               </li>
               <li class="scrollable-container media-list w-100">
                 <a href="javascript:void(0)">
@@ -107,7 +107,7 @@
               </li>
               <li class="dropdown-menu-footer">
                 <a class="dropdown-item text-muted text-center"
-                href="javascript:void(0)">{{ __('admin\header.read notifications') }}</a>
+                href="javascript:void(0)">{{ __('admin/header.read notifications') }}</a>
               </li>
             </ul>
           </li>
@@ -118,10 +118,10 @@
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
               <li class="dropdown-menu-header">
                 <h6 class="dropdown-header m-0">
-                  <span class="grey darken-2">{{ __('admin\header.messages') }}</span>
+                  <span class="grey darken-2">{{ __('admin/header.messages') }}</span>
                 </h6>
                 <span
-                  class="notification-tag badge badge-default badge-warning float-right m-0">4 {{ __('admin\header.new') }}</span>
+                  class="notification-tag badge badge-default badge-warning float-right m-0">4 {{ __('admin/header.new') }}</span>
               </li>
               <li class="scrollable-container media-list w-100">
                 <a href="javascript:void(0)">
@@ -145,7 +145,7 @@
               </li>
               <li class="dropdown-menu-footer">
                 <a class="dropdown-item text-muted text-center"
-                href="javascript:void(0)">{{ __('admin\header.read messages') }}</a>
+                href="javascript:void(0)">{{ __('admin/header.read messages') }}</a>
               </li>
             </ul>
           </li>

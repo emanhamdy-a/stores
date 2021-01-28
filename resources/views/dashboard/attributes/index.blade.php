@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-        <h3 class="content-header-title">{{ __('admin\attributes.attributes') }}</h3>
+        <h3 class="content-header-title">{{ __('admin/attributes.attributes') }}</h3>
       </div>
     </div>
     <div class="content-body">
@@ -16,7 +16,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">{{ __('admin\attributes.all attributes') }}</h4>
+                <h4 class="card-title">{{ __('admin/attributes.all attributes') }}</h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
@@ -35,8 +35,8 @@
                     class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
                     <thead class="">
                     <tr>
-                      <th>{{ __('admin\attributes.name') }} </th>
-                      <th>{{ __('admin\attributes.actions') }}</th>
+                      <th>{{ __('admin/attributes.name') }} </th>
+                      <th>{{ __('admin/attributes.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,12 +49,12 @@
                             <div class="btn-group" role="group"
                                 aria-label="Basic example">
                               <a href="{{route('admin.attributes.edit',$attribute -> id)}}"
-                                  class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ __('admin\attributes.edit') }}</a>
+                                  class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ __('admin/attributes.edit') }}</a>
 
 
                               <a href="{{route('admin.attributes.delete',$attribute -> id)}}"
                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
-                                  {{ __('admin\attributes.cancel') }}
+                                  {{ __('admin/attributes.cancel') }}
                               </a>
 
                             </div>

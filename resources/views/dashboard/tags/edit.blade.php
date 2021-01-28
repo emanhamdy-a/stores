@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="content-header row">
       <div class="content-header-left col-md-6 col-12 mb-2">
-      <h3 class="content-header-title"> {{ __('admin\tags.update tag') }} </h3>
+      <h3 class="content-header-title"> {{ __('admin/tags.update tag') }} </h3>
       </div>
     </div>
     <div class="content-body">
@@ -17,7 +17,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                {{ __('admin\tags.update tag') }}
+                {{ __('admin/tags.update tag') }}
                 </h4>
                 <a class="heading-elements-toggle"><i
                     class="la la-ellipsis-v font-medium-3"></i></a>
@@ -43,13 +43,13 @@
                     <div class="form-body">
 
                       <h4 class="form-section"><i class="ft-home"></i>
-                      {{ __('admin\tags.tag data') }}
+                      {{ __('admin/tags.tag data') }}
                       </h4>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{ __('admin\tags.name') }}
+                            {{ __('admin/tags.name') }}
                             </label>
                             <input type="text" id="name"
                                   class="form-control"
@@ -64,7 +64,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label for="projectinput1">
-                                {{ __('admin\tags.slug') }}
+                                {{ __('admin/tags.slug') }}
                                 </label>
                                 <input type="text" id="name"
                                     class="form-control"
@@ -85,11 +85,11 @@
                       <button type="button" class="btn btn-warning mr-1"
                           onclick="history.back();">
                         <i class="ft-x"></i>
-                        {{ __('admin\tags.cancel') }}
+                        {{ __('admin/tags.cancel') }}
                       </button>
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{ __('admin\tags.save') }}
+                        {{ __('admin/tags.save') }}
                       </button>
                     </div>
                   </form>
