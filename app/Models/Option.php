@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Models;
-use Astrotomic\Translatable\Translatable;
-
 use Illuminate\Database\Eloquent\Model;
+
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Option extends Model
 {
-    use Translatable;
+    use Translatable,HasFactory;
 
     /**
      * The relations to eager load on every query.

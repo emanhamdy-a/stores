@@ -6,7 +6,7 @@ return [
   'categories'=> 'Manage categories',
   'brands'    => 'Manage brands',
   'options'   => 'Manage options',
-  'users'     => 'Manage dashborad users',
+  'admins'    => 'Manage dashborad admins',
   'settings'  => 'Manage settings',
   'profile'   => 'Manage profile',
   'sliders'   => 'Manage sliders',

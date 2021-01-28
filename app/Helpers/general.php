@@ -1,5 +1,5 @@
 <?php
-define('PAGINATION_COUNT',15);
+define('PAGINATION_COUNT',50);
 // define('ADMIN_PREFIX','admin');
 if (!function_exists('getFolder')) {
 	function getFolder() {

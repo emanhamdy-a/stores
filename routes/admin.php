@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\AdminsController;
 use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SettingsController;
@@ -14,7 +14,6 @@ use App\Http\Controllers\Dashboard\AttributesController;
 use App\Http\Controllers\Dashboard\OptionsController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\RolesController;
-use App\Http\Controllers\Dashboard\UsersController;
 
 Route::group([
   'prefix' => LaravelLocalization::setLocale(),
@@ -23,6 +22,14 @@ Route::group([
 
   Route::group(['namespace'=>'Dashboard',
   'middleware'=>'auth:admin','prefix'=>'admin'],function(){
+
+    // Route::get('/seeder', function() {
+    // 	return view('heroku_db');
+    // });
+
+    Route::get('/seeder', function() {
+      return view('seeder');
+    });
 
     Route::get('/logout', [LoginController::class, 'logout'])
       ->name('admin.logout');
@@ -212,19 +219,19 @@ Route::group([
     /**
      * admins Routes
      */
-    Route::group(['prefix' => 'users' , 'middleware' => 'can:users'], function () {
-      Route::get('/', [UsersController::class,'index'])
-        ->name('admin.users.index');
-      Route::get('/create', [UsersController::class,'create'])
-        ->name('admin.users.create');
-      Route::post('/store', [UsersController::class,'store'])
-        ->name('admin.users.store');
-      Route::get('/edit/{id}', [UsersController::class,'edit'])
-        ->name('admin.users.edit') ;
-      Route::post('update/{id}', [UsersController::class,'update'])
-        ->name('admin.users.update');
-      Route::get('delete/{id}',[UsersController::class,'destroy'])
-        -> name('admin.users.delete');
+    Route::group(['prefix' => 'admins' , 'middleware' => 'can:admins'], function () {
+      Route::get('/', [AdminsController::class,'index'])
+        ->name('admin.admins.index');
+      Route::get('/create', [AdminsController::class,'create'])
+        ->name('admin.admins.create');
+      Route::post('/store', [AdminsController::class,'store'])
+        ->name('admin.admins.store');
+      Route::get('/edit/{id}', [AdminsController::class,'edit'])
+        ->name('admin.admins.edit') ;
+      Route::post('update/{id}', [AdminsController::class,'update'])
+        ->name('admin.admins.update');
+      Route::get('delete/{id}',[AdminsController::class,'destroy'])
+        -> name('admin.admins.delete');
     });
 
   });

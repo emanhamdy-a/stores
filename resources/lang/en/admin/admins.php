@@ -1,0 +1,45 @@
+<?php
+
+return [
+  'admins'         => 'Admins',
+  'update admin'   => 'Update admin',
+  'create admin'   => 'Create new admin',
+  'name'          => 'Name',
+  'email'         => 'Email',
+  'password'      => 'Password',
+  'confirm password' => 'Confirm password',
+  'choose role'      => 'Choose role',
+  'please choose role' => 'Please choose role',
+  'role'          => 'Role',
+  'actions'       => 'Actions',
+  'edit'          => 'Edit',
+  'delete'        => 'Delete',
+  'all admins'     => 'All admins',
+  'add admin'      => 'Add admin',
+  'admin name'     => 'admin name',
+  'admin data'     => 'admin data',
+  'save'          => 'Save',
+  'cancel'        => 'Cancel',
+  'language'      => 'language',
+  'active'        => 'Active',
+  'not found'     => 'admin not found',
+  'error try later' => 'Some thing worng try again',
+  'deleted'       => 'admin deleted successfully',
+  'created'       => 'admin created successfully',
+  'updated'       => 'admin updated successfully',
+
+  //admin validation
+
+  'name required'     =>   'please insert the name',
+  'name length'       =>   'name must be at lest 2 letters',
+  'role required'     =>   'please choose admin permission',
+  'role numeric'      =>   'choose valid permission',
+  'role exists'       =>   'choose exists permission',
+  'vaild email'       =>   'insert vaild email',
+  'email required'    =>   'please insert the email',
+  'email unique'      =>   'this email is taken',
+  'password required' =>   'please insert password',
+  'password confirmed'=>   'password confirmation not match',
+  'password length'   =>   'password must be at lest 8 letters',
+];
+

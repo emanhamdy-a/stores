@@ -1,9 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Category;
 use App\Models\Photo;
+use App\Models\Category;
+use Faker\Provider\Image;
+use Illuminate\Http\File;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryDatabaseSeeder extends Seeder
 {
@@ -18,16 +21,19 @@ class CategoryDatabaseSeeder extends Seeder
     for($i=1;$i<=20;$i++){
 
       if($i > 5){
-        $categories = Category::factory()->create([
-          'parent_id' => rand($categories->id - 5,$categories->id - 1),
+        $category = Category::factory()->create([
+          'parent_id' => rand($category->id - 5,$category->id - 1),
         ]);
       }else{
-        $categories = Category::factory()->create();
+        $category = Category::factory()->create();
       }
 
+      $image = Image::image(null,400,450,'category');
+      $imageFile = new File($image);
+
       Photo::factory()->create([
-        'filename' => $i .'.png'
-       ,'photoable_id' => $categories->id
+        'filename' =>Storage::disk('categories')->putFile(null, $imageFile)
+       ,'photoable_id' => $category->id
        ,'photoable_type' => 'App\Models\Category']);
      }
   }

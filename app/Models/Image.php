@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Translatable;
-
 use Illuminate\Database\Eloquent\Model;
+
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Image extends Model
 {
+  use HasFactory;
 
 
     /**

@@ -191,19 +191,19 @@
         </li>
       @endcan
 
-      @can('users')
-        <li class="nav-item {{ active_menu('users')[0] }}"><a href=""><i class="la la-group"></i>
+      @can('admins')
+        <li class="nav-item {{ active_menu('admins')[0] }}"><a href=""><i class="la la-group"></i>
             <span class="menu-title" data-i18n="nav.dash.main"> {{__('admin\sidebar.users')}}</span>
             <span
               class="badge badge badge-danger badge-pill float-right mr-2">
-              {{\App\Models\User::count()}}
+              {{\App\Models\Admin::count()}}
             </span>
           </a>
-          <ul class="menu-content {{ active_menu('users')[1] }}">
-            <li class=""><a class="menu-item" href="{{route('admin.users.index')}}"
+          <ul class="menu-content {{ active_menu('admins')[1] }}">
+            <li class=""><a class="menu-item" href="{{route('admin.admins.index')}}"
                data-i18n="nav.dash.ecommerce"> {{__('admin\sidebar.show all')}} </a>
             </li>
-            <li><a class="menu-item" href="{{route('admin.users.create')}}"
+            <li><a class="menu-item" href="{{route('admin.admins.create')}}"
                 data-i18n="nav.dash.crypto">
                 {{__('admin\sidebar.add new')}} </a>
             </li>

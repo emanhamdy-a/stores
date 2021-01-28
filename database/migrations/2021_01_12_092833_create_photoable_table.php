@@ -13,7 +13,7 @@ class CreatePhotoableTable extends Migration
      */
     public function up()
     {
-        Schema::create('photoable', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
           $table->id();
           $table->string('filename');
           $table->integer('photoable_id');

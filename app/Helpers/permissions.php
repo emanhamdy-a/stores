@@ -8,7 +8,7 @@ if (!function_exists('permissions')) {
       'categories'=> __('admin/permissions.categories'),
       'brands'    => __('admin/permissions.brands'),
       'options'   => __('admin/permissions.options'),
-      'users'     => __('admin/permissions.users'),
+      'admins'    => __('admin/permissions.admins'),
       'settings'  => __('admin/permissions.settings'),
       'profile'   => __('admin/permissions.profile'),
       'sliders'   => __('admin/permissions.sliders'),

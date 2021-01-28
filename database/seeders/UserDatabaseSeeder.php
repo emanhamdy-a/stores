@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-class AdminDataBaseSeeder extends Seeder
+class UserDataBaseSeeder extends Seeder
 {
   /**
    * Run the database seeds.

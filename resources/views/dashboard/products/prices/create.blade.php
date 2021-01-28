@@ -82,7 +82,7 @@
                             <label for="projectinput1">
                             {{__('admin\products.price type')}}
                             </label>
-                            <select name="special_price_type" class="select2 form-control" multiple>
+                            <select name="special_price_type" class="select2 form-control" >
                               <optgroup label="{{__('admin\products.product price')}} ">
                                 <option value="percent">precent</option>
                                 <option value="fixed">fixed</option>
