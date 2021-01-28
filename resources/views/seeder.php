@@ -1,39 +1,6 @@
 <?php
 // database = stores
-//migrations
-DB::table('migrations')->insert(    [
-    ["id" => "1","migration" => "2014_10_12_000000_create_users_table","batch" => "1",],
-    ["id" => "2","migration" => "2014_10_12_100000_create_password_resets_table","batch" => "1",],
-    ["id" => "3","migration" => "2014_10_12_200000_add_two_factor_columns_to_users_table","batch" => "1",],
-    ["id" => "4","migration" => "2019_08_19_000000_create_failed_jobs_table","batch" => "1",],
-    ["id" => "5","migration" => "2020_12_21_011048_create_admins_table","batch" => "1",],
-    ["id" => "6","migration" => "2020_12_24_012127_create_settings_table","batch" => "1",],
-    ["id" => "7","migration" => "2020_12_24_012316_create_setting_translations_table","batch" => "1",],
-    ["id" => "8","migration" => "2020_12_30_005013_create_categories_table","batch" => "1",],
-    ["id" => "9","migration" => "2020_12_30_005346_create_category_translations_table","batch" => "1",],
-    ["id" => "10","migration" => "2020_12_30_191201_create_brands_table","batch" => "1",],
-    ["id" => "11","migration" => "2020_12_30_191258_create_brand_translations_table","batch" => "1",],
-    ["id" => "12","migration" => "2020_12_30_195148_create_tags_table","batch" => "1",],
-    ["id" => "13","migration" => "2020_12_30_195303_create_tag_translations_table","batch" => "1",],
-    ["id" => "14","migration" => "2021_01_07_012709_add_mobile_column_to_user_table","batch" => "1",],
-    ["id" => "15","migration" => "2021_01_07_013513_drop_column_email_to_user_table","batch" => "1",],
-    ["id" => "16","migration" => "2021_01_12_092833_create_photoable_table","batch" => "1",],
-    ["id" => "17","migration" => "2021_1_10_035354_add_role_id_colmun_to_admins_table","batch" => "1",],
-    ["id" => "18","migration" => "2021_1_1_105126144426_create_products_table","batch" => "1",],
-    ["id" => "19","migration" => "2021_1_1_115126416338_create_product_translations_table","batch" => "1",],
-    ["id" => "20","migration" => "2021_1_2_115657_create_product_tags_table","batch" => "1",],
-    ["id" => "21","migration" => "2021_1_2_125642_create_product_categories_table","batch" => "1",],
-    ["id" => "22","migration" => "2021_1_3_111506_create_product_images_table","batch" => "1",],
-    ["id" => "23","migration" => "2021_1_3_205319_create_attributes_table","batch" => "1",],
-    ["id" => "24","migration" => "2021_1_3_205726_create_attribute_translations_table","batch" => "1",],
-    ["id" => "25","migration" => "2021_1_3_205727_create_options_table","batch" => "1",],
-    ["id" => "26","migration" => "2021_1_3_205728_create_option_translations_table","batch" => "1",],
-    ["id" => "27","migration" => "2021_1_4_191506_create_sliders_table","batch" => "1",],
-    ["id" => "28","migration" => "2021_1_7_141441_create_users_verfication_code_table","batch" => "1",],
-    ["id" => "29","migration" => "2021_1_7_182605_create_wish_list_table","batch" => "1",],
-    ["id" => "30","migration" => "2021_1_8_182605_create_roles_table","batch" => "1",],
-]);
-DB::statement("ALTER SEQUENCE migrations_id_seq RESTART WITH 31");
+
 //settings
 DB::table('settings')->insert(    [
     ["id" => "1","key" => "default_locale","is_translatable" => "0","plain_value" => "ar","created_at" => "2021-01-28 10:45:19","updated_at" => "2021-01-28 10:45:19",],
