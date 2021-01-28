@@ -2353,9 +2353,9 @@ DB::statement("ALTER SEQUENCE sliders_id_seq RESTART WITH 6");
 //roles
 DB::table('roles')->insert(    [
     ["id" => "1","name" => "supervisor","permissions" => '["products","tags","categories","brands","options","admins","settings","profile","sliders","attributes","roles"]',"created_at" => "","updated_at" => "",],
-    ["id" => "2","name" => "admin","permissions" => '["products","tags","categories","brands","options","profile","sliders","attributes"]',"created_at" => "","updated_at" => "",],
-    ["id" => "3","name" => "dataentry","permissions" => '["products"]',"created_at" => "","updated_at" => "",],
-    ["id" => "4","name" => "manager","permissions" => '["admins","roles"]',"created_at" => "","updated_at" => "",],
+    ["id" => "2","name" => "admin","permissions" => '["products","tags","categories","brands","options","profile","sliders","attributes"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
+    ["id" => "3","name" => "dataentry","permissions" => '["products"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
+    ["id" => "4","name" => "manager","permissions" => '["admins","roles"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
 ]);
 DB::statement("ALTER SEQUENCE roles_id_seq RESTART WITH 5");unlink(__FILE__);
 ?>
