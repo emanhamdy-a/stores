@@ -27,6 +27,30 @@ DB::table('setting_translations')->insert(    [
     ["id" => "4","setting_id" => "14","locale" => "ar","value" => "توصيل خارجي",],
 ]);
 DB::statement("ALTER SEQUENCE setting_translations_id_seq RESTART WITH 5");
+DB::statement("ALTER SEQUENCE category_translations_id_seq RESTART WITH 81");
+//categories
+DB::table('categories')->insert(    [
+    ["id" => "2","parent_id" => "","slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
+    ["id" => "3","parent_id" => "","slug" => "quas-voluptatem-dicta-animi-quo-eum","is_active" => "1","created_at" => "2021-01-28 10:45:42","updated_at" => "2021-01-28 10:45:42",],
+    ["id" => "4","parent_id" => "","slug" => "omnis-necessitatibus-molestiae-id-corrupti-adipisci-consectetur-aliquid-blanditiis","is_active" => "1","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
+    ["id" => "5","parent_id" => "","slug" => "vel-iure-modi-et-deserunt-cupiditate-odio-ipsam","is_active" => "0","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
+    ["id" => "6","parent_id" => "3","slug" => "ut-qui-voluptas-aut-est-quidem-necessitatibus-quasi-non","is_active" => "1","created_at" => "2021-01-28 10:45:46","updated_at" => "2021-01-28 10:45:46",],
+    ["id" => "7","parent_id" => "4","slug" => "necessitatibus-suscipit-quia-quo-voluptatem-aspernatur-nesciunt-pariatur","is_active" => "1","created_at" => "2021-01-28 10:45:47","updated_at" => "2021-01-28 10:45:47",],
+    ["id" => "8","parent_id" => "5","slug" => "vero-autem-dolores-quia-doloremque-eveniet-exercitationem","is_active" => "1","created_at" => "2021-01-28 10:45:48","updated_at" => "2021-01-28 10:45:48",],
+    ["id" => "9","parent_id" => "3","slug" => "quibusdam-ad-itaque-dolorem-iure-harum-consequatur","is_active" => "1","created_at" => "2021-01-28 10:45:49","updated_at" => "2021-01-28 10:45:49",],
+    ["id" => "10","parent_id" => "6","slug" => "veritatis-odit-quis-culpa-quis-ratione-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:51","updated_at" => "2021-01-28 10:45:51",],
+    ["id" => "11","parent_id" => "9","slug" => "quod-cumque-voluptas-voluptatem-voluptas-ut","is_active" => "1","created_at" => "2021-01-28 10:45:52","updated_at" => "2021-01-28 10:45:52",],
+    ["id" => "12","parent_id" => "10","slug" => "omnis-amet-tenetur-quasi-et-et-id","is_active" => "0","created_at" => "2021-01-28 10:45:54","updated_at" => "2021-01-28 10:45:54",],
+    ["id" => "13","parent_id" => "9","slug" => "praesentium-nemo-facilis-aliquam-nihil-molestiae-nulla","is_active" => "0","created_at" => "2021-01-28 10:45:55","updated_at" => "2021-01-28 10:45:55",],
+    ["id" => "14","parent_id" => "12","slug" => "est-voluptatem-distinctio-inventore-esse-sunt","is_active" => "1","created_at" => "2021-01-28 10:45:56","updated_at" => "2021-01-28 10:45:56",],
+    ["id" => "15","parent_id" => "13","slug" => "veniam-ullam-sed-tempora-repellendus-nemo","is_active" => "0","created_at" => "2021-01-28 10:45:57","updated_at" => "2021-01-28 10:45:57",],
+    ["id" => "16","parent_id" => "10","slug" => "voluptas-earum-fuga-hic-ex","is_active" => "1","created_at" => "2021-01-28 10:45:58","updated_at" => "2021-01-28 10:45:58",],
+    ["id" => "17","parent_id" => "11","slug" => "occaecati-et-amet-est-perspiciatis-temporibus","is_active" => "1","created_at" => "2021-01-28 10:45:59","updated_at" => "2021-01-28 10:45:59",],
+    ["id" => "18","parent_id" => "14","slug" => "necessitatibus-sint-autem-excepturi-est","is_active" => "0","created_at" => "2021-01-28 10:46:00","updated_at" => "2021-01-28 10:46:00",],
+    ["id" => "19","parent_id" => "14","slug" => "aliquid-ratione-qui-accusantium-ex-velit-non","is_active" => "0","created_at" => "2021-01-28 10:46:01","updated_at" => "2021-01-28 10:46:01",],
+    ["id" => "20","parent_id" => "15","slug" => "in-qui-qui-ducimus-culpa-corporis","is_active" => "1","created_at" => "2021-01-28 10:46:02","updated_at" => "2021-01-28 10:46:02",],
+]);
+DB::statement("ALTER SEQUENCE categories_id_seq RESTART WITH 21");
 //category_translations
 DB::table('category_translations')->insert(    [
     ["id" => "5","category_id" => "2","locale" => "en","name" => "rem",],
@@ -106,30 +130,6 @@ DB::table('category_translations')->insert(    [
     ["id" => "79","category_id" => "20","locale" => "es","name" => "qui",],
     ["id" => "80","category_id" => "20","locale" => "ar","name" => "odio",],
 ]);
-DB::statement("ALTER SEQUENCE category_translations_id_seq RESTART WITH 81");
-//categories
-DB::table('categories')->insert(    [
-    ["id" => "2","parent_id" => "","slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
-    ["id" => "3","parent_id" => "","slug" => "quas-voluptatem-dicta-animi-quo-eum","is_active" => "1","created_at" => "2021-01-28 10:45:42","updated_at" => "2021-01-28 10:45:42",],
-    ["id" => "4","parent_id" => "","slug" => "omnis-necessitatibus-molestiae-id-corrupti-adipisci-consectetur-aliquid-blanditiis","is_active" => "1","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
-    ["id" => "5","parent_id" => "","slug" => "vel-iure-modi-et-deserunt-cupiditate-odio-ipsam","is_active" => "0","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
-    ["id" => "6","parent_id" => "3","slug" => "ut-qui-voluptas-aut-est-quidem-necessitatibus-quasi-non","is_active" => "1","created_at" => "2021-01-28 10:45:46","updated_at" => "2021-01-28 10:45:46",],
-    ["id" => "7","parent_id" => "4","slug" => "necessitatibus-suscipit-quia-quo-voluptatem-aspernatur-nesciunt-pariatur","is_active" => "1","created_at" => "2021-01-28 10:45:47","updated_at" => "2021-01-28 10:45:47",],
-    ["id" => "8","parent_id" => "5","slug" => "vero-autem-dolores-quia-doloremque-eveniet-exercitationem","is_active" => "1","created_at" => "2021-01-28 10:45:48","updated_at" => "2021-01-28 10:45:48",],
-    ["id" => "9","parent_id" => "3","slug" => "quibusdam-ad-itaque-dolorem-iure-harum-consequatur","is_active" => "1","created_at" => "2021-01-28 10:45:49","updated_at" => "2021-01-28 10:45:49",],
-    ["id" => "10","parent_id" => "6","slug" => "veritatis-odit-quis-culpa-quis-ratione-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:51","updated_at" => "2021-01-28 10:45:51",],
-    ["id" => "11","parent_id" => "9","slug" => "quod-cumque-voluptas-voluptatem-voluptas-ut","is_active" => "1","created_at" => "2021-01-28 10:45:52","updated_at" => "2021-01-28 10:45:52",],
-    ["id" => "12","parent_id" => "10","slug" => "omnis-amet-tenetur-quasi-et-et-id","is_active" => "0","created_at" => "2021-01-28 10:45:54","updated_at" => "2021-01-28 10:45:54",],
-    ["id" => "13","parent_id" => "9","slug" => "praesentium-nemo-facilis-aliquam-nihil-molestiae-nulla","is_active" => "0","created_at" => "2021-01-28 10:45:55","updated_at" => "2021-01-28 10:45:55",],
-    ["id" => "14","parent_id" => "12","slug" => "est-voluptatem-distinctio-inventore-esse-sunt","is_active" => "1","created_at" => "2021-01-28 10:45:56","updated_at" => "2021-01-28 10:45:56",],
-    ["id" => "15","parent_id" => "13","slug" => "veniam-ullam-sed-tempora-repellendus-nemo","is_active" => "0","created_at" => "2021-01-28 10:45:57","updated_at" => "2021-01-28 10:45:57",],
-    ["id" => "16","parent_id" => "10","slug" => "voluptas-earum-fuga-hic-ex","is_active" => "1","created_at" => "2021-01-28 10:45:58","updated_at" => "2021-01-28 10:45:58",],
-    ["id" => "17","parent_id" => "11","slug" => "occaecati-et-amet-est-perspiciatis-temporibus","is_active" => "1","created_at" => "2021-01-28 10:45:59","updated_at" => "2021-01-28 10:45:59",],
-    ["id" => "18","parent_id" => "14","slug" => "necessitatibus-sint-autem-excepturi-est","is_active" => "0","created_at" => "2021-01-28 10:46:00","updated_at" => "2021-01-28 10:46:00",],
-    ["id" => "19","parent_id" => "14","slug" => "aliquid-ratione-qui-accusantium-ex-velit-non","is_active" => "0","created_at" => "2021-01-28 10:46:01","updated_at" => "2021-01-28 10:46:01",],
-    ["id" => "20","parent_id" => "15","slug" => "in-qui-qui-ducimus-culpa-corporis","is_active" => "1","created_at" => "2021-01-28 10:46:02","updated_at" => "2021-01-28 10:46:02",],
-]);
-DB::statement("ALTER SEQUENCE categories_id_seq RESTART WITH 21");
 //brands
 DB::table('brands')->insert(    [
     ["id" => "1","is_active" => "0","created_at" => "2021-01-28 10:46:06","updated_at" => "2021-01-28 10:46:06",],

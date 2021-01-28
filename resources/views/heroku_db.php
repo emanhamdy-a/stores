@@ -14,14 +14,16 @@
         echo htmlentities("<");
         echo"?php<br>";
         echo "// database = " . $db_nm = DB::connection()->getDatabaseName();
-        // $tables = DB::select('SHOW TABLES');
+        // $tables = [];
         $tables = DB::select("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = '$db_nm' ORDER BY CREATE_TIME asc");
         foreach ($tables as $index => $tablnm) {
           $table = get_object_vars( $tablnm );
-          $records = DB::table($table['table_name'])->get();
-          if(count($records)>0){
-            echo "<br>//" . $table['table_name'] ."<br>";
-            echoRecordes($records,$table['table_name']);
+          if($table['table_name'] != 'migrations'){
+            $records = DB::table($table['table_name'])->get();
+            if(count($records)>0){
+              echo "<br>//" . $table['table_name'] ."<br>";
+              echoRecordes($records,$table['table_name']);
+            }
           }
         }
         function echoRecordes($records,$tablnm){
