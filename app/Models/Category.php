@@ -80,4 +80,5 @@ class Category extends Model
     return $this->morphOne(Photo::class, 'photoable');
   }
 
+
 }

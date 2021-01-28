@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
@@ -22,10 +21,8 @@ class PaymentController extends Controller
   public function __construct(Client $request_client)
   {
     $this->request_client = $request_client;
-    $this->base_url = 'https://apitest.myfatoorah.com';
-    //env('MYFATOORAHBASEURL');
-    $this->token = 'cxu2LdP0p0j5BGna0velN9DmzKJTrx3Ftc0ptV8FmvOgoDqvXivkxZ_oqbi_XM9k7jgl3SUriQyRE2uaLWdRumxDLKTn1iNglbQLrZyOkmkD6cjtpAsk1_ctrea_MeOQCMavsQEJ4EZHnP4HoRDOTVRGvYQueYZZvVjsaOLOubLkdovx6STu9imI1zf5OvuC9rB8p0PNIR90rQ0';
-    //env('MYFATOORAHTOKEN');
+    $this->base_url = MYFATOORAHBASEURL;//env('MYFATOORAHBASEURL');
+    $this->token = MYFATOORAHTOKEN;//env('MYFATOORAHTOKEN');
   }
 
   public function getPayments($amount)
@@ -38,16 +35,14 @@ class PaymentController extends Controller
    */
   public function processPayment(Request $request)
   {
-
-    //return $this->token . "+" . $this->base_url;
     $error = '';
 
     //best practice as we do sperate validation on request form file
     $validator = Validator::make($request->all(), [
-        'ccNum' => 'required',
-        'ccExp' => 'required',
-        'ccCvv' => 'required|numeric',
-        'amount' => 'required|numeric|min:100',
+      'ccNum' => 'required',
+      'ccExp' => 'required',
+      'ccCvv' => 'required|numeric',
+      'amount' => 'required|numeric|min:100',
     ]);
 
     if ($validator->fails()) {
@@ -74,10 +69,10 @@ class PaymentController extends Controller
 
     // you can use laravel http or Guzzl and you my create an object to encode that oject direct on requrest
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "$basURL/v2/ExecutePayment",
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "{\"PaymentMethodId\":\"$PaymentMethodId\",\"CustomerName\": \"$customerName\",\"DisplayCurrencyIso\": \"SAR\", \"MobileCountryCode\":\"+965\",\"CustomerMobile\": \"$customerMobile\",\"CustomerEmail\": \"$customerEmail\",\"InvoiceValue\": $amount,\"CallBackUrl\": \"https://dieera.com\",\"ErrorUrl\": \"https://dieera.com\",\"Language\": \"en\",\"CustomerReference\" :\"ref 1\",\"CustomerCivilId\":12345678,\"UserDefinedField\": \"Custom field\",\"ExpireDate\": \"\",\"CustomerAddress\" :{\"Block\":\"\",\"Street\":\"\",\"HouseBuildingNo\":\"\",\"Address\":\"\",\"AddressInstructions\":\"\"},\"InvoiceItems\": []}",
-        CURLOPT_HTTPHEADER => array("Authorization: Bearer $token", "Content-Type: application/json"),
+      CURLOPT_URL => "$basURL/v2/ExecutePayment",
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => "{\"PaymentMethodId\":\"$PaymentMethodId\",\"CustomerName\": \"$customerName\",\"DisplayCurrencyIso\": \"SAR\", \"MobileCountryCode\":\"+965\",\"CustomerMobile\": \"$customerMobile\",\"CustomerEmail\": \"$customerEmail\",\"InvoiceValue\": $amount,\"CallBackUrl\": \"https://dieera.com\",\"ErrorUrl\": \"https://dieera.com\",\"Language\": \"en\",\"CustomerReference\" :\"ref 1\",\"CustomerCivilId\":12345678,\"UserDefinedField\": \"Custom field\",\"ExpireDate\": \"\",\"CustomerAddress\" :{\"Block\":\"\",\"Street\":\"\",\"HouseBuildingNo\":\"\",\"Address\":\"\",\"AddressInstructions\":\"\"},\"InvoiceItems\": []}",
+      CURLOPT_HTTPHEADER => array("Authorization: Bearer $token", "Content-Type: application/json"),
     ));
 
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -86,11 +81,11 @@ class PaymentController extends Controller
     $err = curl_error($curl);
     curl_close($curl);
     if ($err) {
-        return [
-            'payment_success' => false,
-            'status' => 'faild',
-            'error' => $err
-        ];
+      return [
+        'payment_success' => false,
+        'status' => 'faild',
+        'error' => $err
+      ];
     }
 
     $json = json_decode((string)$response, true);
@@ -98,7 +93,6 @@ class PaymentController extends Controller
     //echo "json  json: $json '<br />'";
 
     $payment_url = $json["Data"]["PaymentURL"];
-
 
     $card = new \stdClass();
     $card->Number = $ccNum;
@@ -109,10 +103,10 @@ class PaymentController extends Controller
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "$payment_url",
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "{\"paymentType\": \"card\",\"card\":$card_data,\"saveToken\": false}",
-        CURLOPT_HTTPHEADER => array("Authorization: Bearer $token", "Content-Type: application/json"),
+      CURLOPT_URL => "$payment_url",
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => "{\"paymentType\": \"card\",\"card\":$card_data,\"saveToken\": false}",
+      CURLOPT_HTTPHEADER => array("Authorization: Bearer $token", "Content-Type: application/json"),
     ));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($curl);
@@ -121,36 +115,37 @@ class PaymentController extends Controller
     curl_close($curl);
 
     if ($err) {
-        return [
-            'paymemt_success' => false,
-            'status' => 'faild',
-            'error' => $err
-        ];
+      return [
+        'paymemt_success' => false,
+        'status' => 'faild',
+        'error' => $err
+      ];
     }
 
     $json = json_decode((string)$response, true);
     $PaymentId = $json["Data"]["PaymentId"];
     try {
-        DB::beginTransaction();
-        // if success payment save order and send realtime notification to admin
-        $order = $this->saveOrder($amount, $PaymentMethodId);  // your task is  . add products with options to order to preview on admin
-        $this->saveTransaction($order, $PaymentId);
-        DB::commit();
+      DB::beginTransaction();
+      // if success payment save order and send realtime notification to admin
+      $order = $this->saveOrder($amount, $PaymentMethodId);  // your task is  . add products with options to order to preview on admin
+      $this->saveTransaction($order, $PaymentId);
 
-        //fire event on order complete success for realtime notification
-        event(new NewOrder($order));
+      DB::commit();
 
-    } catch (\Exception $ex) {
-        DB::rollBack();
-        return $ex;
-    }
-    // replace return statment with message that tell the user that the payment successes
-    return [
+      //fire event on order complete success for realtime notification
+      event(new NewOrder($order));
+      // replace return statment with message that tell the user that the payment successes
+      return [
         'payment_success' => true,
         'token' => $PaymentId,
         'data' => $json,
         'status' => 'succeeded',
-    ];
+      ];
+
+    } catch (\Exception $ex) {
+      DB::rollBack();
+      return $ex;
+    }
   }
 
   private function saveOrder($amount, $PaymentMethodId)
@@ -162,8 +157,7 @@ class PaymentController extends Controller
       'total' => $amount,
       'locale' => 'en',
       'payment_method' => $PaymentMethodId,
-        // you can use enumeration here as we use before
-        //for best practices for constants.
+        // you can use enumeration here
       'status' => Order::PAID,
     ]);
   }
