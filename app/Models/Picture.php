@@ -3,7 +3,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class Picture extends Model
 {
   use HasFactory;
   protected $table = 'photos';
@@ -12,7 +12,7 @@ class Photo extends Model
   	'photoable_id',
   	'photoable_type'
   ];
-  public function photoable() {
+  public function Pictureable() {
     return $this->morphTo();
   }
 }

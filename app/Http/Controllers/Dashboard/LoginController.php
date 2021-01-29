@@ -22,7 +22,6 @@ class LoginController extends Controller
 		if (auth()->guard('admin')->attempt(['email' => request('email'), 'password'=>request('password')], $rememberme)) {
 			return redirect('/admin');
 		} else {
-      // session()->flash('error', trans('admin.inccorrect_information_login'));
       return redirect()->back()
       ->with(['error'=>'هناك خطا بالبيانات']);
     }

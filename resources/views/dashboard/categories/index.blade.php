@@ -54,7 +54,7 @@
                               <td>{{$category -> getActive()}}</td>
                               <td>
                                 <img style="width: 150px; height: 100px;"
-                                src="{{url('/') }}/images/categories/{{$category -> photo-> filename ?? '' }}">
+                                src="{{ category_img($category -> Picture-> filename) }}">
                               </td>
                               <td>
                                 <div class="btn-group" role="group"

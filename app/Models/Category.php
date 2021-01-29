@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\Photo;
+// use App\Models\Photo;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
@@ -44,10 +44,14 @@ class Category extends Model
    'is_active' => 'boolean',
   ];
 
-  public function photo()
+  public function Picture()
   {
-    return $this->morphOne(Photo::class, 'photoable');
+    return $this->morphOne(Picture::class, 'Pictureable');
   }
+  // public function photo()
+  // {
+  //   return $this->morphOne(Photo::class, 'photoable');
+  // }
 
   public function scopeParent($query){
     return $query -> whereNull('parent_id');

@@ -52,6 +52,7 @@
         },
         "files":[
           "app/Helpers/general.php",
+          "app/Helpers/imagePath.php",
           "app/Helpers/permissions.php"
         ]
     },
