@@ -52,8 +52,9 @@
                           <td>{{$brand -> getActive()}}
                           </td>
                           <td>
+                          <!-- {{url('/') }}/images/brands/{{$brand -> img()-> filename ?? ''}} -->
                             <img style="width: 150px; height: 100px;"
-                            src="{{url('/') }}/images/brands/{{$brand -> img()-> filename ?? ''}}">
+                            src="{{url('/') }}/images/brands/{{$brand -> photo-> filename ?? '' }}">
                           </td>
                           <td>
                             <div class="btn-group" role="group"

@@ -36,3 +36,10 @@ if (!function_exists('active_menu')) {
     }
 	}
 }
+
+
+if (!function_exists('getLang')) {
+  function getLang() {
+    return app()->getLocale();
+  }
+}

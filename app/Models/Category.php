@@ -19,7 +19,6 @@ class Category extends Model
    */
   protected $with = ['translations'];
 
-
   protected $translatedAttributes = ['name'];
 
   /**
@@ -45,16 +44,21 @@ class Category extends Model
    'is_active' => 'boolean',
   ];
 
+  public function photo()
+  {
+    return $this->morphOne(Photo::class, 'photoable');
+  }
 
   public function scopeParent($query){
     return $query -> whereNull('parent_id');
   }
+
   public function scopeChild($query){
     return $query -> whereNotNull('parent_id');
   }
 
   public function getActive(){
-     return  $this -> is_active  == 0 ?  __('admin/categories.not active') : __('admin/categories.active') ;
+    return  $this -> is_active  == 0 ?  __('admin/categories.not active') : __('admin/categories.active') ;
   }
 
   public function _parent(){
@@ -74,11 +78,5 @@ class Category extends Model
   {
     return $this -> belongsToMany(Product::class,'product_categories');
   }
-
-  public function photo()
-  {
-    return $this->morphOne(Photo::class, 'photoable');
-  }
-
 
 }

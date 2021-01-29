@@ -11,55 +11,49 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Brand extends Model
 {
   use Translatable,HasFactory;
-
   /**
    * The relations to eager load on every query.
    *
    * @var array
    */
   protected $with = ['translations'];
-
-
   protected $translatedAttributes = ['name'];
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['is_active'];
+  /**
+   * The attributes that should be cast to native types.
+   *
+   * @var array
+   */
+  protected $casts = [
+    'is_active' => 'boolean',
+  ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['is_active'];
+  public function scopeActive($query){
+    return $query -> where('is_active',1) ;
+  }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
+  public function getActive(){
+    return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
+  }
 
+  public function products()
+  {
+    return $this->hasMany(Product::class, 'brand_id');
+  }
 
-    public function scopeActive($query){
-        return $query -> where('is_active',1) ;
-    }
-
-    public function getActive(){
-        return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'brand_id');
-    }
-
-    public function img(){
-      return Photo::where('photoable_id',$this -> id)
-      ->where('photoable_type','App\Models\Brand')
-      ->first();
-    }
-    public function photo()
-    {
-      return $this->morphOne('App\Models\Photo', 'photoable');
-    }
+  public function img(){
+    return Photo::where('photoable_id',$this -> id)
+    ->where('photoable_type','App\Models\Brand')
+    ->first();
+  }
+  public function photo()
+  {
+    return $this->morphOne('App\Models\Photo', 'photoable');
+  }
 }
