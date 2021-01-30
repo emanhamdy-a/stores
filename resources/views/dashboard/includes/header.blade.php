@@ -48,6 +48,7 @@
                 <i class="ft-power"></i> {{ __('admin/header.sign out') }}</a>
             </div>
           </li>
+
           <!-- language -->
           <li class="dropdown dropdown-user nav-item">
             <a class="dropdown-toggle nav-link
@@ -72,8 +73,9 @@
                 @endforeach
             </div>
           </li>
+
           <!-- Notifications -->
-          <li class="dropdown dropdown-notification nav-item">
+          <!-- <li class="dropdown dropdown-notification nav-item">
             <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
               <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow notification-counter">5</span>
             </a>
@@ -110,9 +112,10 @@
                 href="javascript:void(0)">{{ __('admin/header.read notifications') }}</a>
               </li>
             </ul>
-          </li>
+          </li> -->
+
           <!-- Messages -->
-          <li class="dropdown dropdown-notification nav-item">
+          <!-- <li class="dropdown dropdown-notification nav-item">
             <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i
                 class="ficon ft-mail"> </i></a>
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
@@ -148,7 +151,8 @@
                 href="javascript:void(0)">{{ __('admin/header.read messages') }}</a>
               </li>
             </ul>
-          </li>
+          </li> -->
+
         </ul>
       </div>
     </div>

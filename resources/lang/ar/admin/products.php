@@ -12,7 +12,7 @@ return [
   'store'                   =>   'Store',
   'delete'                  =>   'Delete',
   'edit'                    =>   'Edit',
-  'active'                  =>   'Active',
+  'active'                  =>   'active',
   'not active'              =>   'Not active',
   'update product'          =>   'Update',
   'view'                    =>   'View',

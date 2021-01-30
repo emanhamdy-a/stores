@@ -15,12 +15,12 @@
                     <h1><i class="cc BTC warning font-large-2" title="BTC"></i></h1>
                   </div>
                   <div class="col-5 pl-2">
-                    <h4>BTC</h4>
-                    <h6 class="text-muted">Bitcoin</h6>
+                    <!-- <h4>BTC</h4> -->
+                    <h6 class="text-muted">{{__('admin\home.new products')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>$9,980</h4>
-                    <h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>
+                    <h4>{{ $productn }}</h4>
+                    <!-- <h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6> -->
                   </div>
                 </div>
               </div>
@@ -41,12 +41,12 @@
                     <h1><i class="cc ETH blue-grey lighten-1 font-large-2" title="ETH"></i></h1>
                   </div>
                   <div class="col-5 pl-2">
-                    <h4>ETH</h4>
-                    <h6 class="text-muted">Ethereum</h6>
+                    <!-- <h4>ETH</h4> -->
+                    <h6 class="text-muted">{{__('admin\home.new categories')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>$944</h4>
-                    <h6 class="success darken-4">12% <i class="la la-arrow-up"></i></h6>
+                    <h4>{{ $categoryn }}</h4>
+                    <!-- <h6 class="success darken-4">12% <i class="la la-arrow-up"></i></h6> -->
                   </div>
                 </div>
               </div>
@@ -67,12 +67,12 @@
                     <h1><i class="cc XRP info font-large-2" title="XRP"></i></h1>
                   </div>
                   <div class="col-5 pl-2">
-                    <h4>XRP</h4>
-                    <h6 class="text-muted">Balance</h6>
+                    <!-- <h4>XRP</h4> -->
+                    <h6 class="text-muted">{{__('admin\home.new brands')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>$1.2</h4>
-                    <h6 class="danger">20% <i class="la la-arrow-down"></i></h6>
+                    <h4>{{ $brandn }}</h4>
+                    <!-- <h6 class="danger">20% <i class="la la-arrow-down"></i></h6> -->
                   </div>
                 </div>
               </div>
@@ -93,12 +93,12 @@
                     <h1><i class="cc XRP info font-large-2" title="XRP"></i></h1>
                   </div>
                   <div class="col-5 pl-2">
-                    <h4>XRP</h4>
-                    <h6 class="text-muted">Balance</h6>
+                    <!-- <h4>XRP</h4> -->
+                    <h6 class="text-muted">{{__('admin\home.new admins')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>$1.2</h4>
-                    <h6 class="danger">20% <i class="la la-arrow-down"></i></h6>
+                    <h4>{{ $brandn }}</h4>
+                    <!-- <h6 class="danger">20% <i class="la la-arrow-down"></i></h6> -->
                   </div>
                 </div>
               </div>
@@ -113,75 +113,102 @@
       </div>
       <!-- Candlestick Multi Level Control Chart -->
 
-      <!-- Sell Orders & Buy Order -->
+      <!-- new product -->
       <div class="row match-height">
-        <div class="col-12 col-xl-8">
+        <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">Sell Order</h4>
-              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-              <div class="heading-elements">
-                <p class="text-muted">Total BTC available: 6542.56585</p>
-              </div>
-            </div>
-            <div class="card-content">
-              <div class="table-responsive">
-                <table class="table table-de mb-0">
-                  <thead>
-                    <tr>
-                      <th>Price per BTC</th>
-                      <th>BTC Ammount</th>
-                      <th>Total($)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="bg-success bg-lighten-5">
-                      <td>10583.4</td>
-                      <td><i class="cc BTC-alt"></i> 0.45000000</td>
-                      <td>$ 4762.53</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xl-4">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Buy Order</h4>
-              <a class="heading-elements-toggle">
-                <i class="la la-ellipsis-v font-medium-3"></i>
+              <h4 class="card-title">{{ __('admin\home.latest products') }} </h4>
+              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i>
               </a>
               <div class="heading-elements">
-                <p class="text-muted">Total USD available: 9065930.43</p>
+                <ul class="list-inline mb-0">
+                  <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                </ul>
               </div>
             </div>
-            <div class="card-content">
-              <div class="table-responsive">
-                <table class="table table-de mb-0">
-                  <thead>
+
+            <div class="card-content collapse show">
+              <div class="card-body card-dashboard">
+                <table id='Mydatatable'
+                  class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
+                  <thead class="">
                     <tr>
-                      <th>Price per BTC</th>
-                      <th>BTC Ammount</th>
-                      <th>Total($)</th>
+                      <th>{{ __('admin/home.name') }}</th>
+                      <th> {{ __('admin/home.slug') }}</th>
+                      <th>{{ __('admin/home.status') }}</th>
+                      <th>{{ __('admin/home.price') }}</th>
+                      <th></th>
+                      <th>{{ __('admin/home.actions') }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="bg-danger bg-lighten-5">
-                      <td>10599.5</td>
-                      <td><i class="cc BTC-alt"></i> 0.02000000</td>
-                      <td>$ 211.99</td>
+
+                    @isset($products)
+                    @foreach($products as $product)
+                    <tr>
+                      <td>{{$product -> name}}</td>
+                      <td>{{$product -> slug}}</td>
+                      <td>{{$product -> getActive()}}</td>
+                      <td>{{$product -> price}}</td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <a href="{{route('admin.products.price',$product -> id)}}"
+                            class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                            {{ __('admin/home.price') }}
+                          </a>
+
+                          <a href="{{route('admin.products.images',$product)}}"
+                            class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                            {{ __('admin/home.images') }}
+                          </a>
+
+                          <a href="{{route('admin.products.stock',$product -> id)}}"
+                            class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                            {{ __('admin/home.store') }}
+                          </a>
+
+                        </div>
+                      </td>
+                      <td class=''>
+                        <ul class="nav navbar-nav float-right">
+                          <!-- actions -->
+                          <li class="dropdown dropdown-user nav-item">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left">
+                              <a class="dropdown-item btn btn-outline-primary"
+                                href="{{route('admin.products.edit',$product->id)}}">
+                                {{ __('admin/home.edit') }}
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item danger dropdown-item btn btn-outline-primary"
+                                href="{{route('admin.products.delete',$product->id)}}">
+                                {{ __('admin/home.delete') }}
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <!-- <a class="dropdown-item primary dropdown-item btn btn-outline-primary"
+                                    href="{{route('admin.products.general.update',$product->id)}}">
+                                    {{ __('admin/home.view') }}
+                                  </a> -->
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
                     </tr>
+                    @endforeach
+                    @endisset
                   </tbody>
                 </table>
+                <div class="justify-content-center d-flex">
+
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!--/ Sell Orders & Buy Order -->
       </div>
-      <!--/ Sell Orders & Buy Order -->
     </div>
   </div>
-</div>
-@endsection
+  @endsection

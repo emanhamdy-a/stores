@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -14,7 +17,15 @@ class DashboardController extends Controller
    */
   public function index()
   {
-    return view('dashboard.index');
+    $data=[];
+    $data['products']  = Product::latest()->take(30)->get();
+    $data['categoryn'] = Category::count();
+    $data['brandn']    = Brand::count();
+    $data['productn']  = Admin::count();
+    $data['adminn']    = Product::count();
+
+    return view('dashboard.index',$data);
+
   }
 
   /**
