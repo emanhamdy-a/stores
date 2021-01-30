@@ -111,7 +111,6 @@ class CartController extends Controller
     return trans('site.cart.msgs.updated');
   }
 
-
   // function to return shipping details view
   public function get_shipping_details()
   {
@@ -194,8 +193,6 @@ class CartController extends Controller
 
   public function checkstatus()
   {
-
-
     $url = "https://test.oppwa.com/v1/checkouts/" . $_GET['id'] . "/payment";
     $url .= "?authentication.userId=8a829418605b2fd10160736fb77d3aa6";
     $url .= "&authentication.password=wMTP8GZaQz";
@@ -329,6 +326,4 @@ class CartController extends Controller
     curl_close($ch);
     return $responseData;
   }
-
-
 }
