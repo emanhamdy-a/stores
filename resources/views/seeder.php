@@ -2357,5 +2357,6 @@ DB::table('roles')->insert(    [
     ["id" => "3","name" => "dataentry","permissions" => '["products"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
     ["id" => "4","name" => "manager","permissions" => '["admins","roles"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
 ]);
-DB::statement("ALTER SEQUENCE roles_id_seq RESTART WITH 5");unlink(__FILE__);
+DB::statement("ALTER SEQUENCE roles_id_seq RESTART WITH 5");
+unlink(__FILE__);
 ?>

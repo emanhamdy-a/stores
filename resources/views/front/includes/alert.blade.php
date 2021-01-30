@@ -6,7 +6,7 @@
                     <i class="material-icons close">close</i>
                 </button>
             </div>
-            <div class="modal-body text-center alert-text"> the product added to favourite list successfully </div>
+            <div class="modal-body text-center alert-text" id='alert_scs'> the product added to favourite list successfully </div>
         </div>
     </div>
 </div>

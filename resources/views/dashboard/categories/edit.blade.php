@@ -41,7 +41,7 @@
                       <input name="id" value="{{$category -> id}}" type="hidden">
                       <div class="form-group">
                         <div class="text-center">
-                          <img src="{{url('/').'/images/categories/'.$category  -> photo->filename }}"
+                          <img src="{{ category_img($category -> photo-> filename) }}"
                             class="rounded-circle  height-150" alt="{{ __('admin/categories.category image') }}">
                         </div>
                       </div>

@@ -39,7 +39,7 @@ class Brand extends Model
   }
 
   public function getActive(){
-    return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
+    return  $this -> is_active  == 0 ? __('admin/brands.not active') : __('admin/brands.active');
   }
 
   public function products()
@@ -47,13 +47,8 @@ class Brand extends Model
     return $this->hasMany(Product::class, 'brand_id');
   }
 
-  public function img(){
-    return Photo::where('photoable_id',$this -> id)
-    ->where('photoable_type','App\Models\Brand')
-    ->first();
-  }
   public function photo()
   {
-    return $this->morphOne('App\Models\Photo', 'photoable');
+    return $this->morphOne(Photo::class, 'photoable');
   }
 }

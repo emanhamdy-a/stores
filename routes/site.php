@@ -7,7 +7,7 @@ use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\WishlistController;
 use App\Http\Controllers\Site\CartController;
-use App\Http\Controllers\Site\ProductReviewController;
+// use App\Http\Controllers\Site\ProductReviewController;
 use App\Http\Controllers\Site\PaymentController;
 
 
@@ -62,10 +62,11 @@ Route::group([
       Route::get('wishlist/products', [WishlistController::class,'index'])
         ->name('wishlist.products.index');
 
-      Route::get('products/{productId}/reviews',  [ProductReviewController::class,'index'])
-        ->name('products.reviews.index');
-      Route::post('products/{productId}/reviews',[ProductReviewController::class,'store'])
-        ->name('products.reviews.store');
+      // Route::get('products/{productId}/reviews',  [ProductReviewController::class,'index'])
+        // ->name('products.reviews.index');
+      // Route::post('products/{productId}/reviews',[ProductReviewController::class,'store'])
+        // ->name('products.reviews.store');
+
       Route::get('payment/{amount}', [PaymentController::class,'getPayments'])
        -> name('payment');
       Route::post('payment', [PaymentController::class,'processPayment'])

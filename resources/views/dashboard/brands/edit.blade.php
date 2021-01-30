@@ -42,7 +42,7 @@
                     <div class="form-group">
                       <div class="text-center">
                         <img
-                        src="{{url('/').'/images/brands/'.$brand  -> img()->filename }}"
+                        src="{{brand_img($brand -> photo-> filename)}}"
                           class="rounded-circle  height-250"
                           alt="{{ __('admin/brands.image') }}">
                       </div>
