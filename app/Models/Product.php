@@ -86,7 +86,7 @@ class Product extends Model
 
     public function getActive()
     {
-      return $this->is_active == 0 ? __('admin\products.active') : __('admin\products.not active');
+      return $this->is_active == 0 ? __('admin/products.active') : __('admin/products.not active');
     }
 
     public function categories()

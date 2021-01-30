@@ -16,7 +16,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>BTC</h4> -->
-                    <h6 class="text-muted">{{__('admin\home.new products')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.new products')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $productn }}</h4>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>ETH</h4> -->
-                    <h6 class="text-muted">{{__('admin\home.new categories')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.new categories')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $categoryn }}</h4>
@@ -68,7 +68,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>XRP</h4> -->
-                    <h6 class="text-muted">{{__('admin\home.new brands')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.new brands')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $brandn }}</h4>
@@ -94,7 +94,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>XRP</h4> -->
-                    <h6 class="text-muted">{{__('admin\home.new admins')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.new admins')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $brandn }}</h4>
@@ -118,7 +118,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">{{ __('admin\home.latest products') }} </h4>
+              <h4 class="card-title">{{ __('admin/home.latest products') }} </h4>
               <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i>
               </a>
               <div class="heading-elements">
