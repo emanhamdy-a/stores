@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use DB;
 use App\Models\Brand;
-use App\Models\photo;
+use App\Models\Picture;
 use App\Traits\PhotoableTrait;
 use App\Repositories\Repository;
 use App\Http\Requests\BrandRequest;
@@ -142,19 +142,19 @@ class BrandsController extends Controller
   public function storeimage($request_image,$id){
     if($storeas= $this->move_to_folder($request_image)){
       $data=[
-        'photoable_id'  =>$id,
-        'photoable_type'=>'App\Models\Brand',
+        'pictureable_id'  =>$id,
+        'pictureable_type'=>'App\Models\Brand',
         'filename'      =>$storeas['hashname'],
       ];
-      Photo::create($data);
+      Picture::create($data);
     }
   }
 
   public function deleteimage($brand){
-    if(!empty($brand->photo->filename)){
-        $filename=$brand->photo->filename;
+    if(!empty($brand->picture->filename)){
+        $filename=$brand->picture->filename;
       // delete image from database
-      if($brand->photo->delete()){
+      if($brand->picture->delete()){
         // delete image from path
         $this->unlinkimage($filename);
         return true;

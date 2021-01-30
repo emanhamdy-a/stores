@@ -53,11 +53,8 @@
                               <td>{{$category -> slug}}</td>
                               <td>{{$category -> getActive()}}</td>
                               <td>
-                                <?php  $photo = \App\Models\Picture::where('photoable_type',"App\Models\Category")
-                                ->where('photoable_id',$category -> id)
-                                ->first() ?>
                                 <img style="width: 150px; height: 100px;"
-                                src="{{ category_img($photo-> filename) }}">
+                                src="{{ category_img($category ->picture-> filename) }}">
                               </td>
                               <td>
                                 <div class="btn-group" role="group"

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Brand;
-use App\Models\Photo;
+use App\Models\Picture;
 use Faker\Provider\Image;
 use Illuminate\Http\File;
 use Illuminate\Database\Seeder;
@@ -22,10 +22,10 @@ class BrandDatabaseSeeder extends Seeder
       $brand = Brand::factory()->create();
       $image = Image::image(null,200,200,'brand');
       $imageFile = new File($image);
-      Photo::factory()->create([
+      Picture::factory()->create([
         'filename' =>Storage::disk('brands')->putFile(null, $imageFile)
-       ,'photoable_id' => $brand->id
-       ,'photoable_type' => 'App\Models\Brand']);
+       ,'pictureable_id' => $brand->id
+       ,'pictureable_type' => 'App\Models\Brand']);
      }
   }
 }

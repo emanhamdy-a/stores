@@ -44,10 +44,15 @@ class Category extends Model
    'is_active' => 'boolean',
   ];
 
-  public function photo()
+  public function picture()
   {
-    return $this->morphOne(Photo::class, 'photoable');
+    return $this->morphOne(Picture::class, 'pictureable');
   }
+
+  // public function photo()
+  // {
+  //   return $this->morphOne(Photo::class, 'photoable');
+  // }
 
   public function scopeParent($query){
     return $query -> whereNull('parent_id');

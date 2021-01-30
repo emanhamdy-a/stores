@@ -1,5 +1,6 @@
 <?php
 // database = stores
+
 //settings
 DB::table('settings')->insert(    [
     ["id" => "1","key" => "default_locale","is_translatable" => "0","plain_value" => "ar","created_at" => "2021-01-28 10:45:19","updated_at" => "2021-01-28 10:45:19",],
@@ -18,6 +19,7 @@ DB::table('settings')->insert(    [
     ["id" => "14","key" => "outer_label","is_translatable" => "1","plain_value" => null ,"created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 10:45:21",],
 ]);
 DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 15");
+
 //setting_translations
 DB::table('setting_translations')->insert(    [
     ["id" => "1","setting_id" => "11","locale" => "ar","value" => "فاترينا",],
@@ -26,6 +28,7 @@ DB::table('setting_translations')->insert(    [
     ["id" => "4","setting_id" => "14","locale" => "ar","value" => "توصيل خارجي",],
 ]);
 DB::statement("ALTER SEQUENCE setting_translations_id_seq RESTART WITH 5");
+
 //categories
 DB::table('categories')->insert(    [
     ["id" => "2","parent_id" => null ,"slug" => "neque-eum-ab-aliquid-excepturi-ullam","is_active" => "1","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
@@ -49,6 +52,7 @@ DB::table('categories')->insert(    [
     ["id" => "20","parent_id" => "15","slug" => "in-qui-qui-ducimus-culpa-corporis","is_active" => "1","created_at" => "2021-01-28 10:46:02","updated_at" => "2021-01-28 10:46:02",],
 ]);
 DB::statement("ALTER SEQUENCE categories_id_seq RESTART WITH 21");
+
 //category_translations
 DB::table('category_translations')->insert(    [
     ["id" => "5","category_id" => "2","locale" => "en","name" => "rem",],
@@ -129,6 +133,7 @@ DB::table('category_translations')->insert(    [
     ["id" => "80","category_id" => "20","locale" => "ar","name" => "odio",],
 ]);
 DB::statement("ALTER SEQUENCE category_translations_id_seq RESTART WITH 81");
+
 //brands
 DB::table('brands')->insert(    [
     ["id" => "1","is_active" => "0" ,"created_at" => "2021-01-28 10:46:06","updated_at" => "2021-01-28 10:46:06",],
@@ -143,6 +148,7 @@ DB::table('brands')->insert(    [
     ["id" => "10","is_active" => "1","created_at" => "2021-01-28 10:46:17","updated_at" => "2021-01-28 10:46:17",],
 ]);
 DB::statement("ALTER SEQUENCE brands_id_seq RESTART WITH 11");
+
 //brand_translations
 DB::table('brand_translations')->insert(    [
     ["id" => "1","brand_id" => "1","locale" => "en","name" => "in",],
@@ -187,6 +193,7 @@ DB::table('brand_translations')->insert(    [
     ["id" => "40","brand_id" => "10","locale" => "ar","name" => "inventore",],
 ]);
 DB::statement("ALTER SEQUENCE brand_translations_id_seq RESTART WITH 41");
+
 //tags
 DB::table('tags')->insert(    [
     ["id" => "1","slug" => "iure-neque-non-aut-inventore","created_at" => "2021-01-28 10:46:19","updated_at" => "2021-01-28 10:46:19",],
@@ -211,6 +218,7 @@ DB::table('tags')->insert(    [
     ["id" => "20","slug" => "magnam-consequatur-doloremque-tempora-et","created_at" => "2021-01-28 10:46:26","updated_at" => "2021-01-28 10:46:26",],
 ]);
 DB::statement("ALTER SEQUENCE tags_id_seq RESTART WITH 21");
+
 //tag_translations
 DB::table('tag_translations')->insert(    [
     ["id" => "1","tag_id" => "1","locale" => "en","name" => "soluta",],
@@ -295,6 +303,7 @@ DB::table('tag_translations')->insert(    [
     ["id" => "80","tag_id" => "20","locale" => "ar","name" => "similique",],
 ]);
 DB::statement("ALTER SEQUENCE tag_translations_id_seq RESTART WITH 81");
+
 //users
 DB::table('users')->insert(    [
     ["id" => "1","name" => "Dr. Robyn Klein V","mobile" => "1-969-791-9553 x49995","email_verified_at" => "2021-01-28 10:45:25","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","two_factor_secret" => null ,"two_factor_recovery_codes" => null ,"remember_token" => "TKPKBErt5F","created_at" => "2021-01-28 10:45:25","updated_at" => "2021-01-28 10:45:25",],
@@ -319,46 +328,49 @@ DB::table('users')->insert(    [
     ["id" => "20","name" => "Maxine Feeney","mobile" => "1-848-221-7171","email_verified_at" => "2021-01-28 10:45:25","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","two_factor_secret" => null ,"two_factor_recovery_codes" => null ,"remember_token" => "dZcfakyc5T","created_at" => "2021-01-28 10:45:26","updated_at" => "2021-01-28 10:45:26",],
 ]);
 DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 21");
-//photos
-DB::table('photos')->insert(    [
-    ["id" => "1","filename" => "XqEj657T1wNdTKzemNf4lzDCZoazOBdNKMAh35jg.png","photoable_id" => "1","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
-    ["id" => "2","filename" => "VBoREU9HNj3hmmKhE4apMbmlgEi4TqSQsOwJwLvu.png","photoable_id" => "2","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:41","updated_at" => "2021-01-28 10:45:41",],
-    ["id" => "3","filename" => "hUyPwEcV2Y04kC7evUyZuoqANbGfQkH9lepeb4td.png","photoable_id" => "3","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
-    ["id" => "4","filename" => "iPyC7ePjbkyzUDiiG0ekGeKpWx2sebca8oYp2WqZ.png","photoable_id" => "4","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
-    ["id" => "5","filename" => "Z4e5O9hEmZDGiL5AA3hYcYFCOO6toXGtejParEoL.png","photoable_id" => "5","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:46","updated_at" => "2021-01-28 10:45:46",],
-    ["id" => "6","filename" => "7ds7Yl828BrahLC2TqAbFo4Uzd4XN3oEKlhwldYu.png","photoable_id" => "6","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:47","updated_at" => "2021-01-28 10:45:47",],
-    ["id" => "7","filename" => "2tevQtqaL1M3Jvry2JOSXtRZQ9NC4WylUz1vjVQY.png","photoable_id" => "7","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:48","updated_at" => "2021-01-28 10:45:48",],
-    ["id" => "8","filename" => "gBaJsbHcFO1vmJGSx1zNsSrEDM0cTF7z294uATs7.png","photoable_id" => "8","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:49","updated_at" => "2021-01-28 10:45:49",],
-    ["id" => "9","filename" => "aC0ayTeqoyt1ZtIF94Xo0OCyOufpXfU8lHjWYXOp.png","photoable_id" => "9","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:51","updated_at" => "2021-01-28 10:45:51",],
-    ["id" => "10","filename" => "ihXosZzBSBe8BPPtjRtOArjmbbkMR4VL4QjyCyVG.png","photoable_id" => "10","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:52","updated_at" => "2021-01-28 10:45:52",],
-    ["id" => "11","filename" => "z2iuNSnovlXvZWRsAvjYhpIAayHkwscNvDGgdjyq.png","photoable_id" => "11","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:53","updated_at" => "2021-01-28 10:45:53",],
-    ["id" => "12","filename" => "b9oB5cXF1UO8WEbb7lGeLEmhCJWjFPSG284KAhvy.png","photoable_id" => "12","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:55","updated_at" => "2021-01-28 10:45:55",],
-    ["id" => "13","filename" => "iNp1RXS14QGm3cTcxpV8zZsLAFqV0TlBRwvgzArf.png","photoable_id" => "13","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:56","updated_at" => "2021-01-28 10:45:56",],
-    ["id" => "14","filename" => "zuW27Pwm6TE1KGyxj5Rcm2IsYE2epclO3xzVWzPH.png","photoable_id" => "14","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:57","updated_at" => "2021-01-28 10:45:57",],
-    ["id" => "15","filename" => "bcHsCZiyIc6mzvZmzlEG79E2Ur3KVW52BCFD8o8r.png","photoable_id" => "15","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:58","updated_at" => "2021-01-28 10:45:58",],
-    ["id" => "16","filename" => "H1rImyYkqyy1fuKY56mxi63PxdMlLPSQnHgkYTqI.png","photoable_id" => "16","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:59","updated_at" => "2021-01-28 10:45:59",],
-    ["id" => "17","filename" => "WXJ2UIGmzGZfJ08hF62F5lBmqnU7IS5uYCYJ1vLN.png","photoable_id" => "17","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:00","updated_at" => "2021-01-28 10:46:00",],
-    ["id" => "18","filename" => "OZ0G1CTi8BR8ts2wJ5sSatoKbQ31TTtWYmHrT7fc.png","photoable_id" => "18","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:01","updated_at" => "2021-01-28 10:46:01",],
-    ["id" => "19","filename" => "0BWKzSXVeXKwthxz6UctZEYfHLXnNVGHb5f50iYd.png","photoable_id" => "19","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:02","updated_at" => "2021-01-28 10:46:02",],
-    ["id" => "20","filename" => "kziisCOvuca1tNbfCaT4XBnKJoBmyYB28PvKzY12.png","photoable_id" => "20","photoable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:03","updated_at" => "2021-01-28 10:46:03",],
-    ["id" => "21","filename" => "WZaiT2BsOaOB2jjoBqDPO7kMEvhkFbf4yTLsPPoN.png","photoable_id" => "1","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:07","updated_at" => "2021-01-28 10:46:07",],
-    ["id" => "22","filename" => "lRTEQw9XWezM2et9chlcMN4CSGhjuZyEtZTjMYxa.png","photoable_id" => "2","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:08","updated_at" => "2021-01-28 10:46:08",],
-    ["id" => "23","filename" => "qUjO25cnjBSHeZ4nyrJOruN15sVRAtOhadbHSID1.png","photoable_id" => "3","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:09","updated_at" => "2021-01-28 10:46:09",],
-    ["id" => "24","filename" => "CvVBAM5FCOKn5HjM8JE8nCdH0zAOWu9WhixB68Mz.png","photoable_id" => "4","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:11","updated_at" => "2021-01-28 10:46:11",],
-    ["id" => "25","filename" => "BWUqgo9Aap2z43MbFbQwWLSFjtX29BpIZZDMObis.png","photoable_id" => "5","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:12","updated_at" => "2021-01-28 10:46:12",],
-    ["id" => "26","filename" => "SyPQ78ZL5avS2F6lIA0FlL8wjmYKlVcRrv2PBLnj.png","photoable_id" => "6","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:13","updated_at" => "2021-01-28 10:46:13",],
-    ["id" => "27","filename" => "VBJxST2CRdcC3FY8PqJQcEz7kplbGRSqNofRYOlI.png","photoable_id" => "7","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:15","updated_at" => "2021-01-28 10:46:15",],
-    ["id" => "28","filename" => "I3PM7wAttK6d5da7HudtIc3V6bEbD7H7YmJIyl79.png","photoable_id" => "8","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:16","updated_at" => "2021-01-28 10:46:16",],
-    ["id" => "29","filename" => "5TNGGkzmv6BDSqSIzYdnca6C6sw66a4uTOA8vdKF.png","photoable_id" => "9","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:17","updated_at" => "2021-01-28 10:46:17",],
-    ["id" => "30","filename" => "v2bu7IWKVQxMKtCvf0yDvry1TuwuClve6byoRIBy.png","photoable_id" => "10","photoable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:19","updated_at" => "2021-01-28 10:46:19",],
+
+//pictures
+DB::table('pictures')->insert(    [
+    ["id" => "1","filename" => "XqEj657T1wNdTKzemNf4lzDCZoazOBdNKMAh35jg.png","pictureable_id" => "1","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:40","updated_at" => "2021-01-28 10:45:40",],
+    ["id" => "2","filename" => "VBoREU9HNj3hmmKhE4apMbmlgEi4TqSQsOwJwLvu.png","pictureable_id" => "2","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:41","updated_at" => "2021-01-28 10:45:41",],
+    ["id" => "3","filename" => "hUyPwEcV2Y04kC7evUyZuoqANbGfQkH9lepeb4td.png","pictureable_id" => "3","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:44","updated_at" => "2021-01-28 10:45:44",],
+    ["id" => "4","filename" => "iPyC7ePjbkyzUDiiG0ekGeKpWx2sebca8oYp2WqZ.png","pictureable_id" => "4","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:45","updated_at" => "2021-01-28 10:45:45",],
+    ["id" => "5","filename" => "Z4e5O9hEmZDGiL5AA3hYcYFCOO6toXGtejParEoL.png","pictureable_id" => "5","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:46","updated_at" => "2021-01-28 10:45:46",],
+    ["id" => "6","filename" => "7ds7Yl828BrahLC2TqAbFo4Uzd4XN3oEKlhwldYu.png","pictureable_id" => "6","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:47","updated_at" => "2021-01-28 10:45:47",],
+    ["id" => "7","filename" => "2tevQtqaL1M3Jvry2JOSXtRZQ9NC4WylUz1vjVQY.png","pictureable_id" => "7","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:48","updated_at" => "2021-01-28 10:45:48",],
+    ["id" => "8","filename" => "gBaJsbHcFO1vmJGSx1zNsSrEDM0cTF7z294uATs7.png","pictureable_id" => "8","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:49","updated_at" => "2021-01-28 10:45:49",],
+    ["id" => "9","filename" => "aC0ayTeqoyt1ZtIF94Xo0OCyOufpXfU8lHjWYXOp.png","pictureable_id" => "9","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:51","updated_at" => "2021-01-28 10:45:51",],
+    ["id" => "10","filename" => "ihXosZzBSBe8BPPtjRtOArjmbbkMR4VL4QjyCyVG.png","pictureable_id" => "10","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:52","updated_at" => "2021-01-28 10:45:52",],
+    ["id" => "11","filename" => "z2iuNSnovlXvZWRsAvjYhpIAayHkwscNvDGgdjyq.png","pictureable_id" => "11","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:53","updated_at" => "2021-01-28 10:45:53",],
+    ["id" => "12","filename" => "b9oB5cXF1UO8WEbb7lGeLEmhCJWjFPSG284KAhvy.png","pictureable_id" => "12","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:55","updated_at" => "2021-01-28 10:45:55",],
+    ["id" => "13","filename" => "iNp1RXS14QGm3cTcxpV8zZsLAFqV0TlBRwvgzArf.png","pictureable_id" => "13","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:56","updated_at" => "2021-01-28 10:45:56",],
+    ["id" => "14","filename" => "zuW27Pwm6TE1KGyxj5Rcm2IsYE2epclO3xzVWzPH.png","pictureable_id" => "14","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:57","updated_at" => "2021-01-28 10:45:57",],
+    ["id" => "15","filename" => "bcHsCZiyIc6mzvZmzlEG79E2Ur3KVW52BCFD8o8r.png","pictureable_id" => "15","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:58","updated_at" => "2021-01-28 10:45:58",],
+    ["id" => "16","filename" => "H1rImyYkqyy1fuKY56mxi63PxdMlLPSQnHgkYTqI.png","pictureable_id" => "16","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:45:59","updated_at" => "2021-01-28 10:45:59",],
+    ["id" => "17","filename" => "WXJ2UIGmzGZfJ08hF62F5lBmqnU7IS5uYCYJ1vLN.png","pictureable_id" => "17","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:00","updated_at" => "2021-01-28 10:46:00",],
+    ["id" => "18","filename" => "OZ0G1CTi8BR8ts2wJ5sSatoKbQ31TTtWYmHrT7fc.png","pictureable_id" => "18","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:01","updated_at" => "2021-01-28 10:46:01",],
+    ["id" => "19","filename" => "0BWKzSXVeXKwthxz6UctZEYfHLXnNVGHb5f50iYd.png","pictureable_id" => "19","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:02","updated_at" => "2021-01-28 10:46:02",],
+    ["id" => "20","filename" => "kziisCOvuca1tNbfCaT4XBnKJoBmyYB28PvKzY12.png","pictureable_id" => "20","pictureable_type" => "App\Models\Category","created_at" => "2021-01-28 10:46:03","updated_at" => "2021-01-28 10:46:03",],
+    ["id" => "21","filename" => "WZaiT2BsOaOB2jjoBqDPO7kMEvhkFbf4yTLsPPoN.png","pictureable_id" => "1","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:07","updated_at" => "2021-01-28 10:46:07",],
+    ["id" => "22","filename" => "lRTEQw9XWezM2et9chlcMN4CSGhjuZyEtZTjMYxa.png","pictureable_id" => "2","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:08","updated_at" => "2021-01-28 10:46:08",],
+    ["id" => "23","filename" => "qUjO25cnjBSHeZ4nyrJOruN15sVRAtOhadbHSID1.png","pictureable_id" => "3","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:09","updated_at" => "2021-01-28 10:46:09",],
+    ["id" => "24","filename" => "CvVBAM5FCOKn5HjM8JE8nCdH0zAOWu9WhixB68Mz.png","pictureable_id" => "4","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:11","updated_at" => "2021-01-28 10:46:11",],
+    ["id" => "25","filename" => "BWUqgo9Aap2z43MbFbQwWLSFjtX29BpIZZDMObis.png","pictureable_id" => "5","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:12","updated_at" => "2021-01-28 10:46:12",],
+    ["id" => "26","filename" => "SyPQ78ZL5avS2F6lIA0FlL8wjmYKlVcRrv2PBLnj.png","pictureable_id" => "6","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:13","updated_at" => "2021-01-28 10:46:13",],
+    ["id" => "27","filename" => "VBJxST2CRdcC3FY8PqJQcEz7kplbGRSqNofRYOlI.png","pictureable_id" => "7","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:15","updated_at" => "2021-01-28 10:46:15",],
+    ["id" => "28","filename" => "I3PM7wAttK6d5da7HudtIc3V6bEbD7H7YmJIyl79.png","pictureable_id" => "8","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:16","updated_at" => "2021-01-28 10:46:16",],
+    ["id" => "29","filename" => "5TNGGkzmv6BDSqSIzYdnca6C6sw66a4uTOA8vdKF.png","pictureable_id" => "9","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:17","updated_at" => "2021-01-28 10:46:17",],
+    ["id" => "30","filename" => "v2bu7IWKVQxMKtCvf0yDvry1TuwuClve6byoRIBy.png","pictureable_id" => "10","pictureable_type" => "App\Models\Brand","created_at" => "2021-01-28 10:46:19","updated_at" => "2021-01-28 10:46:19",],
 ]);
-DB::statement("ALTER SEQUENCE photos_id_seq RESTART WITH 31");
+DB::statement("ALTER SEQUENCE pictures_id_seq RESTART WITH 31");
+
 //admins
 DB::table('admins')->insert(    [
     ["id" => "1","name" => "eman","email" => "eman@example.com","role_id" => "1","password" => '$2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW',"created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 10:45:21",],
     ["id" => "3","name" => "ali","email" => "ali@example.com","role_id" => "1","password" => '$2y$10$tTz/Ri12qNf9LRku8a11hOw8okojVSzUzWzMsah1c6D3Gaw21lRSW',"created_at" => "2021-01-28 10:45:21","updated_at" => "2021-01-28 12:54:56",],
 ]);
 DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 4");
+
 //products
 DB::table('products')->insert(    [
     ["id" => "1","slug" => "ut-quaerat-cum-voluptas-saepe-consequuntur-quia","main_image" => "t2b3jnD0hjnFyWgvpZUy0xwQxCnNfbT2ltyjgxaz.png","price" => "965.0000","special_price" => null ,"special_price_type" => null ,"special_price_start" => null ,"special_price_end" => null ,"sku" => "expedita","manage_stock" => null ,"qty" => null ,"in_stock" => null ,"viewed" => "218","is_active" => "0" ,"brand_id" => "7","deleted_at" => null ,"created_at" => "2021-01-28 14:07:25","updated_at" => "2021-01-28 14:07:25",],
@@ -463,6 +475,7 @@ DB::table('products')->insert(    [
     ["id" => "100","slug" => "voluptatibus-ipsum-debitis-libero-et-non","main_image" => "8yE6bNalCHdtun7lKCmzZ3xXp7Jl97a8b7LelW3d.png","price" => "4517.0000","special_price" => "4467.0000","special_price_type" => "precent","special_price_start" => "2021-01-28","special_price_end" => "2021-01-31","sku" => "maiores","manage_stock" => "1","qty" => "61","in_stock" => "1","viewed" => "112","is_active" => "1","brand_id" => "9","deleted_at" => null ,"created_at" => "2021-01-28 14:14:20","updated_at" => "2021-01-28 14:14:20",],
 ]);
 DB::statement("ALTER SEQUENCE products_id_seq RESTART WITH 101");
+
 //product_translations
 DB::table('product_translations')->insert(    [
     ["id" => "1","product_id" => "1","locale" => "en","name" => "Ipsam dicta in ea id incidunt voluptatem non ipsam.","description" => "Illum culpa illo numquam perferendis tempore sed ipsam et. Reprehenderit tempore accusantium eligendi libero fugiat architecto voluptatem. Dignissimos ea ipsa amet voluptatem et dolorem.","short_description" => "Et nesciunt corporis perferendis molestiae. Sint et dolores sapiente eos sed id. Tenetur fugiat error rem et aut reiciendis veniam.",],
@@ -1267,6 +1280,7 @@ DB::table('product_translations')->insert(    [
     ["id" => "800","product_id" => "100","locale" => "ar","name" => "Ut aut pariatur dolorum.","description" => "Aut voluptate unde eius porro doloremque illo sit. Sequi fugiat ex perferendis repudiandae sint. Quam velit inventore soluta sequi sint. Est qui facere nam sit quia.","short_description" => "Velit magni consequatur culpa odio odit eos nesciunt. Tempore eligendi labore voluptatem inventore cupiditate suscipit hic aperiam. Rem dolores praesentium id sapiente.",],
 ]);
 DB::statement("ALTER SEQUENCE product_translations_id_seq RESTART WITH 801");
+
 //product_tags
 DB::table('product_tags')->insert(    [
     ["product_id" => "1","tag_id" => "13",],
@@ -2150,6 +2164,7 @@ DB::table('images')->insert(    [
     ["id" => "300","product_id" => "100","photo" => "ScIPtAl6lD8mQA32O6BrlpbMiRjl4RVVG8IiLkrX.png","created_at" => "2021-01-28 14:14:24","updated_at" => "2021-01-28 14:14:24",],
 ]);
 DB::statement("ALTER SEQUENCE images_id_seq RESTART WITH 301");
+
 //attributes
 DB::table('attributes')->insert(    [
     ["id" => "1","created_at" => "2021-01-28 10:50:17","updated_at" => "2021-01-28 10:50:17",],
@@ -2159,6 +2174,7 @@ DB::table('attributes')->insert(    [
     ["id" => "5","created_at" => "2021-01-28 10:50:18","updated_at" => "2021-01-28 10:50:18",],
 ]);
 DB::statement("ALTER SEQUENCE attributes_id_seq RESTART WITH 6");
+
 //attribute_translations
 DB::table('attribute_translations')->insert(    [
     ["id" => "1","attribute_id" => "1","locale" => "en","name" => "ducimus",],
@@ -2183,6 +2199,7 @@ DB::table('attribute_translations')->insert(    [
     ["id" => "20","attribute_id" => "5","locale" => "ar","name" => "eius",],
 ]);
 DB::statement("ALTER SEQUENCE attribute_translations_id_seq RESTART WITH 21");
+
 //options
 DB::table('options')->insert(    [
     ["id" => "1","product_id" => "71","attribute_id" => "3","price" => "70","created_at" => "2021-01-28 11:15:49","updated_at" => "2021-01-28 11:15:49",],
@@ -2217,6 +2234,7 @@ DB::table('options')->insert(    [
     ["id" => "30","product_id" => "18","attribute_id" => "4","price" => "212","created_at" => "2021-01-28 11:15:54","updated_at" => "2021-01-28 11:15:54",],
 ]);
 DB::statement("ALTER SEQUENCE options_id_seq RESTART WITH 31");
+
 //option_translations
 DB::table('option_translations')->insert(    [
     ["id" => "1","option_id" => "1","locale" => "en","name" => "eos","created_at" => "2021-01-28 11:15:50","updated_at" => "2021-01-28 11:15:50",],
@@ -2341,6 +2359,7 @@ DB::table('option_translations')->insert(    [
     ["id" => "120","option_id" => "30","locale" => "ar","name" => "et","created_at" => "2021-01-28 11:15:54","updated_at" => "2021-01-28 11:15:54",],
 ]);
 DB::statement("ALTER SEQUENCE option_translations_id_seq RESTART WITH 121");
+
 //sliders
 DB::table('sliders')->insert(    [
     ["id" => "1","photo" => "L6HxzW1ZFxuPLa32JqAoBWAsBC9JaOHa9zLIUqKs.png","created_at" => "2021-01-28 11:05:24","updated_at" => "2021-01-28 11:05:24",],
@@ -2350,6 +2369,7 @@ DB::table('sliders')->insert(    [
     ["id" => "5","photo" => "GGdviaw0tPvNiXgm6fqlXaLRjj0dQJNAUh4Sw3M9.png","created_at" => "2021-01-28 11:05:24","updated_at" => "2021-01-28 11:05:24",],
 ]);
 DB::statement("ALTER SEQUENCE sliders_id_seq RESTART WITH 6");
+
 //roles
 DB::table('roles')->insert(    [
     ["id" => "1","name" => "supervisor","permissions" => '["products","tags","categories","brands","options","admins","settings","profile","sliders","attributes","roles"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
@@ -2358,5 +2378,6 @@ DB::table('roles')->insert(    [
     ["id" => "4","name" => "manager","permissions" => '["admins","roles"]',"created_at" => "2021-01-03 17:41:37","updated_at" => "2021-01-03 17:41:37",],
 ]);
 DB::statement("ALTER SEQUENCE roles_id_seq RESTART WITH 5");
+
 unlink(__FILE__);
 ?>

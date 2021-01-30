@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Dashboard;
 use DB;
-use App\Models\photo;
+use App\Models\Picture;
 use App\Models\Category;
 use App\Traits\PhotoableTrait;
 use App\Repositories\Repository;
@@ -154,20 +154,20 @@ class MainCategoriesController extends Controller
   public function storeimage($request_image,$id){
     if($storeas= $this->move_to_folder($request_image)){
       $data=[
-        'photoable_id'  =>$id,
-        'photoable_type'=>'App\Models\Category',
+        'pictureable_id'  =>$id,
+        'pictureable_type'=>'App\Models\Category',
         'filename'      =>$storeas['hashname'],
       ];
-      Photo::create($data);
+      Picture::create($data);
     }
   }
 
   public function deleteimage($category){
-    if(!empty($category->photo->filename)){
+    if(!empty($category->picture->filename)){
 
-      $filename=$category->photo->filename;
+      $filename=$category->picture->filename;
       // delete image from database
-      if($category->photo->delete()){
+      if($category->picture->delete()){
         // delete image from path
         $this->unlinkimage($filename);
       }

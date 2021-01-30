@@ -54,7 +54,7 @@
                           <td>
 
                             <img style="width: 150px; height: 100px;"
-                            src="{{brand_img($brand -> photo-> filename)}}">
+                            src="{{brand_img($brand ->picture-> filename)}}">
                           </td>
                           <td>
                             <div class="btn-group" role="group"

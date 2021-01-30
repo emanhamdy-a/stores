@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 class Picture extends Model
 {
   use HasFactory;
-  protected $table = 'photos';
+  protected $table = 'pictures';
   protected $fillable = [
   	'filename',
-  	'photoable_id',
-  	'photoable_type'
+  	'pictureable_id',
+  	'pictureable_type'
   ];
-  public function Pictureable() {
+  public function pictureable() {
     return $this->morphTo();
   }
 }

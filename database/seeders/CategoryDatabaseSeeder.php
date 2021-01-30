@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Photo;
+use App\Models\Picture;
 use App\Models\Category;
 use Faker\Provider\Image;
 use Illuminate\Http\File;
@@ -31,10 +31,10 @@ class CategoryDatabaseSeeder extends Seeder
       $image = Image::image(null,400,450,'category');
       $imageFile = new File($image);
 
-      Photo::factory()->create([
+      Picture::factory()->create([
         'filename' =>Storage::disk('categories')->putFile(null, $imageFile)
-       ,'photoable_id' => $category->id
-       ,'photoable_type' => 'App\Models\Category']);
+       ,'pictureable_id' => $category->id
+       ,'pictureable_type' => 'App\Models\Category']);
      }
   }
 }
