@@ -1,16 +1,16 @@
 <?php
 
 return [
-  'products'  => 'Manage products',
-  'tags'      => 'Manage tags',
-  'categories'=> 'Manage categories',
-  'brands'    => 'Manage brands',
-  'options'   => 'Manage options',
-  'admins'    => 'Manage dashborad admins',
-  'settings'  => 'Manage settings',
-  'profile'   => 'Manage profile',
-  'sliders'   => 'Manage sliders',
-  'attributes'=> 'Manage attributes',
-  'roles'     => 'Manage roles',
+  'products'  => 'اداره المنتجات',
+  'tags'      => 'اداره العلامات الورجعيه',
+  'categories'=> 'اداره الاقسام',
+  'brands'    => 'اداره الماركات',
+  'options'   => 'اداره قيم الخصائص',
+  'admins'    => 'اداره مشرفوا لوحه التحكم',
+  'settings'  => 'اداره الاعدادات',
+  'profile'   => 'اداره الملف الشخصي',
+  'sliders'   => 'اداره الاسليدرز',
+  'attributes'=> 'اداره الخصائص',
+  'roles'     => 'اداره الصلاحيات',
 ];
 

@@ -1,16 +1,16 @@
 <?php
 
 return [
-  'invalid file'    => 'Image must be one of this extends : ' .config('image.extends'),
-  'choose image'    => 'The file must be an image',
-  'max size'        => 'The greater file size is' . config('image.size'),
-  'image required'  =>'Image is required',
+  'invalid file'    => 'يجب ان تكون للصوره احد تلك الامتدادات : ' .config('image.extends'),
+  'choose image'    => 'يجب ان يكون نوع الملف صوره',
+  'max size'        => 'اقصي حجم مسموح للملف هو' . config('image.size'),
+  'image required'  =>'من فضلك اختر الصوره',
   //messges
-  'deleted'  =>'Image deleted successfully',
-  'uploaded'  =>'Image uploaded successfully',
-  'cant upload this number of files'=>'Cant upload this number of files',
-  'delete image'=>'Delete image',
-  'sure to cancel upload'=>'Are you sure you want to cancel upload this images',
-  'cant upload this type of files'=>'Cant upload this type of files',
-  'browser dont support drag drop and multi files'=>'Your browser dont support drag drop and upload multi files',
+  'deleted'  =>'تم حذف الصوره بنجاح',
+  'uploaded'  =>'تم تحميل الصوره بنجاح',
+  'cant upload this number of files'=>'لا يمكن تحيل هذا العدد من الملفات',
+  'delete image'=>'حذف الصوره',
+  'sure to cancel upload'=>'هل انت متاكد مناغاء تحميل هذه الصوره',
+  'cant upload this type of files'=>'لا يمكن تحميل هذا النوع من الملفات',
+  'browser dont support drag drop and multi files'=>'هذا المتصفح لا يدعم السحب والافلات وتعدد الزوجات',
 ];

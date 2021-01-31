@@ -1,15 +1,15 @@
 <?php
 
 return [
-  'settings'            =>   'Settings',
-  'update setting'      =>   'Edit settings',
-  'value required'      =>   'Name field is required',
-  'name'                =>   'Name',
+  'settings'            =>   'الاعدادات',
+  'update setting'      =>   'تعديل الاعدادات',
+  'name'                =>   'الاسم',
   'value'               =>   'Value',
-  'cancel'              =>   'Cancel',
-  'save'                =>   'Save',
-  'updated'             =>   'Setting updated successfully',
-  'error'               =>   'Some thing worng please try again',
+  'cancel'              =>   'الغاء',
+  'save'                =>   'حفظ',
+  'updated'             =>   'تم تعديل الاعدادات بنجاح',
+  'error'               =>   'شيئا ما خطا حدث برجاء المحاوله لاحقا',
+  'value required'      =>   'من فضلك ادخل الاسم',
 ];
 
 

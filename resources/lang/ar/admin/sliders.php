@@ -1,8 +1,8 @@
 <?php
 
 return [
-'cancel'                 =>  'Cancel',
-'sliders photo'          =>  'Sliders photo',
-'upload photos'          =>  'Upload photos',
-'image deleted'   =>   'Slider image deleted',
+'cancel'                 =>  'الغاء',
+'sliders photo'          =>  'صور الاسليدر',
+'upload photos'          =>  'ااضغط لرفع الصور',
+'image deleted'          =>   'تم حذف صوره الاسليدر',
 ];
