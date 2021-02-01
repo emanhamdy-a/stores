@@ -1,94 +1,130 @@
+@if($main_categories_products)
+@foreach($main_categories_products as $category)
 <div class="nov-row  col-lg-12 col-xs-12">
   <div class="nov-row-wrap row">
     <div class="nov-productlist productlist-slider col-xl-12  col-lg-12 col-md-9 col-xs-12 col-md-12 col-lg-12">
       <div class="block block-product clearfix">
         <h2 class="title_block">
-          CATEGORIES
+          {{ $category->name }}
         </h2>
         <div class="block_content">
-          <div id="productlist8936458" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false"
-            data-autoplaytimeout="6000" data-loop="false" data-margin="0" data-dots="false" data-nav="true"
-            data-items="4" data-items_large="3" data-items_tablet="3" data-items_mobile="2">
-            <div class="item  text-center">
-              <div class="product-miniature js-product-miniature item-one first_item" data-id-product="99"
-                data-id-product-attribute="990" itemscope="" itemtype="http://schema.org/Product">
-                <div class="thumbnail-container">
+          <div id="productlist89580" class="product_list grid owl-carousel owl-theme multi-row"
+            data-autoplay="false" data-autoplaytimeout="9000" data-loop="false" data-margin="10" data-dots="false"
+            data-nav="true" data-items="4" data-items_large="3" data-items_tablet="3" data-items_mobile="2">
+            @if($category->products->take(6))
+              @foreach($category->products->take(6) as $product)
+                <div class="item  text-center">
+                  <div class="product-miniature js-product-miniature item-one
+                   first_item" data-id-product="{{ $product->id }}"
+                    data-id-product-attribute="40" itemscope="" itemtype="">
 
-                  <a href="smartphone-tablet/1-40-hummingbird-printed-t-shirt.html#/1-size-s/6-color-taupe"
-                    class="thumbnail product-thumbnail two-image">
-                    <img class="img-fluid image-cover" src="img/hummingbird-printed-t-shirt.jpg" alt=""
-                      data-full-size-image-url="http://demo.bestprestashoptheme.com/savemart/24-large_default/hummingbird-printed-t-shirt.jpg"
-                      width="600" height="600">
-                    <img class="img-fluid image-secondary" src="img/hummingbird-printed-t-shirt.jpg" alt=""
-                      data-full-size-image-url="http://demo.bestprestashoptheme.com/savemart/25-large_default/hummingbird-printed-t-shirt.jpg"
-                      width="600" height="600">
-                  </a>
+                    <div class="thumbnail-container">
 
-                </div>
-
-                <div class="product-description">
-                  <div class="product-groups">
-
-                    <div class="category-title"><a
-                        href="smartphone-tablet/1-hummingbird-printed-t-shirt.html">Smartphone
-                        &amp; Tablet</a></div>
-
-                    <div class="product-comments">
-                      <div class="star_content">
-                        <div class="star star_on"></div>
-                        <div class="star star_on"></div>
-                        <div class="star star_on"></div>
-                        <div class="star star_on"></div>
-                        <div class="star star_on"></div>
-                      </div>
-                      <span>5 review</span>
-                    </div>
-                    <p class="seller_name">
-                      <a title="View seller profile" href="jmarketplace/1_david-james/index.htm">
-                        <i class="fa fa-user"></i>
-                        David James
+                      <a href="#!"
+                        class="thumbnail product-thumbnail two-image">
+                        <img class="img-fluid image-cover"
+                          src="{{ product_img($product->main_image)}}" alt=""
+                          data-full-size-image-url="{{ product_img($product->main_image)}}"
+                          width="600" height="600">
+                        <img class="img-fluid image-secondary"
+                          src="{{ product_img($product->main_image)}}" alt=""
+                          data-full-size-image-url="{{ product_img($product->main_image)}}"
+                          width="600" height="600">
                       </a>
-                    </p>
 
-                    <div class="product-title" itemprop="name"><a
-                        href="smartphone-tablet/1-40-hummingbird-printed-t-shirt.html#/1-size-s/6-color-taupe">Nullam
-                        sed sollicitudin mauris</a></div>
+                    </div>
 
-                    <div class="product-group-price">
+                    <div class="product-description">
+                      <div class="product-groups">
 
-                      <div class="product-price-and-shipping">
+                        <div class="product-comments">
+                          <div class="star_content">
+                            <div class="star star_on"></div>
+                            <div class="star star_on"></div>
+                            <div class="star star_on"></div>
+                            <div class="star star_on"></div>
+                            <div class="star star_on"></div>
+                          </div>
+                          <span>5 review</span>
+                        </div>
 
-                        <span itemprop="price" class="price">£24.00</span>
+                      <p class="seller_name">
+                        <a title="View seller profile" href="#!">
+                          <!-- <i class="fa fa-user"></i> -->
+                          {{ $product->brand->name }}
+                        </a>
+                      </p>
 
+                      <div class="product-title" itemprop="name">
+                        <a href="{{ route('product.details',$product->slug) }}">
+                        {{ Str::limit($product->name,25) }}
+                        </a>
+                      </div>
+
+                      <div class="product-group-price">
+
+                        <div class="product-price-and-shipping">
+                          @if(!empty($product->special_price))
+                            <span itemprop="price" class="price">
+                            {{ $product->special_price }}
+                            </span>
+                            <span class="regular-price">
+                            {{ $product->price}}
+                            </span>
+                          @else
+                            <span itemprop="price" class="price">
+                            {{ $product->price }}
+                            </span>
+                          @endif
+                        </div>
+
+                      </div>
+
+                      </div>
+
+                      <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
+                        itemtype="http://schema.org/Offer">
+                        <form action="" class="formAddToCart"
+                          method="post">
+                          <a class="add-to-cart"
+                            href="#!"
+                            data-slug="{{ $product -> slug }}"
+                            data-product-id="{{$product -> id}}">
+                            <i class="novicon-cart"></i>
+                            <span>Add to cart</span>
+                          </a>
+                        </form>
+
+                        <a class="addToWishlist  wishlistProd_22"
+                          href="#!"
+                          data-product-id="{{$product -> id}}">
+                          <i class="fa fa-heart"></i>
+                          <span>Add to Wishlist</span>
+                        </a>
+
+                        <a href="#!" class="quick-view hidden-sm-down"
+                          data-product-id="{{$product -> id}}"
+                          data-link-action="quickview">
+                          <i class="fa fa-eye"></i>
+                          <span> Quick view</span>
+                        </a>
                       </div>
 
                     </div>
                   </div>
-                  <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
-                    itemtype="http://schema.org/Offer">
-                    <form action="http://demo.bestprestashoptheme.com/savemart/en/cart" method="post"
-                      class="formAddToCart">
-                      <input type="hidden" name="token" value="28add935523ef31c8432825597b9928">
-                      <input type="hidden" name="id_product" value="1">
-                      <a class="add-to-cart" href="#" data-button-action="add-to-cart"><i
-                          class="novicon-cart"></i><span>Add to cart</span></a>
-                    </form>
-
-                    <a class="addToWishlist wishlistProd_1" href="#" data-rel="1"
-                      onclick="WishlistCart('wishlist_block_list', 'add', '1', false, 1); return false;">
-                      <i class="fa fa-heart"></i>
-                      <span>Add to Wishlist</span>
-                    </a>
-                    <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                      <i class="fa fa-search"></i><span> Quick view</span>
-                    </a>
-                  </div>
                 </div>
-              </div>
-            </div>
+              @endforeach
+            @endif
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+@foreach($category->products->take(6) as $product)
+  @include('front.includes.product-details',$product)
+@endforeach
+
+@endforeach
+@endif
+

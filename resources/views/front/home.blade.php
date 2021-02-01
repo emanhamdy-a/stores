@@ -163,29 +163,40 @@
                             </div>
                           </div>
 
-                          <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
-                            itemtype="http://schema.org/Offer">
-                            <form action="" method="post"
-                              class="formAddToCart">
-                              <input type="hidden" name="token" value="28add935523ef131c8432825597b9928">
-                              <input type="hidden" name="id_product" value="12">
-                              <a class="add-to-cart" href="#" data-button-action="add-to-cart"><i
-                                  class="novicon-cart"></i><span>Add to cart</span></a>
+                          <div
+                            class="product-buttons d-flex justify-content-center"
+                            itemprop="offers" itemscope="" itemtype="">
+
+                            <form action="" class="formAddToCart"
+                              method="post">
+                              <a class="add-to-cart"
+                                href="#!"
+                                data-slug="{{ $flash_deal -> slug }}">
+                                <i class="novicon-cart"></i>
+                                <span>Add to cart</span>
+                              </a>
                             </form>
 
-                            <a class="addToWishlist wishlistProd_12" href="#" data-rel="12"
-                              onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;">
+                            <a class="addToWishlist  wishlistProd_22"
+                              href="#!"
+                              data-product-id="{{$flash_deal -> id}}">
                               <i class="fa fa-heart"></i>
                               <span>Add to Wishlist</span>
                             </a>
-                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                              <i class="fa fa-search"></i><span> Quick view</span>
+
+                            <a href="#!" class="quick-view hidden-sm-down"
+                              data-product-id="{{$flash_deal -> id}}"
+                              data-link-action="quickview">
+                              <i class="fa fa-eye"></i>
+                              <span> Quick view</span>
                             </a>
+
                           </div>
 
                         </div>
                         <div class="countdownfree d-flex"
-                         data-date="2021/12/30">
+                         data-date="{{$flash_deal -> special_price_end}}">
+                         {{$flash_deal -> special_price_end}}
                         </div>
 
                       </div>
@@ -195,6 +206,9 @@
                 </div>
               </div>
             </div>
+            <?php $product = $flash_deal; ?>
+            @include('front.includes.product-details',$product)
+
             @endif
 
             @include('front.home_includes.new_arrivals')
@@ -290,4 +304,19 @@
     </div>
   </section>
 </div>
+<!-- url: "{{Route('wishlist.store') }}",
+'productId': $(this).attr('data-product-id'),
+url: "{{route('site.cart.add')}}",
+'product_slug': $(this).attr('data-slug'), -->
+
+@include('front.includes.not-logged')
+@include('front.includes.alert')
+@include('front.includes.alert2')
+
+@stop
+
+@section('scripts')
+
+ @include('front.includes.js.addToCartAndWishlist')
+
 @stop

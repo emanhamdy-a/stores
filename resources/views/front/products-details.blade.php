@@ -40,7 +40,7 @@
                 <section class="page-content" id="content">
                   <div class="images-container list_thumb">
                     <div class="product-cover">
-                      <img class="js-qv-product-cover img-fluid" src="{{$product -> images[0] -> photo ?? ''}}" alt=""
+                      <img class="js-qv-product-cover img-fluid" src="{{ product_img($product->main_image)}}" alt=""
                         title="" style="width:100%;" itemprop="image">
                       <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
                         <i class="fa fa-expand"></i>
@@ -51,13 +51,12 @@
                       <div class="row">
                         @isset($product -> images)
                         @foreach($product -> images as $image)
-                        <div
-                         class="item thumb-container col-md-6 col-xs-12 pt-30">
-                          <img class="img-fluid thumb js-thumb  selected " data-image-medium-src="{{ product_img($image -> photo)}}"
+                        <div class="item thumb-container col-md-6 col-xs-12 pt-30">
+                          <img class="img-fluid thumb js-thumb  selected "
+                            data-image-medium-src="{{ product_img($image -> photo)}}"
                             data-image-large-src="{{ product_img($image -> photo)}}"
-                            src="{{ product_img($image -> photo)}}" alt="" title=""
-                            itemprop="image">
-                          </div>
+                            src="{{ product_img($image -> photo)}}" alt="" title="" itemprop="image">
+                        </div>
                         @endforeach
                         @endisset
                       </div>
@@ -77,7 +76,7 @@
 
                       <input type="hidden" name="product_slug" value="{{$product -> slug }}">
 
-                      <input type="submit" value='add-to-cart'>
+                      <!-- <input type="submit" value='add-to-cart'> -->
                       <div class="productdetail-right col-12 col-lg-6 col-md-6">
                         <div class="product-reviews">
                           <div id="product_comments_block_extra">
@@ -156,7 +155,7 @@
                           <div class="product-add-to-cart in_border">
                             <div class="add">
                               <a class="btn btn-primary add-to-cart" id="addToCart"
-                                data-link-action="{{$product -> slug}}"
+                                data-slug="{{$product -> slug}}"
                                 href="{{route('site.cart.add',$product -> slug )}}">
                                 <div class="icon-cart">
                                   <i class="shopping-cart"></i>
@@ -221,6 +220,7 @@
             </div>
           </div>
         </div>
+
         <div class="product-detail-middle">
           <div class="container">
             <div class="row">
@@ -401,82 +401,141 @@
           <div class="container">
 
             <section class="relate-product product-accessories clearfix">
-              <h3 class="h5 title_block">Related products<span class="sub_title">Hand-picked arrivals from the best
+              <h3
+                class="h5 title_block">Related products<span class="sub_title">Hand-picked arrivals from the best
                   designer</span>
               </h3>
-              @if( isset($related_products) && count($related_products) > 0 )
-              @foreach($related_products as $_product)
-              <div class="products product_list grid owl-carousel owl-theme" data-autoplay="true"
-                data-autoplaytimeout="6000" data-loop="true" data-items="5" data-margin="0" data-nav="true"
-                data-dots="false" data-items_mobile="2">
+              <div class="block_content">
+                <div id="productlist2289580" class="product_list grid owl-carousel owl-theme multi-row"
+                  data-autoplay="false" data-autoplaytimeout="9000" data-loop="false" data-margin="15" data-dots="false"
+                  data-nav="true" data-items="4" data-items_large="3" data-items_tablet="3" data-items_mobile="2">
+                  @if( isset($related_products) && count($related_products) > 0 )
+                  <?php $i=0 ?>
+                  @foreach($related_products as $product)
+                    @if(!($i % 4))
+                    <div class="item  text-center">
+                    @endif
 
-                <div class="item  text-center">
-                  <div class="product-miniature js-product-miniature item-two first_item"
-                    data-id-product="{{$_product -> id }}" data-id-product-attribute="60" itemscope=""
-                    itemtype="http://schema.org/Product">
-                    <div class="product-cat-content">
-                      <div class="category-title">
-                        <div class="product-title" itemprop="name"><a
-                            href="{{route('product.details',$_product -> slug)}}">{{$_product -> name}}</a></div>
+                    <div class="product-miniature js-product-miniature item-one first_item" data-id-product="{{ $product->id }}"
+                      data-id-product-attribute="40" itemscope="" itemtype="">
 
-                      </div>
                       <div class="thumbnail-container">
 
-                        <a href="{{route('product.details',$_product -> slug)}}"
+                        <a href="#!"
                           class="thumbnail product-thumbnail two-image">
-                          <img class="img-fluid image-cover" src="{{$_product -> images[0] -> photo ?? ''}}" alt=""
-                            data-full-size-image-url="{{$product -> images[0] -> photo ?? ''}}" width="600"
-                            height="600">
-                          <img class="img-fluid image-secondary" src="{{$_product -> images[0] -> photo ?? ''}}" alt=""
-                            data-full-size-image-url="{{$_product -> images[0] -> photo ?? ''}}" width="600"
-                            height="600">
+                          <img class="img-fluid image-cover"
+                            src="{{ product_img($product->main_image)}}" alt=""
+                            data-full-size-image-url="{{ product_img($product->main_image)}}"
+                            width="600" height="600">
+                          <img class="img-fluid image-secondary"
+                            src="{{ product_img($product->main_image)}}" alt=""
+                            data-full-size-image-url="{{ product_img($product->main_image)}}"
+                            width="600" height="600">
                         </a>
 
                       </div>
+
                       <div class="product-description">
                         <div class="product-groups">
-                          <div class="product-group-price">
-                            <div class="product-price-and-shipping">
-                              <span itemprop="price" class="price">
-                                {{$_product -> special_price ?? $_product -> price }}
-                              </span>
-                              @if($_product -> special_price)
-                              <span class="regular-price">{{$_product -> price}}</span>
-                              @endif
-                            </div>
-                          </div>
+
                           <div class="product-comments">
                             <div class="star_content">
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
+                              <div class="star star_on"></div>
+                              <div class="star star_on"></div>
+                              <div class="star star_on"></div>
+                              <div class="star star_on"></div>
+                              <div class="star star_on"></div>
                             </div>
-                            <span>0 review</span>
+                            <span>5 review</span>
                           </div>
-                        </div>
-                        <div class="product-buttons d-flex justify-content-start" itemprop="offers" itemscope=""
-                          itemtype="http://schema.org/Offer">
 
-                          <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$_product -> id}}">
-                            <a href="#" class="quick-view hidden-sm-down" data-product-id="{{$_product -> id}}">
-                              <i class="fa fa-search"></i><span> Quick view</span>
-                            </a>
+                        <p class="seller_name">
+                          <a title="View seller profile" href="#!">
+                            <!-- <i class="fa fa-user"></i> -->
+                            {{ $product->brand->name }}
+                          </a>
+                        </p>
+
+                        <div class="product-title" itemprop="name">
+                          <a href="{{ route('product.details',$product->slug) }}">
+                          {{ Str::limit($product->name,25) }}
+                          </a>
                         </div>
+
+                        <div class="product-group-price">
+
+                          <div class="product-price-and-shipping">
+                            @if(!empty($product->special_price))
+                              <span itemprop="price" class="price">
+                              {{ $product->special_price }}
+                              </span>
+                              <span class="regular-price">
+                              {{ $product->price}}
+                              </span>
+                            @else
+                              <span itemprop="price" class="price">
+                              {{ $product->price }}
+                              </span>
+                            @endif
+                          </div>
+
+                        </div>
+
+                        </div>
+
+                        <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
+                          itemtype="http://schema.org/Offer">
+                          <form action="" class="formAddToCart"
+                            method="post">
+                            <a class="add-to-cart"
+                              href="#!"
+                              data-slug="{{ $product -> slug }}"
+                              data-product-id="{{$product -> id}}">
+                              <i class="novicon-cart"></i>
+                              <span>Add to cart</span>
+                            </a>
+                          </form>
+
+                          <a class="addToWishlist  wishlistProd_22"
+                            href="#!"
+                            data-product-id="{{$product -> id}}">
+                            <i class="fa fa-heart"></i>
+                            <span>Add to Wishlist</span>
+                          </a>
+
+                          <a href="#!" class="quick-view hidden-sm-down"
+                            data-product-id="{{$product -> id}}"
+                            data-link-action="quickview">
+                            <i class="fa fa-eye"></i>
+                            <span> Quick view</span>
+                          </a>
+                        </div>
+
                       </div>
                     </div>
-                  </div>
+
+                    @if($i % 4 == 3)
+                    </div>
+                    @endif
+                    <?php $i++ ?>
+                  @endforeach
+                  @endif
                 </div>
-                @endforeach
-                @endif
+              </div>
             </section>
           </div>
         </div>
+
       </section>
     </div>
   </div>
 </div>
+@if($related_products)
+  @foreach($related_products as $product)
+    @include('front.includes.product-details',$product)
+  @endforeach
+@endif
+
 @include('front.includes.not-logged')
 @include('front.includes.alert')
 <!-- we can use only one with dynamic text -->
@@ -525,8 +584,8 @@ $(document).on('click', '.addToWishlist', function(e) {
   });
 
 });
-
-$(document).on('click', '#addToCart', function(e) {
+// #addToCart
+$(document).on('click', '.add-to-cart', function(e) {
   e.preventDefault();
 
   @guest()
@@ -535,9 +594,9 @@ $(document).on('click', '#addToCart', function(e) {
 
   $.ajax({
     type: 'post',
-    url: $(this).attr('href'),
+    url: "{{route('site.cart.add')}}",
     data: {
-      'product_slug': "{{$product -> slug}}",
+      'product_slug': $(this).attr('data-slug'),
       'qty': $('#quantity_wanted').val(),
     },
     success: function(data) {

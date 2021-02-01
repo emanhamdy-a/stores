@@ -20,12 +20,12 @@ class HomeController extends Controller
       $data['flash_deal'] = Product::where('special_price' , '!=' ,null)
         ->latest()->first() ?? Product::orderBy('price' , 'desc')->first();
 
-      $data['newProducts'] = Product::orderBy('id' , 'desc')->take(10);
+      $data['newProducts'] = Product::latest()->take(10)->get();
 
-      $data['trendes'] = Product::orderBy('viewed' , 'desc')->take(10);
+      $data['trendes'] = Product::orderBy('viewed' , 'desc')->take(30)->get();
 
       $data['bestSellers'] = Product::where('special_price' , '!=' ,null)
-      ->latest()->take(10) ?? Product::orderBy('price' , 'desc')->take(10);
+      ->latest()->take(7)->get() ?? Product::orderBy('price' , 'desc')->take(7)->get();
 
       $data['categories'] = Category::parent()->select('id', 'slug')->with(['childrens' => function ($q) {
          $q->select('id', 'parent_id', 'slug');
@@ -33,6 +33,8 @@ class HomeController extends Controller
             $qq->select('id', 'parent_id', 'slug');
          }]);
       }])->get();
+
+      $data['main_categories_products'] = Category::parent()->take(6)->get();
 
       return view('front.home', $data);
     }

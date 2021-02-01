@@ -1,5 +1,6 @@
-<div id="" class="modal fade quickview in quickview-modal-product-details-{{$product -> id}}" tabindex="-1"
-  role="dialog" style="display: hidden;">
+
+<div id=""
+  class=" modal fade quickview in quickview-modal-product-details-{{$product -> id}}" tabindex="-1" role="dialog" style="display: hidden;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +12,8 @@
           <div class="col-md-5 col-sm-5 divide-right">
             <div class="images-container bottom_thumb">
               <div class="product-cover">
-                <img class="js-qv-product-cover img-fluid" src="{{$product -> images[0] -> photo ?? ''}}" alt=""
+                <img class="js-qv-product-cover img-fluid"
+                  src="{{ product_img($product->main_image)}}" alt=""
                   title="" style="width:100%;" itemprop="image">
                 <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
                   <i class="fa fa-expand"></i>
