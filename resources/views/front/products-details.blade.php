@@ -11,7 +11,9 @@
         <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
           <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
             <a itemprop="item" href="{{route('home') }}">
-              <span itemprop="name">Home</span>
+              <span itemprop="name">
+              {{ __('front\product_details.home') }}
+              </span>
             </a>
             <meta itemprop="position" content="1">
           </li>
@@ -80,7 +82,8 @@
                       <div class="productdetail-right col-12 col-lg-6 col-md-6">
                         <div class="product-reviews">
                           <div id="product_comments_block_extra">
-                            <div class="comments_note">
+
+                            <!-- <div class="comments_note">
                               <span>Review: </span>
                               <div class="star_content clearfix">
                                 <div class="star star_on"></div>
@@ -89,13 +92,18 @@
                                 <div class="star star_on"></div>
                                 <div class="star star_on"></div>
                               </div>
-                            </div>
+                            </div> -->
 
                             <div class="comments_advices">
-                              <a href="#" class="comments_advices_tab"><i class="fa fa-comments"></i>Read reviews
-                                (1)</a>
-                              <a class="open-comment-form" data-toggle="modal" data-target="#new_comment_form"
-                                href="#"><i class="fa fa-edit"></i>Write your review</a>
+                              <!-- <a href="#" class="comments_advices_tab"><i class="fa fa-comments"></i>
+                              {{ __('front\product_details.read reviews') }}
+                              </a> -->
+                               <!-- (1) -->
+                              <!-- <a class="open-comment-form"
+                               data-toggle="modal"  data-target="#new_comment_form"
+                                href="#"><i class="fa fa-edit"></i>
+                                {{ __('front\product_details.write your review') }}
+                              </a> -->
                             </div>
                           </div>
                           <!--  /Module NovProductComments -->
@@ -115,7 +123,7 @@
                               </div>
                             </div>
                             <div class="tax-shipping-delivery-label">
-                              Tax included
+                            {{ __('front\product_details.tax included') }}
                             </div>
                           </div>
 
@@ -128,7 +136,9 @@
                             <span itemprop="sku" content="demo_1">{{$product -> sku ?? '--'}}</span>
                           </div>
                           <div class="pro-cate">
-                            <label class="control-label">Categories:</label>
+                            <label class="control-label">
+                            {{ __('front\product_details.categories') }}
+                            </label>
 
                             @isset($product -> categories)
                             <div>
@@ -140,7 +150,9 @@
                             @endisset
                           </div>
                           <div class="pro-tag">
-                            <label class="control-label">Tags:</label>
+                            <label class="control-label">
+                            {{ __('front\product_details.tags') }}
+                            </label>
                             @isset($product -> tags)
                             <div>
                               @foreach($product -> tags as $tag )
@@ -160,20 +172,28 @@
                                 <div class="icon-cart">
                                   <i class="shopping-cart"></i>
                                 </div>
-                                <span>Add to cart</span>
+                                <span>
+                                {{ __('front\product_details.add to cart') }}
+                                </span>
                               </a>
                             </div>
 
                             <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                               <i class="fa fa-heart"></i>
-                              <span>Add to Wishlist</span>
+                              <span>
+                              {{ __('front\product_details.add to wishlist')}}
+                              </span>
                             </a>
 
                             <div class="clearfix"></div>
 
                             <div id="product-availability" class="info-stock mt-20">
-                              <label class="control-label">Availability:</label>
-                              {{$product -> in_stock ? 'in stock' : 'out of stock'}}
+                              <label class="control-label">
+                              {{ __('front\product_details.availability') }}
+                              </label>
+                              {{$product -> in_stock ?
+                               __('front\product_details.in stock') :
+                               __('front\product_details.out of stock')}}
                             </div>
                           </div>
                         </div>
@@ -185,18 +205,23 @@
 
 
                         <div class="product-quantity">
-                          <span class="control-label">Quantity : </span>
+                          <span class="control-label">
+                          {{ __('front\product_details.quantity') }}
+                          </span>
                           <div class="qty">
                             <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group" min="1">
                           </div>
                         </div>
 
+                        <!-- attributes -->
 
                         <div class="product-variants in_border">
-                          @if(isset($product_attributes) && count($product_attributes) > 0 )
+                          @if(isset($product_attribute) && count($product_attributes) > 0 )
                           @foreach($product_attributes as $attribute)
                           <div class="product-variants-item">
-                            <span class="control-label">{{$attribute -> name}} : </span>
+                            <span class="control-label">
+                              {{$attribute -> name}} :
+                            </span>
                             @if(isset($attribute -> options) && count($attribute -> options) > 0 )
                             <select id="group_1" data-product-attribute="1" name="{{$attribute -> name}}">
                               @foreach($attribute -> options as $option)
@@ -211,6 +236,7 @@
                           @endforeach
                           @endif
                         </div>
+
                       </div>
                     </form>
 
@@ -228,33 +254,34 @@
                 <ul class="nav nav-tabs">
 
                   <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" aria-expanded="true" href="#product-details">Product
-                      Detail</a>
+                    <a class="nav-link active" data-toggle="tab" aria-expanded="true" href="#product-details">
+                    {{ __('front\product_details.product details') }}
+                    </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#reviews">Write Your Own
-                      Review<span class='count-comment'> (1)</span></a>
-                  </li>
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#reviews">
+                    {{ __('front\product_details.write your own review') }}
+                    <span class='count-comment'> (1)</span>
+                    </a>
+                  </li> --><!--  -->
 
                 </ul>
 
                 <div class="tab-content" id="tab-content">
 
                   <div class="tab-pane fade active in" id="product-details">
-
                     <section class="product-features">
                       <h3>{!! $product -> description !!}</h3>
-
                     </section>
-
-
                   </div>
 
-                  <div class="tab-pane fade in" id="reviews">
+                  <!-- <div class="tab-pane fade in" id="reviews">
                     <div id="product_comments_block_tab">
                       <div class="comment clearfix">
                         <div class="comment_author">
-                          <span>Grade&nbsp</span>
+                          <span>
+                          {{ __('front\product_details.grade') }}
+                          </span>
                           <div class="star_content clearfix">
                             <div class="star star_on"></div>
                             <div class="star star_on"></div>
@@ -270,20 +297,21 @@
                         </div>
                         <div class="comment_details">
                           <h4>fsfdfs</h4>
-                          <p>fdfsd</p>
+                          <p>fdfsdmmm mmmmm mmhgjyg y uy</p>
                           <ul>
                             <li>1 out of 2 people found this review useful.</li>
                           </ul>
                         </div>
                       </div>
                     </div>
+
                     <p class="text-center mt-10">
                       <a id="new_comment_tab_btn" class="open-comment-form btn btn-default" data-toggle="modal"
-                        data-target="#new_comment_form" href="#">Write
-                        your review !</a>
+                        data-target="#new_comment_form" href="#">
+                        {{ __('front\product_details.write your review') }}
+                      </a>
                     </p>
-
-                  </div>
+                  </div> -->
 
 
                   <div class="modal fade in" id="new_comment_form" tabindex="-1" role="dialog"
@@ -291,9 +319,13 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h4 class="modal-title text-xs-center"><i class="fa fa-edit"></i> Write your review</h4>
+                          <h4 class="modal-title text-xs-center"><i class="fa fa-edit"></i>
+                          {{ __('front\product_details.write your review') }}
+                          </h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="material-icons close">close</i>
+                            <i class="material-icons close">
+                            </i>
+                            {{ __('front\product_details.close') }}
                           </button>
                         </div>
                         <div class="modal-body">
@@ -301,18 +333,14 @@
                           <form id="id_new_comment_form" action="#">
                             <div class="product row no-gutters">
                               <div class="product-image col-4">
-                                <img class="img-fluid" src="../../24-medium_default/hummingbird-printed-t-shirt.jpg"
-                                  height="" width="" alt="Nullam sed sollicitudin mauris">
+                                <img class="img-fluid"
+                                src="{{ product_img($product->main_image) }}"
+                                  height="" width="" >
                               </div>
                               <div class="product_desc col-8">
-                                <p class="product_name">Nullam sed sollicitudin
-                                  mauris</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer
-                                  adipiscing elit. Aenean commodo ligula eget
-                                  dolor. Aenean massa. Cum sociis natoque
-                                  penatibus et magnis dis parturient montes,
-                                  nascetur ridiculus mus. Donec quam felis,
-                                  ultricies nec, pellentesque eu, pretium .</p>
+                                <p class="product_name">
+                                {{ $product->name }}</p>
+                                <p>{{ $product->description }}</p>
                               </div>
                             </div>
                             <div class="new_comment_form_content">
@@ -321,7 +349,9 @@
                               </div>
                               <ul id="criterions_list">
                                 <li>
-                                  <label>Quality</label>
+                                  <label>
+                                    {{ __('front\product_details.quality') }}
+                                  </label>
                                   <div class="star_content">
                                     <input class="star" type="radio" name="criterion[1]" value="1">
                                     <input class="star" type="radio" name="criterion[1]" value="2">
@@ -332,23 +362,31 @@
                                   <div class="clearfix"></div>
                                 </li>
                               </ul>
-                              <label for="comment_title">Title for your review<sup class="required">*</sup></label>
+                              <label for="comment_title">
+                              {{ __('front\product_details.title for your review') }}
+                              <sup class="required">*</sup></label>
                               <input id="comment_title" name="title" type="text" value="">
 
-                              <label for="content">Your review<sup class="required">*</sup></label>
-                              <textarea id="content" name="content"></textarea>
-
-                              <label>Your name<sup class="required">*</sup></label>
+                              <label for="content">
+                              {{ __('front\product_details.your review') }}
+                               <sup class="required">*</sup>
+                              </label>
+                              <textarea id="content" name="content">
+                              </textarea>
+                              <label>
+                              {{ __('front\product_details.your name') }}
+                              <sup class="required">*</sup>
+                              </label>
                               <input id="commentCustomerName" name="customer_name" type="text" value="">
-
                               <div id="new_comment_form_footer">
                                 <input id="id_product_comment_send" name="id_product" type="hidden" value='1'>
                                 <div class="fl"><sup class="required">*</sup>
-                                  Required fields
+                                  {{ __('front\product_details.required fields') }}
                                 </div>
                                 <div class="fr">
                                   <button id="submitNewMessage" data-dismiss="modal" aria-label="Close"
-                                    class="btn btn-primary" name="submitMessage" type="submit">Send
+                                    class="btn btn-primary" name="submitMessage" type="submit">
+                                  {{ __('front\product_details.send') }}
                                   </button>
                                 </div>
                               </div>
@@ -370,22 +408,34 @@
                       <div class="policy-row d-flex">
                         <div class="icon-policy"><i class="noviconpolicy noviconpolicy-1">1</i></div>
                         <div class="policy-content">
-                          <div class="policy-name">Free Delivery</div>
-                          <div class="policy-des">From $ 250</div>
+                          <div class="policy-name">
+                            {{ __('front\product_details.free delivery') }}
+                           </div>
+                          <div class="policy-des">
+                          {{ __('front\product_details.free delivery text') }}
+                          </div>
                         </div>
                       </div>
                       <div class="policy-row d-flex">
                         <div class="icon-policy"><i class="noviconpolicy noviconpolicy-2">2</i></div>
                         <div class="policy-content">
-                          <div class="policy-name">Money Back</div>
-                          <div class="policy-des">Guarantee</div>
+                          <div class="policy-name">
+                          {{ __('front\product_details.money back') }}
+                          </div>
+                          <div class="policy-des">
+                          {{ __('front\product_details.money back text') }}
+                          </div>
                         </div>
                       </div>
                       <div class="policy-row d-flex">
                         <div class="icon-policy"><i class="noviconpolicy noviconpolicy-3">3</i></div>
                         <div class="policy-content">
-                          <div class="policy-name">Authenticity</div>
-                          <div class="policy-des">100% guaranteed</div>
+                          <div class="policy-name">
+                          {{ __('front\product_details.authenticity') }}
+                          </div>
+                          <div class="policy-des">
+                          {{ __('front\product_details.authenticity text') }}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -401,9 +451,8 @@
           <div class="container">
 
             <section class="relate-product product-accessories clearfix">
-              <h3
-                class="h5 title_block">Related products<span class="sub_title">Hand-picked arrivals from the best
-                  designer</span>
+              <h3 class="h5 title_block">
+                {{ __('front\product_details.related products') }}
               </h3>
               <div class="block_content">
                 <div id="productlist2289580" class="product_list grid owl-carousel owl-theme multi-row"
@@ -438,7 +487,7 @@
                       <div class="product-description">
                         <div class="product-groups">
 
-                          <div class="product-comments">
+                          <!-- <div class="product-comments">
                             <div class="star_content">
                               <div class="star star_on"></div>
                               <div class="star star_on"></div>
@@ -447,7 +496,7 @@
                               <div class="star star_on"></div>
                             </div>
                             <span>5 review</span>
-                          </div>
+                          </div> -->
 
                         <p class="seller_name">
                           <a title="View seller profile" href="#!">
@@ -492,7 +541,9 @@
                               data-slug="{{ $product -> slug }}"
                               data-product-id="{{$product -> id}}">
                               <i class="novicon-cart"></i>
-                              <span>Add to cart</span>
+                              <span>
+                              {{ __('front\product_details.add to cart') }}
+                              </span>
                             </a>
                           </form>
 
@@ -500,14 +551,18 @@
                             href="#!"
                             data-product-id="{{$product -> id}}">
                             <i class="fa fa-heart"></i>
-                            <span>Add to Wishlist</span>
+                            <span>
+                            {{ __('front\product_details.add to wishlist') }}
+                            </span>
                           </a>
 
                           <a href="#!" class="quick-view hidden-sm-down"
                             data-product-id="{{$product -> id}}"
                             data-link-action="quickview">
                             <i class="fa fa-eye"></i>
-                            <span> Quick view</span>
+                            <span>
+                            {{ __('front\product_details.quick view') }}
+                            </span>
                           </a>
                         </div>
 
@@ -538,76 +593,9 @@
 
 @include('front.includes.not-logged')
 @include('front.includes.alert')
-<!-- we can use only one with dynamic text -->
 @include('front.includes.alert2')
 @stop
 
 @section('scripts')
-<script>
-$(document).on('click', '.quick-view', function() {
-  $('.quickview-modal-product-details-' + $(this).attr('data-product-id')).css("display", "block");
-});
-$(document).on('click', '.close', function() {
-  $('.quickview-modal-product-details-' + $(this).attr('data-product-id')).css("display", "none");
-
-  $('.not-loggedin-modal').css("display", "none");
-  $('.alert-modal').css("display", "none");
-  $('.alert-modal2').css("display", "none");
-});
-
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-
-$(document).on('click', '.addToWishlist', function(e) {
-  e.preventDefault();
-
-  @guest()
-  $('.not-loggedin-modal').css('display', 'block');
-  @endguest
-
-
-  $.ajax({
-    type: 'post',
-    url: "{{Route('wishlist.store') }}",
-    data: {
-      'productId': $(this).attr('data-product-id'),
-    },
-    success: function(data) {
-      if (data.wished)
-        $('.alert-modal').css('display', 'block');
-      else
-        $('.alert-modal2').css('display', 'block');
-    }
-  });
-
-});
-// #addToCart
-$(document).on('click', '.add-to-cart', function(e) {
-  e.preventDefault();
-
-  @guest()
-  $('.not-loggedin-modal').css('display', 'block');
-  @endguest
-
-  $.ajax({
-    type: 'post',
-    url: "{{route('site.cart.add')}}",
-    data: {
-      'product_slug': $(this).attr('data-slug'),
-      'qty': $('#quantity_wanted').val(),
-    },
-    success: function(data) {
-      $('.alert-text').html(data);
-      $('.alert-modal').css('display', 'block');
-    },
-    error: function() {
-
-    }
-  });
-});
-</script>
-
+  @include('front.includes.js.addToCartAndWishlist')
 @stop

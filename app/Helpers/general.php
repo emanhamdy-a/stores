@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Category;
+
 define('PAGINATION_COUNT',50);
 
 define('MYFATOORAHBASEURL',"https://apitest.myfatoorah.com");
@@ -12,6 +15,16 @@ if (!function_exists('getFolder')) {
   }
 }
 
+
+if (!function_exists('cats_menu')) {
+	function cats_menu($link) {
+    if(Request::segment(2) == $link && $link == ''){
+      return ['active', 'act'];
+    }else{
+      return ['', ''];
+    }
+	}
+}
 
 if (!function_exists('active_menu')) {
 	function active_menu($link,$req_seg=null) {
@@ -41,5 +54,17 @@ if (!function_exists('active_menu')) {
 if (!function_exists('getLang')) {
   function getLang() {
     return app()->getLocale();
+  }
+}
+
+if (!function_exists('main_child_cats')) {
+  function main_child_cats(){
+    return $categories=Category::parent()->select('id', 'slug')->with(['childrens' =>
+     function ($q) {
+      $q->select('id', 'parent_id', 'slug');
+      $q->with(['childrens' => function ($qq) {
+         $qq->select('id', 'parent_id', 'slug');
+      }]);
+    }])->get();
   }
 }

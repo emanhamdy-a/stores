@@ -16,7 +16,7 @@ $.ajaxSetup({
   }
 });
 
-$(document).on('click', '.addToWishlist', function(e) {
+$(document).on('click', '.addToWishlist:not(.removeFromWishlist)', function(e) {
   e.preventDefault();
 
   @guest()
@@ -55,7 +55,9 @@ $(document).on('click', '.add-to-cart', function(e) {
     type: 'post',
     url: "{{route('site.cart.add')}}",
     data: {
+      'product_id': $(this).attr('data-product-id'),
       'product_slug': $(this).attr('data-slug'),
+      'qty': $('#quantity_wanted').val(),
     },
     success: function(data) {
       console.log(data);

@@ -2,9 +2,10 @@
 
 return [
 
-  //FLASH DEALS
   'flash deals'                 => 'صفقه مميزه',
-
+  'trending'                    => 'تريندات',
+  'new arrival'                => 'احدث المنتجات',
+  'best sellers'                => 'الاكثر مبيعا',
   // banners
   'free delivery'               => 'التوصيل المجاني يبدا من $250',
   'free delivery text'          => 'لوريم ايبسوم دولار سيت أميت , أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور',

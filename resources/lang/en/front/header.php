@@ -1,0 +1,21 @@
+<?php
+return [
+  'call customer service'   =>  'Call customer services :',
+  'email'                   =>  'ُEmail :',
+  'logout'                  =>  'Logout',
+  'login'                   =>  'Login',
+  'profile'                 =>  'Profile',
+  'register'                =>  'Register',
+  'my wishlist'             =>  'My Wishlists',
+  'my cart'                 =>  'My Cart',
+  'shop by categories'      =>  'SHOP BY CATEGORIES',
+  'home'                    => 'Home',
+  'search'                  => 'Search',
+  'all categories'          => 'All Categories',
+  'categories'              => 'CATEGORIES',
+  'pages'                   => 'Pages',
+  'products'                => 'Products',
+  'cart'                    => 'Cart',
+  'wishlist'                => 'Wishlist',
+  'profile'                 => 'Profile',
+];

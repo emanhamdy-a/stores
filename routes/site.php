@@ -79,7 +79,7 @@ Route::group([
     Route::group(['middleware' => 'verifyUser'], function () {
       Route::get('profile', function () {
           return 'You Are Authenticated ';
-      });
+      })->name('profile');
     });
 
   });

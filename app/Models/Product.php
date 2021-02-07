@@ -59,11 +59,11 @@ class Product extends Model
      * @var array
      */
     protected $dates = [
-        'special_price_start',
-        'special_price_end',
-        'start_date',
-        'end_date',
-        'deleted_at',
+      'special_price_start',
+      'special_price_end',
+      'start_date',
+      'end_date',
+      'deleted_at',
     ];
 
     /**
@@ -127,11 +127,6 @@ class Product extends Model
       return $this->hasMany(Image::class, 'product_id');
     }
 
-    public function imagePath($val)
-    {
-        return $val ? asset('images/products/'.$val) : '';
-    }
-
     public function hasStock($quantity)
     {
       return $this->qty >= $quantity;
@@ -145,6 +140,11 @@ class Product extends Model
     public function inStock()
     {
       return $this->qty >= 1;
+    }
+
+    public function isNew()
+    {
+      return strtotime($this->created_at) >= strtotime('-7 days') ? true : '';
     }
 
     public function getTotal($converted = true)

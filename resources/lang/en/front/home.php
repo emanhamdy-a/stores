@@ -2,8 +2,10 @@
 
 return [
 
-  //FLASH DEALS
   'flash deals'                 => 'FLASH DEALS',
+  'trending'                    => 'trending',
+  'new arrival'                => 'new arrivall',
+  'best sellers'                => 'best sellers',
 
   // banners
   'free delivery'               => 'Free Delivery From $ 250',

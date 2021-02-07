@@ -15,6 +15,7 @@ class HomeController extends Controller
     {
       $data = [];
 
+      // $data['sliders'] = Slider::all();
       $data['sliders'] = Slider::get(['photo']);
 
       $data['flash_deal'] = Product::where('special_price' , '!=' ,null)
@@ -26,13 +27,6 @@ class HomeController extends Controller
 
       $data['bestSellers'] = Product::where('special_price' , '!=' ,null)
       ->latest()->take(7)->get() ?? Product::orderBy('price' , 'desc')->take(7)->get();
-
-      $data['categories'] = Category::parent()->select('id', 'slug')->with(['childrens' => function ($q) {
-         $q->select('id', 'parent_id', 'slug');
-         $q->with(['childrens' => function ($qq) {
-            $qq->select('id', 'parent_id', 'slug');
-         }]);
-      }])->get();
 
       $data['main_categories_products'] = Category::parent()->take(6)->get();
 
