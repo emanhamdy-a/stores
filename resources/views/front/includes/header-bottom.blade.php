@@ -3,11 +3,13 @@
     <div class="row d-flex align-items-center">
       <div class="contentsticky_verticalmenu verticalmenu-main col-lg-3 col-md-1 d-flex" data-textshowmore="Show More"
         data-textless="Hide" data-desktop_item="4">
-        <div class="toggle-nav d-flex align-items-center justify-content-start {{ cats_menu('')[1] }}">
+        <div class="toggle-nav d-flex align-items-center justify-content-start munu_bar">
+         <!-- {{ cats_menu('')[1] }}" -->
           <span class="btnov-lines"></span>
           <span>{{ __('front\header.shop by categories') }}</span>
         </div>
-        <div class="verticalmenu-content has-showmore {{ cats_menu('')[0] }}"><!-- show -->
+        <div class="verticalmenu-content has-showmore">
+        <!-- {{ cats_menu('')[0] }} -->
           <div id="_desktop_verticalmenu" class="nov-verticalmenu block" data-count_showmore="6">
             <div class="box-content block_content">
               <div id="verticalmenu" class="verticalmenu" role="navigation">
@@ -85,15 +87,15 @@
                     <div class="dropdown-menu" style="width:270px">
                       <ul class="">
                         <li class="item ">
-                         <a href="{{ route('site.cart.index') }}">
-                         {{ __('front\header.products') }}</a>
+                         <a href="{{ route('orders') }}">
+                         {{ __('front\header.orders') }}</a>
                         </li>
                         <li class="item ">
                           <a href="{{ route('site.cart.index') }}">
                           {{ __('front\header.cart') }}</a>
                         </li>
                         <li class="item ">
-                          <a href="{{ route('wishlist.products.index') }}">Wishlist</a>
+                          <a href="{{ route('wishlist.products.index') }}">{{ __('front\header.wishlist') }}</a>
                         </li>
                         <li class="item ">
                           @auth
@@ -160,25 +162,29 @@
             <div id="_desktop_search" class="contentsticky_search">
               <!-- block seach mobile -->
               <!-- Block search module TOP -->
-              <div id="desktop_search_content" class='' data-id_lang="1" data-ajaxsearch="1"
-                data-novadvancedsearch_type="top" data-instantsearch="" data-search_ssl=""
-                data-link_search_ssl="http://demo.bestprestashoptheme.com/savemart/en/search"
-                data-action="http://demo.bestprestashoptheme.com/savemart/en/module/novadvancedsearch/result">
+              <div id="desktop_search_content" >
 
                 <!-- search form -->
                 <form method="get"
-                  action="http://demo.bestprestashoptheme.com/savemart/en/module/novadvancedsearch/result"
-                  id="searchbox" class="form-novadvancedsearch" '>
-                  <input type="hidden" name="fc" value="module">
-                  <input type="hidden" name="module" value="novadvancedsearch">
-                  <input type="hidden" name="controller" value="result">
-                  <input type="hidden" name="orderby" value="position">
-                  <input type="hidden" name="orderway" value="desc">
-                  <input type="hidden" name="id_category" class="id_category" value="0">
+                  action="{{ route('search') }}"
+                  id="" class="search-form form-novadvancedsearch" >
+                  <input type="hidden" id='pagen'
+                    name="page" value="{{ $_GET['page'] ?? '' }}">
+                  <input type="hidden" id='orderby'
+                    name="orderby"
+                    value="{{ $_GET['orderby'] ?? 'id' }}">
+                  <input type="hidden" id='orderway'
+                    name="orderway"
+                    value="{{ $_GET['orderway'] ?? 'desc' }}">
+                  <input type="hidden" id='id_category'
+                    name="id_category" class="id_category"
+                    value="{{ $_GET['id_category'] ?? '' }}">
+                  @csrf
                   <div class="input-group ">
-                    <input type="text" id="search_query_top"
+                    <input type="text" id="search_query"
                       class="search_query ui-autocomplete-input form-control"
-                      name="search_query" value=""
+                      name="search_query"
+                      value="{{ $_GET['search_query'] ?? '' }}"
                       placeholder="{{ __('front\header.search') }}"
                     >
                     @if($categories = main_child_cats())
@@ -187,31 +193,40 @@
                       <button type="button"
                         class="btn dropdown-toggle"
                         data-toggle="dropdown"
-                        aria-haspopup="true" value=""
+                        aria-haspopup="true"
+                        value=""
                         aria-expanded="false">
-                        {{ __('front\header.categories') }}
+                        @if(!empty($_GET['id_category']))
+                          {{ \App\Models\Category::findOrFail($_GET['id_category'] )->name }}
+                        @else
+                         {{ __('front\header.categories') }}
+                        @endif
                       </button>
                       <ul class="dropdown-menu list-unstyled">
-                        <li class="dropdown-item active" data-value="0">
+                        <li class="dropdown-item active"
+                        data-value="0">
                         <span>
                           {{ __('front\header.all categories') }}
                         </span></li>
                         <ul class="list-unstyled pl-5">
                         @foreach($categories as $category)
-                          <li class="dropdown-item"
+                          <li
+                            class="dropdown-item"
                             data-value="{{ $category->id }}">
                             <span>{{ $category->name }}</span>
                           </li>
                           @if($category->childrens)
                           @foreach($category->childrens as $children)
-                            <li class="dropdown-item"
+                            <li
+                              class="dropdown-item"
                               data-value="{{ $children->id }}">
                               <span>- {{ $children->name }}</span>
                             </li>
 
                             @if($children->childrens)
                             @foreach($children->childrens as $_children)
-                              <li class="dropdown-item"
+                              <li
+                                class="dropdown-item"
                                 data-value="{{ $_children->id }}">
                                 <span>-- {{ $_children->name }}</span>
                               </li>
@@ -226,10 +241,11 @@
                     </div>
                     @endif
                     <span class="input-group-btn">
-                      <button class="btn btn-secondary "
-                        type="submit" name="submit_search">
+                      <button class="btn btn-secondary button-submit"
+                        type="submit" name="">
                         <i class="material-icons">
-                        search</i>
+                        search
+                        </i>
                       <button>
                     </span>
                   </div>

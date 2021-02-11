@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Order;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,10 @@ class User extends Authenticatable
       'email_verified_at' => 'datetime',
   ];
 
+  public  function reviews(){
+    return $this->hasMany(Review::class,'user_id');
+  }
+
   public function codes() {
     return $this -> hasMany(User_verfication::class,'user_id');
   }
@@ -49,5 +54,9 @@ class User extends Authenticatable
 
   public function wishlistHas($productId) {
     return Self::wishlist()->where('product_id',$productId)->exists();
+  }
+
+  public function orders(){
+    return $this -> hasMany(Order::class,'customer_id');
   }
 }

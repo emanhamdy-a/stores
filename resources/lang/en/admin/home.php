@@ -1,6 +1,10 @@
 <?php
 return [
-  //latest products
+  'latest orders'       =>  'Latest orders',
+  'user name'           =>  'User name',
+  'user phone'          =>  'User phone',
+  'total'               =>  'Total',
+  'created_at'          =>  'Order date',
   'latest products'     =>  'Latest products',
   'name'                =>   'Name',
   'slug'                =>   'slug',
@@ -12,8 +16,9 @@ return [
   'edit'                =>   'Edit',
   'view'                =>   'View',
   'actions'             =>   'Actions',
-  'new products'        =>   'New products',
-  'new categories'      =>   'New categories',
-  'new brands'          =>   'New brands',
-  'new admins'          =>   'New admins',
+  'orders'              =>   'Orders',
+  'products'            =>   'Products',
+  'categories'          =>   'Categories',
+  'brands'              =>   'Brands',
+  'admins'              =>   'Admins',
 ];

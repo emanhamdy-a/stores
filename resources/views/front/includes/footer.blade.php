@@ -132,3 +132,67 @@
   </div>
 
 </footer>
+@section('footer_scripts')
+<script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  $(document).on('click','.button-submit',function(e){
+    $('#pagen').val(1);
+  });
+
+  $(document).on('click','.orderby',function(e){
+    let orderby=$(this).attr("data-val");
+    $('#orderby').val(orderby);
+    $('#pagen').val(1);
+    $('.search-form').submit();
+  });
+
+  $(document).on('click','.orderway',function(e){
+    let orderway=$(this).attr("data-val");
+    $('#orderway').val(orderway);
+    $('#pagen').val(1);
+    $('.search-form').submit();
+  });
+
+  $(document).on('click','li a.page-link',function(e){
+    e.preventDefault();
+    let pagen=$(this).html();
+    $('#pagen').val(pagen);
+    $('.search-form').submit();
+  });
+
+  $(document).on('submit','.search-form',function(e){
+    e.preventDefault();
+    formData=$(this).serialize();
+    url=$(this).attr("action") + "?" + formData;
+    window.history.replaceState('object', 'New Title',url);
+      $.ajax({
+        url:url,
+        type:$(this).attr("method"),
+        data:{
+          "orderby": $('#orderby').val(),
+          "orderway": $('#orderway').val(),
+          "id_category": $('#id_category').val(),
+          "search_query": $('#search_query').val(),
+        },
+        // dataType:'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data) {
+          console.log(data);
+          if(data){
+            $('body #displayTop').remove();
+            $('body #content-wrapper').html(data);
+          }
+        },error: function(jqXHR, textStatus, errorThrown) {
+          // console.log(jqXHR);
+        },
+      });
+  });
+</script>
+@stop

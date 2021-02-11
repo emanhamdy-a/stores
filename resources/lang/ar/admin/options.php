@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'options'       => 'قيم الخصائص',
+  'options'       => 'الخصائص الفرعيه',
   'update option' => 'تعديل قيمه',
   'create option' => 'انشا قيمه جديده',
   'home'          => 'الرئيسيه',

@@ -31,11 +31,11 @@
             </div>
             <div class="nivoSlider">
               @isset($sliders)
-                @foreach($sliders as $slider)
-                <a href="#">
-                  <img src="{{ slider_img($slider -> photo) }}" alt="" title="">
-                </a>
-                @endforeach
+              @foreach($sliders as $slider)
+              <a href="#">
+                <img src="{{ slider_img($slider -> photo) }}" alt="" title="">
+              </a>
+              @endforeach
               @endisset
             </div>
           </div>
@@ -59,8 +59,7 @@
                 <div class="block_content">
                   <div class="effect">
                     <a href="#">
-                      <img class="img-fluid"
-                        src="{{ theme_img('1.jpg') }}" alt="banner3-1" title="banner3-1"></a>
+                      <img class="img-fluid" src="{{ theme_img('1.jpg') }}" alt="banner3-1" title="banner3-1"></a>
                   </div>
                 </div>
               </div>
@@ -70,9 +69,7 @@
                 <div class="block_content">
                   <div class="effect">
                     <a href="#">
-                    <img class="img-fluid"
-                      src="{{ theme_img('2.jpg') }}"
-                      alt="banner3-1" title="banner3-1"></a>
+                      <img class="img-fluid" src="{{ theme_img('2.jpg') }}" alt="banner3-1" title="banner3-1"></a>
                   </div>
                 </div>
               </div>
@@ -82,9 +79,7 @@
                 <div class="block_content">
                   <div class="effect">
                     <a href="#">
-                    <img class="img-fluid"
-                      src="{{ theme_img('3.jpg') }}"
-                      alt="banner3-1"  title="banner3-1"></a>
+                      <img class="img-fluid" src="{{ theme_img('3.jpg') }}" alt="banner3-1" title="banner3-1"></a>
                   </div>
                 </div>
               </div>
@@ -107,22 +102,19 @@
                     data-items_mobile="1">
                     <div class="item item-list">
 
-                      <div class="product-miniature js-product-miniature first_item" data-id-product="{{ $flash_deal->id }}"
-                        data-id-product-attribute="232"
-                        itemscope="" itemtype="">
+                      <div class="product-miniature js-product-miniature first_item"
+                        data-id-product="{{ $flash_deal->id }}" data-id-product-attribute="232" itemscope=""
+                        itemtype="">
                         <div class="thumbnail-container">
 
-                        <a href="#!"
-                          class="thumbnail product-thumbnail two-image">
-                          <img class="img-fluid image-cover"
-                            src="{{ product_img($flash_deal->main_image) }}" alt=""
-                            data-full-size-image-url="{{ product_img($flash_deal->main_image) }}"
-                            width="600" height="600">
-                          <img class="img-fluid image-secondary"
-                            src="{{ product_img($flash_deal->main_image) }}" alt=""
-                            data-full-size-image-url="{{ product_img($flash_deal->main_image) }}"
-                            width="600" height="600">
-                        </a>
+                          <a href="#!" class="thumbnail product-thumbnail two-image">
+                            <img class="img-fluid image-cover" src="{{ product_img($flash_deal->main_image) }}" alt=""
+                              data-full-size-image-url="{{ product_img($flash_deal->main_image) }}" width="600"
+                              height="600">
+                            <img class="img-fluid image-secondary" src="{{ product_img($flash_deal->main_image) }}"
+                              alt="" data-full-size-image-url="{{ product_img($flash_deal->main_image) }}" width="600"
+                              height="600">
+                          </a>
 
                           <div class="product-flags discount">Sale</div>
 
@@ -131,178 +123,169 @@
                           <div class="product-groups">
 
                             <div class="product-title" itemprop="name">
-                              <a  href="{{ route('product.details',$flash_deal->slug) }}">
-                              {{ $flash_deal->name }}
+                              <a href="{{ route('product.details',$flash_deal->slug) }}">
+                                {{ $flash_deal->name }}
                               </a>
                             </div>
-                            <!-- <div class="product-comments">
+                            <div class="product-comments">
                               <div class="star_content">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
+                                @for($i = 1;$i <= 5;$i ++) @if($flash_deal->review_stars() < $i) <div class="star">
                               </div>
-                              <span>0 review</span>
-                            </div> -->
-                            <p class="seller_name">
-                              <a title="View seller profile" href="#!">
-                                <i class="fa fa-brand"></i>
-                                {{ $flash_deal->brand->name }}
-                              </a>
-                            </p>
-                            <div class="product-group-price">
-                              <div class="product-price-and-shipping">
-                                <span itemprop="price" class="price">
+                              @else
+                              <div class="star star_on"></div>
+                              @endif
+                              @endfor
+                            </div>
+                            <span>0 review</span>
+                          </div>
+                          <p class="seller_name">
+                            <a title="View seller profile" href="#!">
+                              <i class="fa fa-brand"></i>
+                              {{ $flash_deal->brand->name }}
+                            </a>
+                          </p>
+                          <div class="product-group-price">
+                            <div class="product-price-and-shipping">
+                              <span itemprop="price" class="price">
                                 {{ $flash_deal->special_price}}
-                                </span>
-                                <span class="regular-price">
+                              </span>
+                              <span class="regular-price">
                                 {{ $flash_deal->price}}
-                                </span>
-                              </div>
+                              </span>
                             </div>
                           </div>
-
-                          <div
-                            class="product-buttons d-flex justify-content-center"
-                            itemprop="offers" itemscope="" itemtype="">
-
-                            <form action="" class="formAddToCart"
-                              method="post">
-                              <a class="add-to-cart"
-                                href="#!"
-                                data-slug="{{ $flash_deal -> slug }}">
-                                <i class="novicon-cart"></i>
-                                <span>Add to cart</span>
-                              </a>
-                            </form>
-
-                            <a class="addToWishlist  wishlistProd_22"
-                              href="#!"
-                              data-product-id="{{$flash_deal -> id}}">
-                              <i class="fa fa-heart"></i>
-                              <span>Add to Wishlist</span>
-                            </a>
-
-                            <a href="#!" class="quick-view hidden-sm-down"
-                              data-product-id="{{$flash_deal -> id}}"
-                              data-link-action="quickview">
-                              <i class="fa fa-eye"></i>
-                              <span> Quick view</span>
-                            </a>
-
-                          </div>
-
                         </div>
-                        <div class="countdownfree d-flex"
-                         data-date="{{$flash_deal -> special_price_end}}">
-                         {{$flash_deal -> special_price_end}}
+
+                        <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
+                          itemtype="">
+
+                          <form action="" class="formAddToCart" method="post">
+                            <a class="add-to-cart" href="#!" data-slug="{{ $flash_deal -> slug }}">
+                              <i class="novicon-cart"></i>
+                              <span>Add to cart</span>
+                            </a>
+                          </form>
+
+                          <a class="addToWishlist  wishlistProd_22" href="#!" data-product-id="{{$flash_deal -> id}}">
+                            <i class="fa fa-heart"></i>
+                            <span>Add to Wishlist</span>
+                          </a>
+
+                          <a href="#!" class="quick-view hidden-sm-down" data-product-id="{{$flash_deal -> id}}"
+                            data-link-action="quickview">
+                            <i class="fa fa-eye"></i>
+                            <span> Quick view</span>
+                          </a>
+
                         </div>
 
                       </div>
+                      <div class="countdownfree d-flex" data-date="{{$flash_deal -> special_price_end}}">
+                        {{$flash_deal -> special_price_end}}
+                      </div>
 
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <?php $product = $flash_deal; ?>
-            @include('front.includes.product-details',$product)
 
-            @endif
-
-            @include('front.home_includes.new_arrivals')
-
-          </div>
-        </div>
-        <!--  banner 2 -->
-        <div class="nov-row spacing-30 col-lg-12  col-xs-12">
-          <div class="nov-row-wrap row">
-            <div class="nov-image col-lg-6 col-md-6">
-              <div class="block">
-                <div class="block_content">
-                  <div class="effect">
-                    <a href="#"> <img class="img-fluid"
-                    src="{{ theme_img('4.jpg') }}" alt="banner-4"
-                      title="banner-4"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="nov-image col-lg-6 col-md-6">
-              <div class="block">
-                <div class="block_content">
-                  <div class="effect">
-                    <a href="#"> <img class="img-fluid"
-                    src="{{ theme_img('5.jpg') }}" alt="banner-5"
-                        title="banner-5"></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <?php $product = $flash_deal; ?>
+          @include('front.includes.product-details',$product)
+
+          @endif
+
+          @include('front.home_includes.new_arrivals')
+
         </div>
-
-        @include('front.home_includes.trending_bestseller')
-
-        <div class="nov-row policy-home col-lg-12 col-xs-12">
-          <div class="nov-row-wrap row">
-            <div class="nov-html col-xl-4 col-lg-4 col-md-4">
-              <div class="block">
-                <div class="block_content">
-                  <div class="policy-row"><i class="noviconpolicy noviconpolicy-1"></i>
-                    <div class="policy-content">
-                      <div class="policy-name">
-                      {{ __('front/home.free delivery') }}
-                      </div>
-                      <div class="policy-des">
-                      {{ __('front/home.free delivery text') }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="nov-html col-xl-4 col-lg-4 col-md-4">
-              <div class="block">
-                <div class="block_content">
-                  <div class="policy-row"><i class="noviconpolicy noviconpolicy-2"></i>
-                    <div class="policy-content">
-                      <div class="policy-name">
-                        {{ __('front/home.money back guarantee') }}
-                      </div>
-                      <div class="policy-des">
-                        {{ __('front/home.money back guarantee text') }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="nov-html col-xl-4 col-lg-4 col-md-4">
-              <div class="block">
-                <div class="block_content">
-                  <div class="policy-row"><i class="noviconpolicy noviconpolicy-3"></i>
-                    <div class="policy-content">
-                      <div class="policy-name">
-                        {{ __('front/home.authenticity guaranteed') }}
-                      </div>
-                      <div class="policy-des">
-                        {{ __('front/home.authenticity guaranteed text') }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        @include('front.home_includes.categories')
-
       </div>
+      <!--  banner 2 -->
+      <div class="nov-row spacing-30 col-lg-12  col-xs-12">
+        <div class="nov-row-wrap row">
+          <div class="nov-image col-lg-6 col-md-6">
+            <div class="block">
+              <div class="block_content">
+                <div class="effect">
+                  <a href="#"> <img class="img-fluid" src="{{ theme_img('4.jpg') }}" alt="banner-4"
+                      title="banner-4"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nov-image col-lg-6 col-md-6">
+            <div class="block">
+              <div class="block_content">
+                <div class="effect">
+                  <a href="#"> <img class="img-fluid" src="{{ theme_img('5.jpg') }}" alt="banner-5"
+                      title="banner-5"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @include('front.home_includes.trending_bestseller')
+
+      <div class="nov-row policy-home col-lg-12 col-xs-12">
+        <div class="nov-row-wrap row">
+          <div class="nov-html col-xl-4 col-lg-4 col-md-4">
+            <div class="block">
+              <div class="block_content">
+                <div class="policy-row"><i class="noviconpolicy noviconpolicy-1"></i>
+                  <div class="policy-content">
+                    <div class="policy-name">
+                      {{ __('front/home.free delivery') }}
+                    </div>
+                    <div class="policy-des">
+                      {{ __('front/home.free delivery text') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nov-html col-xl-4 col-lg-4 col-md-4">
+            <div class="block">
+              <div class="block_content">
+                <div class="policy-row"><i class="noviconpolicy noviconpolicy-2"></i>
+                  <div class="policy-content">
+                    <div class="policy-name">
+                      {{ __('front/home.money back guarantee') }}
+                    </div>
+                    <div class="policy-des">
+                      {{ __('front/home.money back guarantee text') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nov-html col-xl-4 col-lg-4 col-md-4">
+            <div class="block">
+              <div class="block_content">
+                <div class="policy-row"><i class="noviconpolicy noviconpolicy-3"></i>
+                  <div class="policy-content">
+                    <div class="policy-name">
+                      {{ __('front/home.authenticity guaranteed') }}
+                    </div>
+                    <div class="policy-des">
+                      {{ __('front/home.authenticity guaranteed text') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @include('front.home_includes.categories')
+
     </div>
-  </section>
+</div>
+</section>
 </div>
 <!-- url: "{{Route('wishlist.store') }}",
 'productId': $(this).attr('data-product-id'),
@@ -316,7 +299,22 @@ url: "{{route('site.cart.add')}}",
 @stop
 
 @section('scripts')
-
- @include('front.includes.js.addToCartAndWishlist')
+<script>
+$(document).ready(function() {
+  $('.verticalmenu-content.has-showmore').addClass('active');
+  $('.munu_bar').addClass('ac');
+  $(window).on('scroll', function() {
+    let scroll = $(window).scrollTop();
+    if (scroll > 700) {
+      $('.verticalmenu-content.has-showmore').removeClass('active');
+      $('.munu_bar').removeClass('ac');
+    } else {
+      $('.verticalmenu-content.has-showmore').addClass('active');
+      $('.munu_bar').addClass('ac');
+    }
+  });
+});
+</script>
+@include('front.includes.js.addToCartAndWishlist')
 
 @stop

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,147 +10,155 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use Translatable,
-      SoftDeletes
-      , HasFactory;
+  use Translatable,
+    SoftDeletes
+    , HasFactory;
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = ['translations'];
+  /**
+   * The relations to eager load on every query.
+   *
+   * @var array
+   */
+  protected $with = ['translations'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-      'brand_id',
-      'slug',
-      'main_image',
-      'sku',
-      'price',
-      'special_price',
-      'special_price_type',
-      'special_price_start',
-      'special_price_end',
-      'selling_price',
-      'manage_stock',
-      'qty',
-      'in_stock',
-      'is_active'
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'brand_id',
+    'slug',
+    'main_image',
+    'sku',
+    'price',
+    'special_price',
+    'special_price_type',
+    'special_price_start',
+    'special_price_end',
+    'selling_price',
+    'manage_stock',
+    'qty',
+    'in_stock',
+    'is_active'
+  ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'manage_stock' => 'boolean',
-        'in_stock' => 'boolean',
-        'is_active' => 'boolean',
-    ];
+  /**
+   * The attributes that should be cast to native types.
+   *
+   * @var array
+   */
+  protected $casts = [
+    'manage_stock' => 'boolean',
+    'in_stock' => 'boolean',
+    'is_active' => 'boolean',
+  ];
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-      'special_price_start',
-      'special_price_end',
-      'start_date',
-      'end_date',
-      'deleted_at',
-    ];
+  /**
+   * The attributes that should be mutated to dates.
+   *
+   * @var array
+   */
+  protected $dates = [
+    'special_price_start',
+    'special_price_end',
+    'start_date',
+    'end_date',
+    'deleted_at',
+  ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
+  /**
+   * The accessors to append to the model's array form.
+   *
+   * @var array
+   */
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    protected $translatedAttributes = ['name', 'description', 'short_description'];
+  /**
+   * The attributes that are translatable.
+   *
+   * @var array
+   */
+  protected $translatedAttributes = ['name', 'description', 'short_description'];
 
-    public function brand()
-    {
-      return $this->belongsTo(Brand::class,'brand_id' ,'id')->withDefault();
-    }
+  public  function reviews(){
+    return $this->hasMany(Review::class,'product_id');
+  }
 
-    public function getActive()
-    {
-      return $this->is_active == 0 ? __('admin/products.active') : __('admin/products.not active');
-    }
+  public  function review_stars(){
+    return round($this->reviews->average('review'));
+  }
 
-    public function categories()
-    {
-      return $this->belongsToMany(Category::class, 'product_categories');
-    }
+  public function brand()
+  {
+    return $this->belongsTo(Brand::class,'brand_id' ,'id')->withDefault();
+  }
 
-    public function cat_ids()
-    {
-      return $this->belongsToMany(Category::class, 'product_categories')
-      ->pluck('id');
-    }
+  public function getActive()
+  {
+    return $this->is_active == 0 ? __('admin/products.active') : __('admin/products.not active');
+  }
 
-    public function tag_ids()
-    {
-      return $this->belongsToMany(Tag::class, 'product_tags')
-      ->pluck('id');
+  public function categories()
+  {
+    return $this->belongsToMany(Category::class, 'product_categories');
+  }
 
-    }
+  public function cat_ids()
+  {
+    return $this->belongsToMany(Category::class, 'product_categories')
+    ->pluck('id');
+  }
 
-    public function scopeActive($query)
-    {
-      return $query->where('is_active', 1);
-    }
+  public function tag_ids()
+  {
+    return $this->belongsToMany(Tag::class, 'product_tags')
+    ->pluck('id');
 
-    public function tags()
-    {
-      return $this->belongsToMany(Tag::class, 'product_tags');
-    }
+  }
 
-    public function options()
-    {
-      return $this->hasMany(Option::class, 'product_id');
-    }
+  public function scopeActive($query)
+  {
+    return $query->where('is_active', 1);
+  }
 
-    public function images()
-    {
-      return $this->hasMany(Image::class, 'product_id');
-    }
+  public function tags()
+  {
+    return $this->belongsToMany(Tag::class, 'product_tags');
+  }
 
-    public function hasStock($quantity)
-    {
-      return $this->qty >= $quantity;
-    }
+  public function options()
+  {
+    return $this->hasMany(Option::class, 'product_id');
+  }
 
-    public function outOfStock()
-    {
-      return $this->qty === 0;
-    }
+  public function images()
+  {
+    return $this->hasMany(Image::class, 'product_id');
+  }
 
-    public function inStock()
-    {
-      return $this->qty >= 1;
-    }
+  public function hasStock($quantity)
+  {
+    return $this->qty >= $quantity;
+  }
 
-    public function isNew()
-    {
-      return strtotime($this->created_at) >= strtotime('-7 days') ? true : '';
-    }
+  public function outOfStock()
+  {
+    return $this->qty === 0;
+  }
 
-    public function getTotal($converted = true)
-    {
-      return $total =  $this->special_price ?? $this -> price;
-    }
+  public function inStock()
+  {
+    return $this->qty >= 1;
+  }
+
+  public function isNew()
+  {
+    return strtotime($this->created_at) >= strtotime('-7 days') ? true : '';
+  }
+
+  public function getTotal($converted = true)
+  {
+    return $total =  $this->special_price ?? $this -> price;
+  }
 
 }

@@ -9,7 +9,9 @@ return [
   'add to cart'    =>   'Add to cart',
   'quick view'     =>   'Quick view',
   'favorit list'   =>   'Favorit list',
-  'remove from wishlist'=>   'remove from wishlist',
-  'remove from favourite' => 'The product removed from favourite list successfully',
+  'remove from wishlist'  =>   'remove from wishlist',
+  'removed from wishlist' => 'The product removed from favourite list successfully',
+  'added to wishlist' => 'The product added to favourite list successfully',
+  'added before'      => 'This product added before to favourite list',
 
 ];

@@ -6,21 +6,6 @@
   <div class="container no-index">
     <div class="breadcrumb">
 
-      <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="{{route('home') }}">
-            <span itemprop="name">{{ __('front\products.home') }}</span>
-          </a>
-          <meta itemprop="position" content="1">
-        </li>
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="36-mini-speaker.html">
-            <span itemprop="name">{{$category -> name}}</span>
-          </a>
-          <meta itemprop="position" content="3">
-        </li>
-      </ol>
-
     </div>
   </div>
 </nav>
@@ -44,7 +29,7 @@
                 @if($count=count($products))
                 <div class="hidden-sm-down total-products">
                   <p>
-                   {{ __('front\products.product count',['count'=>$count]) }}
+                    {{ __('front\products.product count',['count'=>$count]) }}
                   </p>
                 </div>
                 @endif
@@ -90,16 +75,13 @@
                 @foreach($products as $product)
                 <div class="item  col-lg-4 col-md-6 col-xs-12 text-center ">
                   <div class="product-miniature js-product-miniature item-one" data-id-product="{{ $product->id }}"
-                    data-id-product-attribute="408" itemscope=""
-                     itemtype="http://schema.org/Product">
+                    data-id-product-attribute="408" itemscope="" itemtype="http://schema.org/Product">
                     <div class="thumbnail-container">
                       <a href="{{route('product.details',$product -> slug)}}"
                         class="thumbnail product-thumbnail two-image">
-                        <img class="img-fluid image-cover"
-                         src="{{product_img($product -> main_image)}}" alt=""
+                        <img class="img-fluid image-cover" src="{{product_img($product -> main_image)}}" alt=""
                           data-full-size-image-url="{{product_img($product -> main_image)}}" width="600" height="600">
-                        <img class="img-fluid image-secondary"
-                         src="{{product_img($product -> main_image)}}" alt=""
+                        <img class="img-fluid image-secondary" src="{{product_img($product -> main_image)}}" alt=""
                           data-full-size-image-url="{{product_img($product -> main_image)}}" width="600" height="600">
                       </a>
                       @if($product->isNew())
@@ -113,26 +95,26 @@
 
                         <div class="category-title">
                           <a href="{{route('category',$category -> name)}}">
-                          {{ $category -> name }}
+                            {{ $category -> name }}
                           </a>
                         </div>
 
-                       <div class="group-reviews">
-                        <!--  <div class="product-comments">
+                        <div class="group-reviews">
+                          <div class="product-comments">
                             <div class="star_content">
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
+                              <div class="star @if($product->review_stars() >= 1) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 2) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 3) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 4) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 5) star_on @endif"></div>
                             </div>
                             <span>0 review</span>
-                          </div> -->
+                          </div>
 
 
                           <div class="info-stock ml-auto">
                             <label class="control-label">
-                            {{ __('front\products.availability') }}</label>
+                              {{ __('front\products.availability') }}</label>
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                             {{$product -> in_stock ? __('front\products.in stock') :  __('front\products.out of stock')}}
                           </div>
@@ -160,27 +142,22 @@
                       <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope=""
                         itemtype="http://schema.org/Offer">
 
-                        <form action="" class="formAddToCart"
-                          method="post">
-                          <a class="add-to-cart"
-                            href="#!"
-                            data-product-id="{{ $product -> id }}"
+                        <form action="" class="formAddToCart" method="post">
+                          <a class="add-to-cart" href="#!" data-product-id="{{ $product -> id }}"
                             data-slug="{{ $product -> slug }}">
                             <i class="novicon-cart"></i>
                             <span>{{ __('front\products.add to cart') }}</span>
                           </a>
                         </form>
 
-                        <a class="addToWishlist  wishlistProd_22" href="#"
-                          data-product-id="{{$product -> id}}">
+                        <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                           <i class="fa fa-heart"></i>
                           <span>{{ __('front\products.add to wishlist') }}</span>
                         </a>
 
-                        <a href="#" class="quick-view hidden-sm-downadd-to-cart"
-                          data-product-id="{{$product -> id}}">
+                        <a href="#" class="quick-view hidden-sm-downadd-to-cart" data-product-id="{{$product -> id}}">
                           <i class="fa fa-eye"></i><span>
-                          {{ __('front\products.quick view') }}
+                            {{ __('front\products.quick view') }}
                           </span>
                         </a>
 
@@ -215,6 +192,6 @@
 
 @section('scripts')
 
- @include('front.includes.js.addToCartAndWishlist')
+@include('front.includes.js.addToCartAndWishlist')
 
 @stop

@@ -16,7 +16,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>BTC</h4> -->
-                    <h6 class="text-muted">{{__('admin/home.new products')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.products')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $productn }}</h4>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>ETH</h4> -->
-                    <h6 class="text-muted">{{__('admin/home.new categories')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.categories')}}</h6>
                   </div>
                   <div class="col-5 text-right">
                     <h4>{{ $categoryn }}</h4>
@@ -68,10 +68,10 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>XRP</h4> -->
-                    <h6 class="text-muted">{{__('admin/home.new brands')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.orders')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>{{ $brandn }}</h4>
+                    <h4>{{ $ordern }}</h4>
                     <!-- <h6 class="danger">20% <i class="la la-arrow-down"></i></h6> -->
                   </div>
                 </div>
@@ -94,10 +94,10 @@
                   </div>
                   <div class="col-5 pl-2">
                     <!-- <h4>XRP</h4> -->
-                    <h6 class="text-muted">{{__('admin/home.new admins')}}</h6>
+                    <h6 class="text-muted">{{__('admin/home.admins')}}</h6>
                   </div>
                   <div class="col-5 text-right">
-                    <h4>{{ $brandn }}</h4>
+                    <h4>{{ $adminn }}</h4>
                     <!-- <h6 class="danger">20% <i class="la la-arrow-down"></i></h6> -->
                   </div>
                 </div>
@@ -113,8 +113,57 @@
       </div>
       <!-- Candlestick Multi Level Control Chart -->
 
-      <!-- new product -->
+      <!-- new orders -->
       <div class="row match-height">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">{{ __('admin/home.latest orders') }} </h4>
+              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i>
+              </a>
+              <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                  <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card-content collapse show">
+              <div class="card-body card-dashboard">
+                <table id='Mydatatable'
+                  class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
+                  <thead class="">
+                    <tr>
+                      <th>{{ __('admin/home.user name') }}</th>
+                      <th> {{ __('admin/home.user phone') }}</th>
+                      <th>{{ __('admin/home.total') }}</th>
+                      <th>{{ __('admin/home.status') }}</th>
+                      <th>{{ __('admin/home.created_at') }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @isset($orders)
+                    @foreach($orders as $order)
+                    <tr>
+                      <td>{{$order -> customer_name}}</td>
+                      <td>{{$order -> customer_phone}}</td>
+                      <td>{{$order -> total}}</td>
+                      <td>{{$order -> status}}</td>
+                      <td>
+                        {{$order->created_at->diffForHumans()}}
+                      </td>
+                    </tr>
+                    @endforeach
+                    @endisset
+                  </tbody>
+                </table>
+                <div class="justify-content-center d-flex">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-12">
           <div class="card">
             <div class="card-header">

@@ -1,6 +1,10 @@
 <?php
 return [
-  //latest products
+  'latest orders'       =>  'اخر الطلبات',
+  'user name'           =>  'اسم المشتري',
+  'user phone'          =>  'تليفون المشتري',
+  'total'               =>  'اجمالي الثمن',
+  'created_at'          =>  'تاريخ الطلب',
   'latest products'     =>  'اخر المنتجات',
   'name'                =>   'الاسم',
   'slug'                =>   'الاسم بالرابط',
@@ -12,8 +16,9 @@ return [
   'edit'                =>   'تعديل',
   'view'                =>   'معاينه',
   'actions'             =>   'الاجراءات',
-  'new products'        =>   'المنتجات الحديثه',
-  'new categories'      =>   'الاقسام الحديثه',
-  'new brands'          =>   'الماركات الحديثه',
-  'new admins'          =>   'المشرفون الجدد',
+  'orders'              =>   'الطلبات',
+  'products'            =>   'المنتجات',
+  'categories'          =>   'الاقسام',
+  'brands'              =>   'الماركات',
+  'admins'              =>   'المشرفون',
 ];

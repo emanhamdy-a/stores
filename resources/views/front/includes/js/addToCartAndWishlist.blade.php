@@ -34,9 +34,10 @@ $(document).on('click', '.addToWishlist:not(.removeFromWishlist)', function(e) {
       console.log(data);
       if (data.wished) {
         $('.alert-modal').css('display', 'block');
-        $('.alert-text').text('The product added to favourite list successfully');
+        $('.alert-text').text(data.msg);
+        $('.wishlist-products-count').text(data.count);
       } else {
-        $('.alert-text').text('This product added before to favourite list');
+        $('.alert-text').text(data.msg);
         $('.alert-modal2').css('display', 'block');
       }
     }
@@ -63,7 +64,8 @@ $(document).on('click', '.add-to-cart', function(e) {
       console.log(data);
       if (data) {
         $('.alert-modal').css('display', 'block');
-        $('.alert-text').text('The product added to cart list successfully');
+        $('.alert-text').text(data.msg);
+        $('.cart-products-count').text(data.count);
       } else {
         $('.alert-text').text('This product added before to cart list');
         $('.alert-modal2').css('display', 'block');

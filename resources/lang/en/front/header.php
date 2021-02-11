@@ -18,4 +18,5 @@ return [
   'cart'                    => 'Cart',
   'wishlist'                => 'Wishlist',
   'profile'                 => 'Profile',
+  'orders'                  => 'orders',
 ];

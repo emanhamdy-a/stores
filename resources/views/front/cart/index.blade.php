@@ -9,10 +9,11 @@
   </div>
 </nav>
 
-<div class="container no-index">
+<div class="container no-index pb-5">
   <div class="row">
     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <section id="main">
+
         <h1 class="page-title">
           {{ __('front\cart.shopping cart') }}
 
@@ -25,13 +26,12 @@
                 @isset($basket)
                 <ul class="cart-items">
                   @foreach($basket -> all() as $product)
-                  <li class="cart-item">
+                  <li class="cart-item mb-1">
                     <div class="product-line-grid row spacing-10">
                       <!--  product left content: image-->
                       <div class="product-line-grid-left col-sm-2 col-xs-4">
                         <span class="product-image media-middle">
-                          <img class="img-fluid"
-                            src="{{ product_img($product ->main_image) }}"
+                          <img class="img-fluid" src="{{ product_img($product ->main_image) }}"
                             alt="Vehicula vel tempus sit amet ulte">
                         </span>
                       </div>
@@ -61,16 +61,18 @@
                                 <div class="row">
                                   <div class="col-md-6 col-xs-6 qty">
                                     <div class="label">
-                                    {{ __('front\cart.qty') }}
+                                      {{ __('front\cart.qty') }}
                                     </div>
-                                    <div class="input-group bootstrap-touchspin">
-                                      <span class="input-group-addon bootstrap-touchspin-prefix"
-                                        style="display: none;"></span><input id="quantity_wanted"
-                                        class="js-cart-line-product-quantity form-control" data-product-id="5"
-                                        type="text" value="1" name="product-quantity-spin" min="1"
-                                        style="display: block;"><span
-                                        class="input-group-addon bootstrap-touchspin-postfix"
-                                        style="display: none;">
+                                    <div class="input-group
+                                      bootstrap-touchspin">
+                                      <span class="input-group-addon
+                                        bootstrap-touchspin-prefix" style="display: none;">
+                                      </span>
+                                      <input id="quantity_wanted" class="js-cart-line-product-quantity form-control"
+                                        data-product-id="5" type="text" value="1" name="product-quantity-spin" min="1"
+                                        style="display: block;">
+                                      <span class="input-group-addon
+                                        bootstrap-touchspin-postfix" style="display: none;">
                                       </span>
                                     </div>
                                   </div>
@@ -100,7 +102,7 @@
               </div>
             </div>
             <a class="label btn btn-primary" href="{{ route('home') }}">
-               {{ __('front\cart.continue shopping') }}
+              {{ __('front\cart.continue shopping') }}
             </a>
             <!-- shipping informations -->
           </div>
@@ -109,56 +111,27 @@
             <div class="cart-summary">
               <div class="cart-detailed-totals">
                 <div class="cart-summary-products">
-                  <div class="summary-label">
-                  {{ __('front\cart.items in cart',['count'=>$basket -> itemCount()]) }}
+                  <div class="summary-label items-count">
+                    {{ __('front\cart.items in cart',['count'=>$basket -> itemCount()]) }}
                   </div>
                 </div>
-
                 <div class="">
                   <div class="cart-summary-line cart-total">
                     <span class="label">
-                    {{ __('front\cart.total') }}
+
+                      {{ __('front\cart.total') }}
                     </span>
-                    <span class="value">{{$basket  -> subTotal()}}</span>
+                    <span class="value total">{{$basket  -> subTotal()}}</span>
                   </div>
                 </div>
               </div>
 
-              <div class="checkout  card-block m-0 p-0">
-                <a href="{{route('payment',$basket -> subTotal())}}" type="button" class="m-0 btn btn-primary">
-                {{ __('front\cart.proceed to payment') }}
+              <div class="checkout  card-block ">
+                <a href="{{route('payment',$basket -> subTotal())}}" type="button" class="btn btn-primary">
+                  {{ __('front\cart.proceed to payment') }}
                 </a>
               </div>
             </div>
-
-            <div class="blockreassurance_product">
-              <div>
-                <span class="item-product">
-                  <img class="svg invisible" src="../modules/blockreassurance/img/ic_verified_user_black_36dp_1x.png">
-                  &nbsp;
-                </span>
-                <p class="block-title" style="color:#000000;">Security policy (edit with
-                  Customer reassurance module)</p>
-              </div>
-              <div>
-                <span class="item-product">
-                  <img class="svg invisible" src="../modules/blockreassurance/img/ic_local_shipping_black_36dp_1x.png">
-                  &nbsp;
-                </span>
-                <p class="block-title" style="color:#000000;">Delivery policy (edit with
-                  Customer reassurance module)</p>
-              </div>
-              <div>
-                <span class="item-product">
-                  <img class="svg invisible" src="../modules/blockreassurance/img/ic_swap_horiz_black_36dp_1x.png">
-                  &nbsp;
-                </span>
-                <p class="block-title" style="color:#000000;">Return policy (edit with Customer
-                  reassurance module)</p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-
 
           </div>
         </div>
@@ -166,29 +139,47 @@
     </div>
   </div>
 </div>
+@include('front.includes.alert')
+@include('front.includes.alert2')
 @stop
-
 @section('scripts')
 <script>
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+$(document).on('click', '.cart-summary', function() {
+  let cart_count = $('.cart-products-count').text();
+  cart_count--;
+  $('.cart-products-count').text(cart_count);
+});
+$(document).on('click', '.close', function() {
+  $('.quickview-modal-product-details-' + $(this).attr('data-product-id')).css("display", "none");
+  $('.alert-modal').css("display", "none");
+  $('.alert-modal2').css("display", "none");
+});
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+$(document).on('click', '.remove-from-cart', function(e) {
+  e.preventDefault();
+  $.ajax({
+    type: 'post',
+    url: $(this).attr('data-url-product'),
+    data: {
+      'product_id': $(this).attr('data-id-product'),
+    },
+    success: function(data) {
+      if (data) {
+        $('.alert-modal').css('display', 'block');
+        $('.alert-text').text(data.msg);
+        $('.items-count').text(data.count);
+        $('.total').text(data.total);
+        let cart_count = $('.cart-products-count').text();
+        cart_count--;
+        $('.cart-products-count').text(cart_count);
+      }
     }
   });
-
-  $(document).on('click', '.remove-from-cart', function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      type: 'post',
-      url: $(this).attr('data-url-product'),
-      data: {
-        'product_id': $(this).attr('data-id-product'),
-      },
-      success: function(data) {
-
-      }
-    });
-  });
+});
 </script>
 @stop

@@ -3,6 +3,7 @@
 use App\Models\Category;
 
 define('PAGINATION_COUNT',50);
+define('PAGINATION_SEARCH',9);
 
 define('MYFATOORAHBASEURL',"https://apitest.myfatoorah.com");
 
@@ -51,6 +52,12 @@ if (!function_exists('active_menu')) {
 }
 
 
+// if (!function_exists('basket')) {
+//   function items_in_cart() {
+//     // return session()->all();
+//     return count(Session::get('basket'));
+//   }
+// }
 if (!function_exists('getLang')) {
   function getLang() {
     return app()->getLocale();

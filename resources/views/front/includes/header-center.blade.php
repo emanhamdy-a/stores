@@ -61,11 +61,22 @@
                     </a>
                   </div>
                   <div class="currency-item">
-                    <a title="{{ __('front\header.logout') }}" rel="nofollow"
-                    href="{{ route('logout') }}">
-                    {{ __('front\header.logout') }}
+                    <a title="{{ __('front\header.orders') }}" rel="nofollow"
+                    href="{{ route('orders') }}">
+                    {{ __('front\header.orders') }}
                     </a>
                   </div>
+                  <div class="currency-item">
+                  <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout_form').submit();">
+                    {{ __('front\header.logout') }}
+                  </a>
+                  </div>
+
+                  <form id="logout_form" action="{{ route('logout') }}"
+                    method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
                 @endauth
               </div>
             </div>
@@ -75,6 +86,10 @@
             <a href="{{route('wishlist.products.index') }}"
               title="{{ __('front\header.my wishlist') }}">
               <i class="header-icon-wishlist"></i>
+              <div class="text-center wishlist-products-count"
+                style='position: absolute;right:14px;bottom:2px; background: #2d9ae8;border-radius: 50%;color: #fff;height:19px;min-width:19px;line-height:19px;font-size: 1.1rem;font-weight: 700;'>
+                   @auth {{auth()->user()->wishlist->count() ?? ''}} @else 0 @endauth
+              </div>
             </a>
           </div>
 
@@ -88,7 +103,9 @@
                       <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
                   </a>
-                  <div class="cart-products-count">0</div>
+                  <div class="cart-products-count">
+                  {{ Session::has('basket') ? count(Session::get('basket')) : '0'}}
+                  </div>
                 </div>
               </div>
             </div>

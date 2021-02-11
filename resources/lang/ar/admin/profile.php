@@ -1,0 +1,45 @@
+<?php
+
+return [
+  'admins'         => 'المشرفين',
+  'update admin'   => 'تعديل بيانات المشرف',
+  'create admin'   => 'انشاء مشرف جديد',
+  'name'          => 'الاسم',
+  'email'         => 'الايميل',
+  'password'      => 'كلمة السر',
+  'confirm password' => 'تاكيد كلمه السر',
+  'choose role'      => 'اختر الصلاحيه',
+  'please choose role' => 'اختر الصلاحيه من فضلك',
+  'role'          => 'الصلاحيه',
+  'actions'       => 'الاجراءات',
+  'edit'          => 'تعديل',
+  'delete'        => 'حذف',
+  'all admins'     => 'كل المشرفين',
+  'add admin'      => 'اضف مشرف جديد',
+  'admin name'     => 'الاسم',
+  'admin data'     => 'بيانات المشرف',
+  'save'          => 'حفظ',
+  'cancel'        => 'الغاء',
+  'language'      => 'اللغه',
+  'active'        => 'مفعل',
+  'not found'     => 'هذا المشرف غير موجود',
+  'error try later' => 'شيئا ما خطا حدث برجاء المحاوله مره اخري',
+  'deleted'       => 'تم حذف المشرف بنجاح',
+  'created'       => 'تم اضافه مشرف جديد بنجاح',
+  'updated'       => 'تم تعيل بيانات المشرف بنجاح',
+
+  //admin validation
+
+  'name required'     =>   'من فضلك قم بادخال الاسم',
+  'name length'       =>   'يجب ان يتكون الاسم علي الاقل من حرفين',
+  'role required'     =>   'من فضلك حدد صلاحيه المشرف',
+  'role numeric'      =>   'اختر صلاحيه صالحه',
+  'role exists'       =>   'اختر صلاحيه موجوده بالفعل',
+  'vaild email'       =>   'ادخل ايميل صالح',
+  'email required'    =>   'من فضلك ادخل الايميل',
+  'email unique'      =>   'هذا الايميل مستخدم بالفعل',
+  'password required' =>   'من فضلك ادخل كلمه السر',
+  'password confirmed'=>   'من فضلك اكد كلمه السر',
+  'password length'   =>   'كلمه السر يجب ان تتكزن علي الاقل من 8 احرف',
+];
+

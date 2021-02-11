@@ -4,7 +4,7 @@ return [
 
   'flash deals'                 => 'FLASH DEALS',
   'trending'                    => 'trending',
-  'new arrival'                => 'new arrivall',
+  'new arrival'                 => 'new arrivall',
   'best sellers'                => 'best sellers',
 
   // banners

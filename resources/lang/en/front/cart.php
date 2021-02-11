@@ -7,13 +7,9 @@ return [
   'items in cart'         =>   'There are :count items in your cart',
   'total'                 =>   'Total:',
   'proceed to payment'    =>   'proceed to payment',
-  'availability'          => 'Availability: ',
-  'out of stock'          =>   'Out of stock',
-  'in stock'              =>   'In stock',
-  'add to cart'           =>   'Add to cart',
-  'quick view'            =>   'Quick view',
-  'favorit list'          =>   'Favorit list',
-  'remove from wishlist'  =>   'remove from wishlist',
-  'remove from favourite' => 'The product removed from favourite list successfully',
+  'added to cart'           =>   'The product added to cart successfully',
+  'removed from cart'     => 'The product removed from cart successfully ',
+  'quantity exceeded'     => 'Quantity Exceeded ',
+  'cart updated'          => 'Cart Updated ',
 
 ];

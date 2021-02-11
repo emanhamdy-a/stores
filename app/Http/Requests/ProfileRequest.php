@@ -29,4 +29,16 @@ class ProfileRequest extends FormRequest
       'password'  => 'nullable|confirmed|min:8'
     ];
   }
+
+  public function messages(){
+    return[
+      'nam.required'          => __('admin/profile.name required'),
+      'nam.min'               => __('admin/profile.name length'),
+      'email.email'           => __('admin/profile.valid email'),
+      'email.required'        => __('admin/profile.email required'),
+      'email.unique'          => __('admin/profile.email unique'),
+      'password.required'     => __('admin/profile.password required'),
+      'password.confirmed'    => __('admin/profile.password confirmed'),
+    ];
+  }
 }

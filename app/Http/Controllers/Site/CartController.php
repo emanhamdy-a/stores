@@ -57,13 +57,18 @@ class CartController extends Controller
     $product = Product::where('slug', $slug)->firstOrFail();
 
     try {
-    $this->basket->add($product, $request->qty ?? 1);
+      $this->basket->add($product, $request->qty ?? 1);
     } catch (QuantityExceededException $e) {
-      return 'Quantity Exceeded';
-      // must be trans as the site is multi languages
+      return response()->json([
+        'count' =>  $this -> basket -> itemCount() ,
+        'msg'   => __('front\cart.quantity exceeded'),
+       ]);
     }
 
-    return 'Product added successfully to the card ';
+    return response()->json([
+      'count' =>  $this -> basket -> itemCount() ,
+      'msg'   => __('front\cart.added to cart'),
+     ]);
   }
 
   /**
@@ -78,7 +83,6 @@ class CartController extends Controller
   public function postUpdate($slug, Request $request)
   {
     $_product = Product::where('slug', $slug)->firstOrFail();
-
     try {
       $this->basket->update($_product, $request->quantity);
     } catch (QuantityExceededException $e) {
@@ -86,12 +90,17 @@ class CartController extends Controller
     }
 
     if (!$request->quantity) {
-      return array_merge([
-        'total' => num_format($this->basket->subTotal()) . " (" . money('symbol') . ")"
-      ], trans('site.cart.msgs.removed'));
+       return response()->json([
+        'total' => $this -> basket -> subTotal(),
+        'count' =>  __('front\cart.items in cart',['count'=>$this -> basket -> itemCount()]) ,
+        'msg'   => __('front\cart.removed from cart'),
+       ]);
+      // return array_merge([
+      //   'total' => num_format($this->basket->subTotal()) . " (" . money('symbol') . ")"
+      // ], trans('site.cart.msgs.removed'));
     }
-
     return trans('site.cart.msgs.updated');
+
   }
 
   public function postUpdateAll(Request $r)

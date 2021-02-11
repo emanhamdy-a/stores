@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Events\NewOrder;
-use App\Http\Controllers\Controller;
-
 use App\Models\Order;
+use GuzzleHttp\Client;
+
+use App\Events\NewOrder;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentRequest;
 use Illuminate\Support\Facades\Validator;
-use GuzzleHttp\Client;
 
 class PaymentController extends Controller
 {
@@ -33,21 +34,9 @@ class PaymentController extends Controller
   /**
    * @param Request $request
    */
-  public function processPayment(Request $request)
+  public function processPayment(PaymentRequest $request)
   {
     $error = '';
-
-    //best practice as we do sperate validation on request form file
-    $validator = Validator::make($request->all(), [
-      'ccNum' => 'required',
-      'ccExp' => 'required',
-      'ccCvv' => 'required|numeric',
-      'amount' => 'required|numeric|min:100',
-    ]);
-
-    if ($validator->fails()) {
-        $error = 'Please check if you have filled in the form correctly. Minimum order amount is PHP 100.';
-    }
 
     $ccNum = str_replace(' ', '', $request->ccNum);
     $ccExp = $request->ccExp;
@@ -80,19 +69,27 @@ class PaymentController extends Controller
     $response = curl_exec($curl);
     $err = curl_error($curl);
     curl_close($curl);
+
     if ($err) {
-      return [
+      return redirect()->route('payment',$request->amount)->with([
+        'error' => __('front/payment.error try later'),
         'payment_success' => false,
         'status' => 'faild',
-        'error' => $err
-      ];
+        ]);
+        // 'error' => $err
     }
 
     $json = json_decode((string)$response, true);
 
     //echo "json  json: $json '<br />'";
 
-    $payment_url = $json["Data"]["PaymentURL"];
+    if(!$payment_url = $json["Data"]["PaymentURL"]){
+      return redirect()->route('payment',$request->amount)->with([
+        'error' => __('front/payment.error try later'),
+        'payment_success' => false,
+        'status' => 'faild',
+      ]);
+    };
 
     $card = new \stdClass();
     $card->Number = $ccNum;
@@ -115,15 +112,24 @@ class PaymentController extends Controller
     curl_close($curl);
 
     if ($err) {
-      return [
-        'paymemt_success' => false,
+      return redirect()->route('payment',$request->amount)->with([
+        'error' => __('front/payment.error try later'),
+        'payment_success' => false,
         'status' => 'faild',
-        'error' => $err
-      ];
+      ]);
+        // 'error' => $err
     }
 
     $json = json_decode((string)$response, true);
-    $PaymentId = $json["Data"]["PaymentId"];
+
+    if(!$payment_url = $json["Data"]["PaymentURL"]){
+      return redirect()->route('payment',$request->amount)->with([
+        'error' => __('front/payment.error try later'),
+        'payment_success' => false,
+        'status' => 'faild',
+      ]);
+    };
+
     try {
       DB::beginTransaction();
       // if success payment save order and send realtime notification to admin
@@ -134,17 +140,23 @@ class PaymentController extends Controller
 
       //fire event on order complete success for realtime notification
       event(new NewOrder($order));
-      // replace return statment with message that tell the user that the payment successes
-      return [
+
+      return redirect()->route('payment',$request->amount)->with([
+        'success' => __('front/payment.success'),
         'payment_success' => true,
+        'status' => 'succeeded',
         'token' => $PaymentId,
         'data' => $json,
-        'status' => 'succeeded',
-      ];
+        ]);
 
     } catch (\Exception $ex) {
       DB::rollBack();
-      return $ex;
+      return redirect()->route('payment',$request->amount)->with([
+        'error' => __('front/payment.error try later'),
+        'payment_success' => false,
+        'status' => 'faild',
+      ]);
+      // return $ex;
     }
   }
 

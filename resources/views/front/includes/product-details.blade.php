@@ -4,8 +4,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-product-id="{{$product -> id}}" data-dismiss="modal"
-          aria-label="Close"><i class="material-icons close">close</i></button>
+      <button type="button" class="close"
+        data-product-id="{{$product -> id}}"
+        data-dismiss="modal" aria-label="Close">
+        <i class="material-icons close">close</i>
+      </button>
       </div>
       <div class="modal-body">
         <div class="row no-gutters">
@@ -42,32 +45,42 @@
               <p> {!! $product -> description !!}</p>
             </div>
             <div class="product-actions">
-              <form action="" method="post" id="add-to-cart-or-refresh">
+              <form action="" method="post" id="">
                 @csrf
-                <input type="hidden" name="id_product" value="{{$product -> id }}" id="product_page_product_id">
+                <input type="hidden" name="id_product"
+                value="{{$product -> id }}" id="product_page_product_id">
                 <div class="product-add-to-cart in_border">
                   <div class="add">
-                    <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" type="submit">
+                    <button class="btn btn-primary add-to-cart"
+                      data-product-id="{{ $product -> id }}"
+                      data-slug="{{ $product -> slug }}" type="submit">
                       <div class="icon-cart">
                         <i class="shopping-cart"></i>
                       </div>
-                      <span>Add to cart</span>
+                      <span>
+                      {{ __('front\details.add to cart') }}
+                      </span>
                     </button>
                   </div>
 
-                  <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
-                    <i class="fa fa-heart"></i>
-                    <span>Add to Wishlist</span>
-                  </a>
+                  @if(!isset($no_wishlist))
+                    <a class="addToWishlist  wishlistProd_22" href="#!"
+                      data-product-id="{{$product -> id}}">
+                      <i class="fa fa-heart"></i>
+                      <span>
+                      {{ __('front\details.add to wishlist') }}
+                      </span>
+                    </a>
+                  @endif
 
                   <div class="clearfix"></div>
 
                   <div id="product-availability" class="info-stock mt-20">
-                    <label class="control-label">Availability:</label>
-                    {{$product -> in_stock ? 'in stock' : 'out of stock'}}
+                    <label class="control-label">
+                    {{ __('front\details.availability') }}
+                    </label>
+                    {{$product -> in_stock ? __('front\details.in stock')  : __('front\details.out of stock') }}
                   </div>
-                  <p class="product-minimal-quantity mt-20">
-                  </p>
                 </div>
 
               </form>
@@ -75,43 +88,12 @@
 
             <div class="tabs">
 
-              <div class="seller_info">
-
-                <div class="average_rating">
-                  <a href="http://demo.bestprestashoptheme.com/savemart/en/jmarketplace/2_taylor-jonson/comments"
-                    title="View comments about Taylor Jonson">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    (0)
-                  </a>
-                </div>
-              </div>
-
             </div>
 
             <div class="dropdown social-sharing">
-              <button class="btn btn-link" type="button" id="social-sharingButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span><i class="fa fa-share-alt" aria-hidden="true"></i>Share With :</span>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="social-sharingButton">
-                <a class="dropdown-item"
-                  href="http://www.facebook.com/sharer.php?u=http://demo.bestprestashoptheme.com/savemart/en/home-appliance/6-nullam-tempor-orci-eu-pretium.html"
-                  title="Share" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
-                <a class="dropdown-item"
-                  href="https://twitter.com/intent/tweet?text=Nullam tempor orci eu pretium http://demo.bestprestashoptheme.com/savemart/en/home-appliance/6-nullam-tempor-orci-eu-pretium.html"
-                  title="Tweet" target="_blank"><i class="fa fa-twitter"></i>Tweet</a>
-                <a class="dropdown-item"
-                  href="https://plus.google.com/share?url=http://demo.bestprestashoptheme.com/savemart/en/home-appliance/6-nullam-tempor-orci-eu-pretium.html"
-                  title="Google+" target="_blank"><i class="fa fa-google-plus"></i>Google+</a>
-                <a class="dropdown-item"
-                  href="http://www.pinterest.com/pin/create/button/?media=http://demo.bestprestashoptheme.com/savemart/49/nullam-tempor-orci-eu-pretium.jpg&amp;url=http://demo.bestprestashoptheme.com/savemart/en/home-appliance/6-nullam-tempor-orci-eu-pretium.html"
-                  title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i>Pinterest</a>
-              </div>
+
             </div>
+
           </div>
         </div>
       </div>

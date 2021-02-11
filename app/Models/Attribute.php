@@ -34,6 +34,6 @@ class Attribute extends Model
 
 
     public  function options(){
-        return $this->hasMany(Option::class,'attribute_id');
+      return $this->hasMany(Option::class,'attribute_id');
     }
 }

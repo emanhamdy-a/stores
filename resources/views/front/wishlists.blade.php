@@ -7,18 +7,7 @@
     <div class="breadcrumb">
 
       <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="{{route('home') }}">
-            <span itemprop="name">{{ __('front\wishlists.home') }}</span>
-          </a>
-          <meta itemprop="position" content="1">
-        </li>
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="36-mini-speaker.html">
-            <span itemprop="name">{{ __('front\wishlists.favorit list') }}</span>
-          </a>
-          <meta itemprop="position" content="3">
-        </li>
+
       </ol>
 
     </div>
@@ -42,7 +31,9 @@
                   <span class="list-type" data-view-type="list"><i class="fa fa-bars"></i></span>
                 </div>
                 <div class="hidden-sm-down total-products">
-                  <p>There are {{count($products) ?? '0'}} products.</p>
+                  <p>
+                    {{ __('front\wishlists.product count',['count'=>count($products) ?? '0']) }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -52,6 +43,7 @@
             <div id="js-product-list">
               <div class="products product_list grid row" data-default-view="grid">
                 @isset($products)
+                <?php $no_wishlist='';?>
                 @foreach($products as $product)
 
                 <div class="item  col-lg-4 col-md-6 col-xs-12 text-center">
@@ -75,16 +67,16 @@
                       <div class="product-groups">
 
                         <div class="group-reviews">
-                          <!-- <div class="product-comments">
+                          <div class="product-comments">
                             <div class="star_content">
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
-                              <div class="star"></div>
+                              <div class="star @if($product->review_stars() >= 1) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 2) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 3) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 4) star_on @endif"></div>
+                              <div class="star @if($product->review_stars() >= 5) star_on @endif"></div>
                             </div>
                             <span>0 review</span>
-                          </div> -->
+                          </div>
                           <div class="info-stock ml-auto">
                             <label class="control-label">
                               {{ __('front\wishlists.availability') }}</label>
@@ -123,11 +115,8 @@
                           </a>
                         </form>
 
-                        <!-- </form> -->
-                        <!-- <form action="" class="formAddToCart" method="post"> -->
                         <a class="addToWishlist removeFromWishlist
-                            wishlistProd_22" href="#"
-                          data-product-id="{{$product -> id}}">
+                            wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                           <i class="fa fa-heart"></i>
                           <span>{{ __('front\wishlists.remove from wishlist') }}</span>
                         </a>
@@ -168,23 +157,23 @@
 @include('front.includes.js.addToCartAndWishlist')
 
 <script>
-  $(document).on('click', '.removeFromWishlist', function(e) {
-    e.preventDefault();
+$(document).on('click', '.removeFromWishlist', function(e) {
+  e.preventDefault();
 
-    @guest()
-    $('.not-loggedin-modal').css('display', 'block');
-    @endguest
+  @guest()
+  $('.not-loggedin-modal').css('display', 'block');
+  @endguest
 
-    $.ajax({
-      type: 'delete',
-      url: "{{Route('wishlist.destroy')}}",
-      data: {
-        'productId': $(this).attr('data-product-id'),
-      },
-      success: function(data) {
-        location.reload();
-      }
-    });
+  $.ajax({
+    type: 'delete',
+    url: "{{Route('wishlist.destroy')}}",
+    data: {
+      'productId': $(this).attr('data-product-id'),
+    },
+    success: function(data) {
+      location.reload();
+    }
   });
+});
 </script>
 @stop

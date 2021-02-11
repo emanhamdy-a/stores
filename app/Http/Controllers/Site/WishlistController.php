@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Category;
-
 class WishlistController
 {
 
@@ -30,9 +28,20 @@ class WishlistController
   {
     if (! auth()->user()->wishlistHas(request('productId'))) {
       auth()->user()->wishlist()->attach(request('productId'));
-      return response() -> json(['status' => true , 'wished' => true]);
+      return response()->json([
+        'count' =>  auth()->user()->wishlist->count() ,
+        'msg'   => __('front\wishlists.added to wishlist'),
+        'status' => true ,
+        'wished' => true
+      ]);
     }
-    return response() -> json(['status' => true , 'wished' => false]);
+
+    return response()->json([
+      'count' =>  auth()->user()->wishlist->count() ,
+      'msg'   => __('front\wishlists.added before'),
+      'status' => true ,
+      'wished' => false
+    ]);
   }
 
   /**
