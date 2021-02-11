@@ -2381,24 +2381,25 @@ DB::statement("ALTER SEQUENCE roles_id_seq RESTART WITH 5");
 
 //orders
 DB::table('orders')->insert([
-  ["id" => "1","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-01-28 22:17:55","updated_at" => "2021-01-28 22:17:55",],
-  ["id" => "2","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-01-28 22:21:40","updated_at" => "2021-01-28 22:21:40",],
-  ["id" => "3","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-01-28 22:56:19","updated_at" => "2021-01-28 22:56:19",],
-  ["id" => "4","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-01-28 23:05:42","updated_at" => "2021-01-28 23:05:42",],
-  ["id" => "7","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-02-11 15:11:04","updated_at" => "2021-02-11 15:11:04",],
-  ["id" => "8","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-02-11 16:24:48","updated_at" => "2021-02-11 16:24:48",],
-  ["id" => "9","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","deleted_at" => "","created_at" => "2021-02-11 18:22:09","updated_at" => "2021-02-11 18:22:09",],
+  ["id" => "1","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-01-28 22:17:55","updated_at" => "2021-01-28 22:17:55",],
+  ["id" => "2","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-01-28 22:21:40","updated_at" => "2021-01-28 22:21:40",],
+  ["id" => "3","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-01-28 22:56:19","updated_at" => "2021-01-28 22:56:19",],
+  ["id" => "4","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14066.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-01-28 23:05:42","updated_at" => "2021-01-28 23:05:42",],
+  ["id" => "7","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-02-11 15:11:04","updated_at" => "2021-02-11 15:11:04",],
+  ["id" => "8","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-02-11 16:24:48","updated_at" => "2021-02-11 16:24:48",],
+  ["id" => "9","customer_id" => "21","customer_phone" => "01090925920","customer_name" => "eman","total" => "14714.0000","payment_method" => "2","locale" => "en","status" => "paid","created_at" => "2021-02-11 18:22:09","updated_at" => "2021-02-11 18:22:09",],
 ]);
 DB::statement("ALTER SEQUENCE orders_id_seq RESTART WITH 10");
+
 //transactions
 DB::table('transactions')->insert([
-  ["id" => "1","order_id" => "1","transaction_id" => "060640615130626761","payment_method" => "2","deleted_at" => "","created_at" => "2021-01-28 22:17:55","updated_at" => "2021-01-28 22:17:55",],
-  ["id" => "2","order_id" => "2","transaction_id" => "060640615230626861","payment_method" => "2","deleted_at" => "","created_at" => "2021-01-28 22:21:40","updated_at" => "2021-01-28 22:21:40",],
-  ["id" => "3","order_id" => "3","transaction_id" => "060640615830627462","payment_method" => "2","deleted_at" => "","created_at" => "2021-01-28 22:56:20","updated_at" => "2021-01-28 22:56:20",],
-  ["id" => "4","order_id" => "4","transaction_id" => "060640615930627562","payment_method" => "2","deleted_at" => "","created_at" => "2021-01-28 23:05:42","updated_at" => "2021-01-28 23:05:42",],
-  ["id" => "5","order_id" => "7","transaction_id" => "060652049741717062","payment_method" => "2","deleted_at" => "","created_at" => "2021-02-11 15:11:04","updated_at" => "2021-02-11 15:11:04",],
-  ["id" => "6","order_id" => "8","transaction_id" => "060652055941721762","payment_method" => "2","deleted_at" => "","created_at" => "2021-02-11 16:24:49","updated_at" => "2021-02-11 16:24:49",],
-  ["id" => "7","order_id" => "9","transaction_id" => "060652745342408562","payment_method" => "2","deleted_at" => "","created_at" => "2021-02-11 18:22:09","updated_at" => "2021-02-11 18:22:09",],
+  ["id" => "1","order_id" => "1","transaction_id" => "060640615130626761","payment_method" => "2","created_at" => "2021-01-28 22:17:55","updated_at" => "2021-01-28 22:17:55",],
+  ["id" => "2","order_id" => "2","transaction_id" => "060640615230626861","payment_method" => "2","created_at" => "2021-01-28 22:21:40","updated_at" => "2021-01-28 22:21:40",],
+  ["id" => "3","order_id" => "3","transaction_id" => "060640615830627462","payment_method" => "2","created_at" => "2021-01-28 22:56:20","updated_at" => "2021-01-28 22:56:20",],
+  ["id" => "4","order_id" => "4","transaction_id" => "060640615930627562","payment_method" => "2","created_at" => "2021-01-28 23:05:42","updated_at" => "2021-01-28 23:05:42",],
+  ["id" => "5","order_id" => "7","transaction_id" => "060652049741717062","payment_method" => "2","created_at" => "2021-02-11 15:11:04","updated_at" => "2021-02-11 15:11:04",],
+  ["id" => "6","order_id" => "8","transaction_id" => "060652055941721762","payment_method" => "2","created_at" => "2021-02-11 16:24:49","updated_at" => "2021-02-11 16:24:49",],
+  ["id" => "7","order_id" => "9","transaction_id" => "060652745342408562","payment_method" => "2","created_at" => "2021-02-11 18:22:09","updated_at" => "2021-02-11 18:22:09",],
 ]);
 DB::statement("ALTER SEQUENCE transactions_id_seq RESTART WITH 8");
 
