@@ -20,14 +20,12 @@ Route::group([
   'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
-  Route::group(['namespace'=>'Dashboard', 'prefix'=>'admin'],function(){
-    Route::get('/seed', function() {
-    	return view('heroku_db');
-    });
+  Route::get('/seed', function() {
+    return view('heroku_db');
+  });
 
-    Route::get('/seeder', function() {
-      return view('seeder');
-    });
+  Route::get('/seeder', function() {
+    return view('seeder');
   });
 
   Route::group(['namespace'=>'Dashboard',
