@@ -6,8 +6,8 @@ return [
 
   //review validation
 
-  'title required'     =>   'please insert the name',
-  'content required'   =>   'please insert the name',
-  'review required'     =>   'please insert the name',
+  'title required'     =>   'please insert the title of review',
+  'content required'   =>   'please insert the content of review',
+  'review required'     =>  'please select your rate',
 ];
 

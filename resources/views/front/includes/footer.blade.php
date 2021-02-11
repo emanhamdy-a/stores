@@ -184,8 +184,10 @@
         cache: false,
         processData: false,
         success: function(data) {
-          console.log(data);
           if(data){
+            $('.verticalmenu-content.has-showmore').removeClass('active');
+            $('.munu_bar').removeClass('ac');
+
             $('body #displayTop').remove();
             $('body #content-wrapper').html(data);
           }
@@ -194,5 +196,6 @@
         },
       });
   });
+
 </script>
 @stop

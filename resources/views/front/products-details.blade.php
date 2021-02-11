@@ -7,6 +7,15 @@
   <nav data-depth="3" class="breadcrumb-bg">
     <div class="container no-index">
       <div class="breadcrumb">
+        @if(count($errors->all()) > 0)
+        <div class="alert alert-danger">
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
         @include('dashboard.includes.alerts.success')
         @include('dashboard.includes.alerts.errors')
       </div>
@@ -79,7 +88,8 @@
 
                           <!-- review -->
                           <div class="comments_advices">
-                            <a href="#" class="comments_advices_tab"><i class="fa fa-comments"></i>
+                            <a data-toggle="tab" href="#reviews"
+                             class="comments_advices_tab"><i class="fa fa-comments"></i>
                               {{ __('front\product_details.read reviews') }}
                             </a>
                             <!-- (1) -->
@@ -290,9 +300,6 @@
                   <div class="comment_details">
                     <h4> {{ $review->title }}</h4>
                     <p> {{ $review->content }}</p>
-                    <ul>
-                      <li>{{ $review->review }}</li>
-                    </ul>
                   </div>
                 </div>
               </div>

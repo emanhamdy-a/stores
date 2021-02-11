@@ -2,34 +2,36 @@
 
 namespace App\Http\Controllers\Site;
 
-
-use App\Models\Slider;
-use App\Models\Product;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Repositories\HomeRepository;
 
 class HomeController extends Controller
 {
 
-    public function home()
-    {
-      $data = [];
+  protected $repository;
 
-      // $data['sliders'] = Slider::all();
-      $data['sliders'] = Slider::get(['photo']);
+  public function __construct(HomeRepository $repository)
+  {
+    $this->repository = $repository;
+  }
 
-      $data['flash_deal'] = Product::where('special_price' , '!=' ,null)
-        ->latest()->first() ?? Product::orderBy('price' , 'desc')->first();
+  public function home()
+  {
+    $data = [];
 
-      $data['newProducts'] = Product::latest()->take(10)->get();
+    $data['sliders'] = $this->repository->getMainSlider();
 
-      $data['trendes'] = Product::orderBy('viewed' , 'desc')->take(30)->get();
+    $data['flash_deal'] = $this->repository->getFlashDeal();
 
-      $data['bestSellers'] = Product::where('special_price' , '!=' ,null)
-      ->latest()->take(7)->get() ?? Product::orderBy('price' , 'desc')->take(7)->get();
+    $data['newProducts'] = $this->repository->newProducts();
 
-      $data['main_categories_products'] = Category::parent()->take(6)->get();
+    $data['trendes'] = $this->repository->Trends();
 
-      return view('front.home', $data);
-    }
+    $data['bestSellers'] = $this->repository->bestSellers();
+
+    $data['main_categories_products'] = $this->repository->mainCategoriesProdcuts();
+
+    return view('front.home', $data);
+
+  }
 }
