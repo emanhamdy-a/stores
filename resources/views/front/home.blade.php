@@ -304,13 +304,16 @@ $(document).ready(function() {
   $('.verticalmenu-content.has-showmore').addClass('active');
   $('.munu_bar').addClass('ac');
   $(window).on('scroll', function() {
-    let scroll = $(window).scrollTop();
-    if (scroll > 700) {
-      $('.verticalmenu-content.has-showmore').removeClass('active');
-      $('.munu_bar').removeClass('ac');
-    } else {
-      $('.verticalmenu-content.has-showmore').addClass('active');
-      $('.munu_bar').addClass('ac');
+    let slider = $('#displayTop').css('display');
+    if(slider=='block'){
+      let scroll = $(window).scrollTop();
+      if (scroll > 700) {
+        $('.verticalmenu-content.has-showmore').removeClass('active');
+        $('.munu_bar').removeClass('ac');
+      } else {
+        $('.verticalmenu-content.has-showmore').addClass('active');
+        $('.munu_bar').addClass('ac');
+      }
     }
   });
 });
