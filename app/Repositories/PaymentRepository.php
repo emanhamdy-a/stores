@@ -110,16 +110,4 @@ class PaymentRepository implements PaymentRepositoryInterface
     ]);
   }
 
-  /**
-   * save transaction to transaction table
-   */
-  public function saveTransaction(Order $order, $PaymentId)
-  {
-    Transaction::create([
-      'order_id' => $order->id,
-      'transaction_id' => $PaymentId,
-      'payment_method' => $order->payment_method,
-    ]);
-  }
-
 }

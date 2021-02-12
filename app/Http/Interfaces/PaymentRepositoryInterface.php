@@ -16,9 +16,4 @@ interface PaymentRepositoryInterface
    */
   public function saveOrder($amount, $PaymentMethodId);
 
-  /**
-   * save transaction to transaction table
-   */
-  public function saveTransaction($order, $PaymentId);
-
 }
