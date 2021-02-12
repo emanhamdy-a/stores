@@ -90,12 +90,12 @@
                           <div class="comments_advices">
                             <a data-toggle="tab" href="#reviews"
                              class="comments_advices_tab"><i class="fa fa-comments"></i>
-                              {{ __('front\product_details.read reviews') }}
+                              {{ __('front/product_details.read reviews') }}
                             </a>
                             <!-- (1) -->
                             <a class="open-comment-form" data-toggle="modal" data-target="#new_comment_form" href="#"><i
                                 class="fa fa-edit"></i>
-                              {{ __('front\product_details.write your review') }}
+                              {{ __('front/product_details.write your review') }}
                             </a>
                           </div>
                         </div>
@@ -116,7 +116,7 @@
                             </div>
                           </div>
                           <div class="tax-shipping-delivery-label">
-                            {{ __('front\product_details.tax included') }}
+                            {{ __('front/product_details.tax included') }}
                           </div>
                         </div>
 
@@ -130,7 +130,7 @@
                         </div>
                         <div class="pro-cate">
                           <label class="control-label">
-                            {{ __('front\product_details.categories') }}
+                            {{ __('front/product_details.categories') }}
                           </label>
 
                           @isset($product -> categories)
@@ -144,7 +144,7 @@
                         </div>
                         <div class="pro-tag">
                           <label class="control-label">
-                            {{ __('front\product_details.tags') }}
+                            {{ __('front/product_details.tags') }}
                           </label>
                           @isset($product -> tags)
                           <div>
@@ -165,7 +165,7 @@
                                 <i class="shopping-cart"></i>
                               </div>
                               <span>
-                                {{ __('front\product_details.add to cart') }}
+                                {{ __('front/product_details.add to cart') }}
                               </span>
                             </a>
                           </div>
@@ -173,7 +173,7 @@
                           <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                             <i class="fa fa-heart"></i>
                             <span>
-                              {{ __('front\product_details.add to wishlist')}}
+                              {{ __('front/product_details.add to wishlist')}}
                             </span>
                           </a>
 
@@ -181,11 +181,11 @@
 
                           <div id="product-availability" class="info-stock mt-20">
                             <label class="control-label">
-                              {{ __('front\product_details.availability') }}
+                              {{ __('front/product_details.availability') }}
                             </label>
                             {{$product -> in_stock ?
-                               __('front\product_details.in stock') :
-                               __('front\product_details.out of stock')}}
+                               __('front/product_details.in stock') :
+                               __('front/product_details.out of stock')}}
                           </div>
                         </div>
                       </div>
@@ -198,7 +198,7 @@
 
                     <div class="product-quantity">
                       <span class="control-label">
-                        {{ __('front\product_details.quantity') }}
+                        {{ __('front/product_details.quantity') }}
                       </span>
                       <div class="qty">
                         <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group" min="1">
@@ -247,13 +247,13 @@
 
               <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" aria-expanded="true" href="#product-details">
-                  {{ __('front\product_details.product details') }}
+                  {{ __('front/product_details.product details') }}
                 </a>
               </li>
               <!-- review -->
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#reviews">
-                  {{ __('front\product_details.write your own review') }}
+                  {{ __('front/product_details.write your own review') }}
                   <span class='count-comment'>
                     ({{ $product->reviews->count() ?? '0' }})</span>
                 </a>
@@ -277,7 +277,7 @@
                   <div class="comment clearfix">
                     <div class="comment_author">
                       <span>
-                        {{ __('front\product_details.grade') }}
+                        {{ __('front/product_details.grade') }}
                       </span>
                       <div class="star_content clearfix">
                         @for($i = 1 ; $i <= 5 ; $i ++) @if($review->review < $i) <div class="star">
@@ -308,7 +308,7 @@
               <p class="text-center mt-10">
                 <a id="new_comment_tab_btn" class="open-comment-form btn btn-default" data-toggle="modal"
                   data-target="#new_comment_form" href="#">
-                  {{ __('front\product_details.write your review') }}
+                  {{ __('front/product_details.write your review') }}
                 </a>
               </p>
             </div>
@@ -320,12 +320,12 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title text-xs-center"><i class="fa fa-edit"></i>
-                      {{ __('front\product_details.write your review') }}
+                      {{ __('front/product_details.write your review') }}
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <i class="material-icons close">
                       </i>
-                      {{ __('front\product_details.close') }}
+                      {{ __('front/product_details.close') }}
                     </button>
                   </div>
                   <div class="modal-body">
@@ -348,7 +348,7 @@
                         <ul id="criterions_list">
                           <li>
                             <label>
-                              {{ __('front\product_details.quality') }}
+                              {{ __('front/product_details.quality') }}
                             </label>
                             <style>
                             input[type='radio'] {
@@ -389,20 +389,20 @@
                           </li>
                         </ul>
                         <label for="comment_title">
-                          {{ __('front\product_details.title for your review') }}
+                          {{ __('front/product_details.title for your review') }}
                           <sup class="required">*</sup>
                         </label>
                         <input id="comment_title" name="title" type="text" value="">
 
                         <label for="content">
-                          {{ __('front\product_details.your review') }}
+                          {{ __('front/product_details.your review') }}
                           <sup class="required">*</sup>
                         </label>
                         <textarea id="content" name="content"></textarea>
 
                         <div>
                           <button class="btn btn-primary" type="submit">
-                            {{ __('front\product_details.send') }}
+                            {{ __('front/product_details.send') }}
                           </button>
                         </div>
 
@@ -426,10 +426,10 @@
                   <div class="icon-policy"><i class="noviconpolicy noviconpolicy-1">1</i></div>
                   <div class="policy-content">
                     <div class="policy-name">
-                      {{ __('front\product_details.free delivery') }}
+                      {{ __('front/product_details.free delivery') }}
                     </div>
                     <div class="policy-des">
-                      {{ __('front\product_details.free delivery text') }}
+                      {{ __('front/product_details.free delivery text') }}
                     </div>
                   </div>
                 </div>
@@ -437,10 +437,10 @@
                   <div class="icon-policy"><i class="noviconpolicy noviconpolicy-2">2</i></div>
                   <div class="policy-content">
                     <div class="policy-name">
-                      {{ __('front\product_details.money back') }}
+                      {{ __('front/product_details.money back') }}
                     </div>
                     <div class="policy-des">
-                      {{ __('front\product_details.money back text') }}
+                      {{ __('front/product_details.money back text') }}
                     </div>
                   </div>
                 </div>
@@ -448,10 +448,10 @@
                   <div class="icon-policy"><i class="noviconpolicy noviconpolicy-3">3</i></div>
                   <div class="policy-content">
                     <div class="policy-name">
-                      {{ __('front\product_details.authenticity') }}
+                      {{ __('front/product_details.authenticity') }}
                     </div>
                     <div class="policy-des">
-                      {{ __('front\product_details.authenticity text') }}
+                      {{ __('front/product_details.authenticity text') }}
                     </div>
                   </div>
                 </div>
@@ -469,7 +469,7 @@
 
       <section class="relate-product product-accessories clearfix">
         <h3 class="h5 title_block">
-          {{ __('front\product_details.related products') }}
+          {{ __('front/product_details.related products') }}
         </h3>
         <div class="block_content">
           <div id="productlist2289580" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false"
@@ -551,7 +551,7 @@
                         data-product-id="{{$product -> id}}">
                         <i class="novicon-cart"></i>
                         <span>
-                          {{ __('front\product_details.add to cart') }}
+                          {{ __('front/product_details.add to cart') }}
                         </span>
                       </a>
                     </form>
@@ -559,7 +559,7 @@
                     <a class="addToWishlist  wishlistProd_22" href="#!" data-product-id="{{$product -> id}}">
                       <i class="fa fa-heart"></i>
                       <span>
-                        {{ __('front\product_details.add to wishlist') }}
+                        {{ __('front/product_details.add to wishlist') }}
                       </span>
                     </a>
 
@@ -567,7 +567,7 @@
                       data-link-action="quickview">
                       <i class="fa fa-eye"></i>
                       <span>
-                        {{ __('front\product_details.quick view') }}
+                        {{ __('front/product_details.quick view') }}
                       </span>
                     </a>
                   </div>

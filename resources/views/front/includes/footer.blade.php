@@ -8,7 +8,7 @@
               <div class="block nov-wrap">
                 <div class="social-content">
                   <div class="title_block">
-                    {{ __('front\footer.follow us') }}
+                    {{ __('front/footer.follow us') }}
                   </div>
                   <div id="social_block">
                     <div class="social">
@@ -44,25 +44,25 @@
                   </p>
                   <div class="data-contact d-flex align-self-stretch">
                     <div class="title-icon">
-                    {{ __('front\footer.support') }}
+                    {{ __('front/footer.support') }}
                     <i class="icon-support icon-address"></i></div>
                     <div class="content-data-contact">
                       <div class="support">
-                      {{ __('front\footer.customer services') }}
+                      {{ __('front/footer.customer services') }}
                       </div>
                       <div class="phone-support">+84-0123-456-789</div>
                     </div>
                   </div>
                   <div class="data-contact d-flex align-self-stretch">
                     <div class="title-icon">
-                    {{ __('front\footer.contact info') }}
+                    {{ __('front/footer.contact info') }}
                     <i class="icon-info-contact icon-address"></i></div>
                     <div class="content-data-contact">
                       <div class="info-contact">
-                      {{ __('front\footer.contact info:') }}
+                      {{ __('front/footer.contact info:') }}
                       </div>
                       <div class="content-info-contact">
-                      {{ __('front\footer.contact adress') }}</div>
+                      {{ __('front/footer.contact adress') }}</div>
                     </div>
                   </div>
                 </div>
@@ -74,34 +74,34 @@
             <div class="nov-html col-xl-4 col-lg-4 col-md-4 ">
               <div class="block">
                 <div class="title_block">
-                {{ __('front\footer.pages') }}
+                {{ __('front/footer.pages') }}
                 </div>
                 <div class="block_content">
                   <ul>
                     <li>
                       <a href="{{ route('site.cart.index') }}">
-                        {{ __('front\footer.products') }}
+                        {{ __('front/footer.products') }}
                       </a>
                     </li>
                     <li>
                       <a href="{{ route('site.cart.index') }}">
-                        {{ __('front\footer.cart') }}
+                        {{ __('front/footer.cart') }}
                       </a>
                     </li>
                     <li>
                       <a href="{{ route('wishlist.products.index') }}">
-                        {{ __('front\footer.wishlist') }}
+                        {{ __('front/footer.wishlist') }}
                       </a>
                     </li>
                     <li>
                       @auth
                         <a href="{{ route('profile') }}">
-                          {{ __('front\footer.profile') }}
+                          {{ __('front/footer.profile') }}
                         </a>
                       @endauth
                       @guest
                         <a href="{{ route('login') }}">
-                          {{ __('front\footer.login') }}
+                          {{ __('front/footer.login') }}
                         </a>
                       @endguest
                     </li>

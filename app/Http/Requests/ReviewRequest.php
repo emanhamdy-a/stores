@@ -34,9 +34,9 @@ class ReviewRequest extends FormRequest
   {
 
     return [
-      'title.required' => __('front\reviews.title required'),
-      'content.required' => __('front\reviews.content required'),
-      'review.required' => __('front\reviews.review required'),
+      'title.required' => __('front/reviews.title required'),
+      'content.required' => __('front/reviews.content required'),
+      'review.required' => __('front/reviews.review required'),
     ];
   }
 

@@ -61,13 +61,13 @@ class CartController extends Controller
     } catch (QuantityExceededException $e) {
       return response()->json([
         'count' =>  $this -> basket -> itemCount() ,
-        'msg'   => __('front\cart.quantity exceeded'),
+        'msg'   => __('front/cart.quantity exceeded'),
        ]);
     }
 
     return response()->json([
       'count' =>  $this -> basket -> itemCount() ,
-      'msg'   => __('front\cart.added to cart'),
+      'msg'   => __('front/cart.added to cart'),
      ]);
   }
 
@@ -92,8 +92,8 @@ class CartController extends Controller
     if (!$request->quantity) {
        return response()->json([
         'total' => $this -> basket -> subTotal(),
-        'count' =>  __('front\cart.items in cart',['count'=>$this -> basket -> itemCount()]) ,
-        'msg'   => __('front\cart.removed from cart'),
+        'count' =>  __('front/cart.items in cart',['count'=>$this -> basket -> itemCount()]) ,
+        'msg'   => __('front/cart.removed from cart'),
        ]);
     }
     return trans('site.cart.msgs.updated');

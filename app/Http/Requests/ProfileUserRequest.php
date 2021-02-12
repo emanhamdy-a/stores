@@ -32,13 +32,13 @@ class ProfileUserRequest extends FormRequest
 
   public function messages(){
     return[
-      'nam.required'          => __('front\profile.name required'),
-      'nam.min'               => __('front\profile.name length'),
-      'mobile.numirec'           => __('front\profile.mobile numirec'),
-      'mobile.required'        => __('front\profile.mobile required'),
-      'mobile.unique'          => __('front\profile.mobile unique'),
-      'password.required'     => __('front\profile.password required'),
-      'password.confirmed'    => __('front\profile.password confirmed'),
+      'nam.required'          => __('front/profile.name required'),
+      'nam.min'               => __('front/profile.name length'),
+      'mobile.numirec'           => __('front/profile.mobile numirec'),
+      'mobile.required'        => __('front/profile.mobile required'),
+      'mobile.unique'          => __('front/profile.mobile unique'),
+      'password.required'     => __('front/profile.password required'),
+      'password.confirmed'    => __('front/profile.password confirmed'),
     ];
   }
 }

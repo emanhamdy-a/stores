@@ -15,7 +15,7 @@
       <section id="main">
 
         <h1 class="page-title">
-          {{ __('front\cart.shopping cart') }}
+          {{ __('front/cart.shopping cart') }}
 
         </h1>
         <div class="cart-grid row">
@@ -61,7 +61,7 @@
                                 <div class="row">
                                   <div class="col-md-6 col-xs-6 qty">
                                     <div class="label">
-                                      {{ __('front\cart.qty') }}
+                                      {{ __('front/cart.qty') }}
                                     </div>
                                     <div class="input-group
                                       bootstrap-touchspin">
@@ -102,7 +102,7 @@
               </div>
             </div>
             <a class="label btn btn-primary" href="{{ route('home') }}">
-              {{ __('front\cart.continue shopping') }}
+              {{ __('front/cart.continue shopping') }}
             </a>
             <!-- shipping informations -->
           </div>
@@ -112,14 +112,14 @@
               <div class="cart-detailed-totals">
                 <div class="cart-summary-products">
                   <div class="summary-label items-count">
-                    {{ __('front\cart.items in cart',['count'=>$basket -> itemCount()]) }}
+                    {{ __('front/cart.items in cart',['count'=>$basket -> itemCount()]) }}
                   </div>
                 </div>
                 <div class="">
                   <div class="cart-summary-line cart-total">
                     <span class="label">
 
-                      {{ __('front\cart.total') }}
+                      {{ __('front/cart.total') }}
                     </span>
                     <span class="value total">{{$basket  -> subTotal()}}</span>
                   </div>
@@ -128,7 +128,7 @@
 
               <div class="checkout  card-block ">
                 <a href="{{route('payment',$basket -> subTotal())}}" type="button" class="btn btn-primary">
-                  {{ __('front\cart.proceed to payment') }}
+                  {{ __('front/cart.proceed to payment') }}
                 </a>
               </div>
             </div>

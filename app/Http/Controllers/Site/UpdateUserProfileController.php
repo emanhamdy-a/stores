@@ -22,11 +22,11 @@ class UpdateUserProfileController extends Controller
       ]);
 
       return redirect()->back()
-      ->with(['success' => __('front\profile.updated')]);
+      ->with(['success' => __('front/profile.updated')]);
 
     } catch (\Exception $ex) {
       return redirect()->back()
-      ->with(['error' => __('front\profile.error try later')]);
+      ->with(['error' => __('front/profile.error try later')]);
 
     }
 

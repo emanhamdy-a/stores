@@ -6,7 +6,7 @@
 
           <div class="detail-email d-flex align-items-center justify-content-center">
             <i class="icon-email"></i>
-            <p>{{ __('front\header.email') }}</p>
+            <p>{{ __('front/header.email') }}</p>
             <span>
               support@gmail.com
             </span>
@@ -29,7 +29,7 @@
 
             <a href="{{ route('logout') }}"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              {{ __('front\header.logout') }}
+              {{ __('front/header.logout') }}
             </a>
 
             <form id="logout-form" action="{{ route('logout') }}"

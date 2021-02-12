@@ -2,7 +2,7 @@
     col-lg-8 col-md-8 col-xs-12 col-md-12">
   <div class="block block-product clearfix">
     <h2 class="title_block">
-      {{ __('front\home.new arrival') }}
+      {{ __('front/home.new arrival') }}
     </h2>
     <div class="block_content">
       <div id="productlist303857090" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false"

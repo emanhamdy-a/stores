@@ -29,7 +29,7 @@
                 @if($count=count($products))
                 <div class="hidden-sm-down total-products">
                   <p>
-                    {{ __('front\products.product count',['count'=>$count]) }}
+                    {{ __('front/products.product count',['count'=>$count]) }}
                   </p>
                 </div>
                 @endif
@@ -44,11 +44,11 @@
                       <span>
                         @isset($_GET['orderway'])
                         @if($_GET['orderway'] == 'desc')
-                        {{ __('front\search.newest') }}
+                        {{ __('front/search.newest') }}
                         @elseif($_GET['orderway'] == 'asc')
-                        {{ __('front\search.oldest') }}
+                        {{ __('front/search.oldest') }}
                         @else
-                        {{ __('front\search.newest') }}
+                        {{ __('front/search.newest') }}
                         @endif
                         @endisset
                       </span>
@@ -56,10 +56,10 @@
                     </a>
                     <div class="dropdown-menu">
                       <a rel="nofollow" href="#!" data-val='desc' class="orderway select-list js-search-link">
-                        {{ __('front\search.newest') }}
+                        {{ __('front/search.newest') }}
                       </a>
                       <a rel="nofollow" href="#!" data-val='asc' class="orderway select-list js-search-link">
-                        {{ __('front\search.oldest') }}
+                        {{ __('front/search.oldest') }}
                       </a>
                     </div>
                   </div>
@@ -73,11 +73,11 @@
                       <span>
                         @isset($_GET['orderby'])
                         @if($_GET['orderby'] == 'product_translations.name')
-                        {{ __('front\search.name') }}
+                        {{ __('front/search.name') }}
                         @elseif($_GET['orderby'] == 'id')
                         Date
                         @else
-                        {{ __('front\search.date') }}
+                        {{ __('front/search.date') }}
                         @endif
                         @endisset
                       </span>
@@ -85,11 +85,11 @@
                     </a>
                     <div class="dropdown-menu">
                       <a rel="nofollow" href="#!" data-val='id' class="orderby select-list js-search-link">
-                        {{ __('front\search.date') }}
+                        {{ __('front/search.date') }}
                       </a>
                       <a rel="nofollow" href="#!" data-val='product_translations.name'
                         class="orderby select-list js-search-link">
-                        {{ __('front\search.name') }}
+                        {{ __('front/search.name') }}
                       </a>
                     </div>
                   </div>
@@ -119,7 +119,7 @@
                       </a>
                       @if($product->isNew())
                       <div class="product-flags new">
-                        {{ __('front\products.new') }}
+                        {{ __('front/products.new') }}
                       </div>
                       @endif
                     </div>
@@ -142,9 +142,9 @@
 
                           <div class="info-stock ml-auto">
                             <label class="control-label">
-                              {{ __('front\products.availability') }}</label>
+                              {{ __('front/products.availability') }}</label>
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            {{$product -> in_stock ? __('front\products.in stock') :  __('front\products.out of stock')}}
+                            {{$product -> in_stock ? __('front/products.in stock') :  __('front/products.out of stock')}}
                           </div>
                         </div>
 
@@ -174,18 +174,18 @@
                           <a class="add-to-cart" href="#!" data-product-id="{{ $product -> id }}"
                             data-slug="{{ $product -> slug }}">
                             <i class="novicon-cart"></i>
-                            <span>{{ __('front\products.add to cart') }}</span>
+                            <span>{{ __('front/products.add to cart') }}</span>
                           </a>
                         </form>
 
                         <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                           <i class="fa fa-heart"></i>
-                          <span>{{ __('front\products.add to wishlist') }}</span>
+                          <span>{{ __('front/products.add to wishlist') }}</span>
                         </a>
 
                         <a href="#" class="quick-view hidden-sm-downadd-to-cart" data-product-id="{{$product -> id}}">
                           <i class="fa fa-eye"></i><span>
-                            {{ __('front\products.quick view') }}
+                            {{ __('front/products.quick view') }}
                           </span>
                         </a>
 

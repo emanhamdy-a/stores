@@ -15,7 +15,7 @@
       <section id="main">
 
         <h1 class="page-title">
-          {{ __('front\orders.orders') }}
+          {{ __('front/orders.orders') }}
         </h1>
 
         <div class="card-content collapse show">
@@ -24,9 +24,9 @@
               class="table display nowrap table-striped table-bordered  scroll-horizontal w-100">
               <thead class="">
               <tr>
-                <th>{{ __('front\orders.status') }}</th>
-                <th>{{ __('front\orders.total') }} </th>
-                <th>{{ __('front\orders.date') }} </th>
+                <th>{{ __('front/orders.status') }}</th>
+                <th>{{ __('front/orders.total') }} </th>
+                <th>{{ __('front/orders.date') }} </th>
               </tr>
               </thead>
               <tbody>

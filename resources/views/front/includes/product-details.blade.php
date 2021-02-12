@@ -58,7 +58,7 @@
                         <i class="shopping-cart"></i>
                       </div>
                       <span>
-                      {{ __('front\details.add to cart') }}
+                      {{ __('front/details.add to cart') }}
                       </span>
                     </button>
                   </div>
@@ -68,7 +68,7 @@
                       data-product-id="{{$product -> id}}">
                       <i class="fa fa-heart"></i>
                       <span>
-                      {{ __('front\details.add to wishlist') }}
+                      {{ __('front/details.add to wishlist') }}
                       </span>
                     </a>
                   @endif
@@ -77,9 +77,9 @@
 
                   <div id="product-availability" class="info-stock mt-20">
                     <label class="control-label">
-                    {{ __('front\details.availability') }}
+                    {{ __('front/details.availability') }}
                     </label>
-                    {{$product -> in_stock ? __('front\details.in stock')  : __('front\details.out of stock') }}
+                    {{$product -> in_stock ? __('front/details.in stock')  : __('front/details.out of stock') }}
                   </div>
                 </div>
 

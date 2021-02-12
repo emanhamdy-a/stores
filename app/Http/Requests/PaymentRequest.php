@@ -35,11 +35,11 @@ class PaymentRequest extends FormRequest
   public function messages()
   {
     return [
-      'ccNam.required'  => __('front\payment.name required'),
-      'ccNum.required'  => __('front\payment.card number required'),
-      'ccExp.required'  => __('front\payment.expiration required'),
-      'ccCvv.required'  => __('front\payment.security code required'),
-      'ccCvv.numirec'   => __('front\payment.security code numirec'),
+      'ccNam.required'  => __('front/payment.name required'),
+      'ccNum.required'  => __('front/payment.card number required'),
+      'ccExp.required'  => __('front/payment.expiration required'),
+      'ccCvv.required'  => __('front/payment.security code required'),
+      'ccCvv.numirec'   => __('front/payment.security code numirec'),
     ];
   }
 }

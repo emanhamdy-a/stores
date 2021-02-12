@@ -8,11 +8,11 @@
           <div class="breadcrumb-wrapper col-12">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="">
-              {{ __('admin\profile.home') }} </a>
+              {{ __('admin/profile.home') }} </a>
               </li>
 
               <li class="breadcrumb-item active">
-              {{ __('admin\profile.profile') }}
+              {{ __('admin/profile.profile') }}
               </li>
             </ol>
           </div>
@@ -27,7 +27,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" id="basic-layout-form">
-                {{ __('admin\profile.edit profile') }}
+                {{ __('admin/profile.edit profile') }}
                 </h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{ __('admin\profile.name') }} </label>
+                            {{ __('admin/profile.name') }} </label>
                             <input type="text" value="{{$admin -> name  }}" id="name" class="form-control"
                               placeholder="  " name="name">
                             @error("name")
@@ -61,7 +61,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{ __('admin\profile.email') }} </label>
+                            {{ __('admin/profile.email') }} </label>
                             <input type="text" value="{{$admin -> email  }}" id="" class="form-control" placeholder="  "
                               name="email">
                             @error("email")
@@ -76,7 +76,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{ __('admin\profile.new password') }}</label>
+                            {{ __('admin/profile.new password') }}</label>
                             <input type="password" value="" id="" class="form-control" placeholder="  " name="password">
                             @error("password")
                             <span class="text-danger">{{$message}}</span>
@@ -86,7 +86,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="projectinput1">
-                            {{ __('admin\profile.confirm password') }}</label>
+                            {{ __('admin/profile.confirm password') }}</label>
                             <input type="password" value="" id="" class="form-control" placeholder=" "
                               name="password_confirmation">
 
@@ -102,7 +102,7 @@
 
                       <button type="submit" class="btn btn-primary">
                         <i class="la la-check-square-o"></i>
-                        {{ __('admin\profile.save') }}
+                        {{ __('admin/profile.save') }}
                       </button>
                     </div>
                   </form>

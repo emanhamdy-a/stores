@@ -31,13 +31,13 @@ class ProductReviewController extends Controller
       DB::commit();
 
       return redirect()->route('product.details',$Product_slug)
-       ->with(['success' => __('front\reviews.added')]);
+       ->with(['success' => __('front/reviews.added')]);
 
       } catch (\Throwable $th) {
         DB::rollback();
         $Product_slug = Product::where('id',$request->product_id)->first()->slug;
         return redirect()->route('product.details',$Product_slug)
-        ->with(['error' => __('front\reviews.error try later')]);
+        ->with(['error' => __('front/reviews.error try later')]);
     }
   }
 }

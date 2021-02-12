@@ -30,7 +30,7 @@ class WishlistController
       auth()->user()->wishlist()->attach(request('productId'));
       return response()->json([
         'count' =>  auth()->user()->wishlist->count() ,
-        'msg'   => __('front\wishlists.added to wishlist'),
+        'msg'   => __('front/wishlists.added to wishlist'),
         'status' => true ,
         'wished' => true
       ]);
@@ -38,7 +38,7 @@ class WishlistController
 
     return response()->json([
       'count' =>  auth()->user()->wishlist->count() ,
-      'msg'   => __('front\wishlists.added before'),
+      'msg'   => __('front/wishlists.added before'),
       'status' => true ,
       'wished' => false
     ]);

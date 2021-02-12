@@ -18,7 +18,7 @@
     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <section id="main">
         <div class="block-category hidden-sm-down">
-          <h1 class="h1">{{ __('front\wishlists.favorit list') }}</h1>
+          <h1 class="h1">{{ __('front/wishlists.favorit list') }}</h1>
         </div>
         <section id="products">
 
@@ -32,7 +32,7 @@
                 </div>
                 <div class="hidden-sm-down total-products">
                   <p>
-                    {{ __('front\wishlists.product count',['count'=>count($products) ?? '0']) }}
+                    {{ __('front/wishlists.product count',['count'=>count($products) ?? '0']) }}
                   </p>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                       </a>
                       @if($product->isNew())
                       <div class="product-flags new">
-                        {{ __('front\wishlists.new') }}
+                        {{ __('front/wishlists.new') }}
                       </div>
                       @endif
                     </div>
@@ -79,7 +79,7 @@
                           </div>
                           <div class="info-stock ml-auto">
                             <label class="control-label">
-                              {{ __('front\wishlists.availability') }}</label>
+                              {{ __('front/wishlists.availability') }}</label>
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                             {{$product -> in_stock ? 'in stock' : 'out of stock'}}
                           </div>
@@ -111,19 +111,19 @@
                           <a class="add-to-cart" href="#!" data-product-id="{{ $product -> id }}"
                             data-slug="{{ $product -> slug }}">
                             <i class="novicon-cart"></i>
-                            <span>{{ __('front\wishlists.add to cart') }}</span>
+                            <span>{{ __('front/wishlists.add to cart') }}</span>
                           </a>
                         </form>
 
                         <a class="addToWishlist removeFromWishlist
                             wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                           <i class="fa fa-heart"></i>
-                          <span>{{ __('front\wishlists.remove from wishlist') }}</span>
+                          <span>{{ __('front/wishlists.remove from wishlist') }}</span>
                         </a>
 
                         <a href="#" class="quick-view hidden-sm-downadd-to-cart" data-product-id="{{$product -> id}}">
                           <i class="fa fa-eye"></i><span>
-                            {{ __('front\wishlists.quick view') }}
+                            {{ __('front/wishlists.quick view') }}
                           </span>
                         </a>
 

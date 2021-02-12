@@ -115,7 +115,7 @@
     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <section id="main">
         <h1 class="page-title">
-        {{ __('front\payment.payment methods') }}
+        {{ __('front/payment.payment methods') }}
         </h1>
         @include('dashboard.includes.alerts.success')
         @include('dashboard.includes.alerts.errors')
@@ -124,7 +124,7 @@
             @csrf
             <hr class="mb-4">
             <h4 class="mb-3">
-            {{ __('front\payment.payment') }}
+            {{ __('front/payment.payment') }}
             </h4>
 
             <input type="hidden" name="amount" value="{{$amount}}">
@@ -132,26 +132,26 @@
               <div class="custom-radio">
                 <input name="PaymentMethodId" type="radio" value="2" class="" checked="" required="">
                 <label class="custom-control-label" for="credit">
-                {{ __('front\payment.visa') }}
+                {{ __('front/payment.visa') }}
                 </label>
               </div>
               <div class="custom-radio">
                 <input name="PaymentMethodId" type="radio" value="2" class="" required="">
                 <label class="custom-control-label" for="debit">
-                {{ __('front\payment.master card') }}
+                {{ __('front/payment.master card') }}
                 </label>
               </div>
               <div class="custom-radio">
                 <input name="PaymentMethodId" type="radio" value="6" class="" required="">
                 <label class="custom-control-label" for="paypal">
-                {{ __('front\payment.mada') }}
+                {{ __('front/payment.mada') }}
                 </label>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="cc-name">
-                {{ __('front\payment.name on card') }}
+                {{ __('front/payment.name on card') }}
                 </label>
                 <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="ccNam">
                 @error('ccNam')
@@ -162,7 +162,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number">
-                {{ __('front\payment.card number') }}
+                {{ __('front/payment.card number') }}
                 </label>
                 <input type="text" class="form-control" name="ccNum" id="cc-number" placeholder="" required="">
                 @error('ccNum')
@@ -175,7 +175,7 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">
-                {{ __('front\payment.expiration') }}
+                {{ __('front/payment.expiration') }}
                 </label>
                 <input type="text" class="form-control" name="ccExp" id="cc-expiration" placeholder="" required="">
                 @error('ccExp')
@@ -197,7 +197,7 @@
             </div>
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">
-            {{ __('front\payment.continue to checkout') }}
+            {{ __('front/payment.continue to checkout') }}
             </button>
           </form>
         </div>

@@ -3,7 +3,7 @@
     <div class="nov-productlist productlist-slider col-xl-9 col-lg-9 col-md-9 col-xs-12 col-md-12">
       <div class="block block-product clearfix">
         <h2 class="title_block">
-          {{ __('front\home.trending') }}
+          {{ __('front/home.trending') }}
         </h2>
         <div class="block_content">
           <div id="productlist895890" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false"
@@ -117,7 +117,7 @@
     <div class="nov-productlist productlist-liststyle-2  col-xl-3 col-lg-3 col-md-3 col-xs-12 col-md-12">
       <div class="block block-product clearfix">
         <h2 class="title_block">
-          {{__('front\home.best sellers')}}
+          {{__('front/home.best sellers')}}
         </h2>
         <div class="block_content">
           <div id="productlist7262579" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false"

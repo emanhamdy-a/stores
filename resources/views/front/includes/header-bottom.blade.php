@@ -6,7 +6,7 @@
         <div class="toggle-nav d-flex align-items-center justify-content-start munu_bar">
          <!-- {{ cats_menu('')[1] }}" -->
           <span class="btnov-lines"></span>
-          <span>{{ __('front\header.shop by categories') }}</span>
+          <span>{{ __('front/header.shop by categories') }}</span>
         </div>
         <div class="verticalmenu-content has-showmore">
         <!-- {{ cats_menu('')[0] }} -->
@@ -76,35 +76,35 @@
                     <span class="opener"></span>
                     <a href="{{ route('home') }}" title="Home">
                       <i class="zmdi zmdi-home"></i>
-                      {{ __('front\header.home') }}
+                      {{ __('front/header.home') }}
                     </a>
                   </li>
                   <li class="item  has-sub"><span class="opener"></span>
                     <a href="#!" title="Blog">
                       <i class="zmdi zmdi-library"></i>
-                      {{ __('front\header.pages') }}
+                      {{ __('front/header.pages') }}
                     </a>
                     <div class="dropdown-menu" style="width:270px">
                       <ul class="">
                         <li class="item ">
                          <a href="{{ route('orders') }}">
-                         {{ __('front\header.orders') }}</a>
+                         {{ __('front/header.orders') }}</a>
                         </li>
                         <li class="item ">
                           <a href="{{ route('site.cart.index') }}">
-                          {{ __('front\header.cart') }}</a>
+                          {{ __('front/header.cart') }}</a>
                         </li>
                         <li class="item ">
-                          <a href="{{ route('wishlist.products.index') }}">{{ __('front\header.wishlist') }}</a>
+                          <a href="{{ route('wishlist.products.index') }}">{{ __('front/header.wishlist') }}</a>
                         </li>
                         <li class="item ">
                           @auth
                             <a href="{{ route('profile') }}">
-                            {{ __('front\header.profile') }}</a>
+                            {{ __('front/header.profile') }}</a>
                           @endauth
                           @guest
                             <a href="{{ route('login') }}">
-                            {{ __('front\header.login') }}</a>
+                            {{ __('front/header.login') }}</a>
                           @endguest
                         </li>
                       </ul>
@@ -185,7 +185,7 @@
                       class="search_query ui-autocomplete-input form-control"
                       name="search_query"
                       value="{{ $_GET['search_query'] ?? '' }}"
-                      placeholder="{{ __('front\header.search') }}"
+                      placeholder="{{ __('front/header.search') }}"
                     >
                     @if($categories = main_child_cats())
                     <div class="input-group-btn
@@ -199,14 +199,14 @@
                         @if(!empty($_GET['id_category']))
                           {{ \App\Models\Category::findOrFail($_GET['id_category'] )->name }}
                         @else
-                         {{ __('front\header.categories') }}
+                         {{ __('front/header.categories') }}
                         @endif
                       </button>
                       <ul class="dropdown-menu list-unstyled">
                         <li class="dropdown-item active"
                         data-value="0">
                         <span>
-                          {{ __('front\header.all categories') }}
+                          {{ __('front/header.all categories') }}
                         </span></li>
                         <ul class="list-unstyled pl-5">
                         @foreach($categories as $category)

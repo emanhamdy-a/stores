@@ -24,7 +24,7 @@ class ProductController extends Controller
     if (!$data['product']){
        return redirect()->back()
       ->with(['error' =>
-      __('front\product_details.error try later')]);
+      __('front/product_details.error try later')]);
     }
 
     $product_id = $data['product'] -> id ;

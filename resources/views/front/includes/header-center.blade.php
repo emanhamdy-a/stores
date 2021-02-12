@@ -15,11 +15,11 @@
         justify-content-end">
         <div class="data-contact d-flex align-items-center">
           <div class="title-icon">
-          {{ __('front\header.support') }}
+          {{ __('front/header.support') }}
           <i class="icon-support icon-address"></i></div>
           <div class="content-data-contact">
             <div class="support">
-            {{ __('front\header.call customer service') }}
+            {{ __('front/header.call customer service') }}
             </div>
             <div class="phone-support">
               1234 567 899
@@ -40,36 +40,36 @@
               <div class="currency-list-content text-left">
                 @guest()
                   <div class="currency-item current flex-first">
-                    <a title="{{ __('front\header.login') }}" rel="nofollow"
+                    <a title="{{ __('front/header.login') }}" rel="nofollow"
                     href="{{ route('login') }}">
-                    {{ __('front\header.login') }}
+                    {{ __('front/header.login') }}
                     </a>
                   </div>
                   <div class="currency-item">
-                    <a title="{{ __('front\header.register') }}" rel="nofollow"
+                    <a title="{{ __('front/header.register') }}" rel="nofollow"
                     href="{{ route('register') }}">
-                    {{ __('front\header.register') }}
+                    {{ __('front/header.register') }}
                     </a>
                   </div>
                 @endguest
 
                 @auth()
                   <div class="currency-item current flex-first">
-                    <a title="{{ __('front\header.profile') }}"
+                    <a title="{{ __('front/header.profile') }}"
                     rel="nofollow" href="{{ route('profile') }}">
-                    {{ __('front\header.profile') }}
+                    {{ __('front/header.profile') }}
                     </a>
                   </div>
                   <div class="currency-item">
-                    <a title="{{ __('front\header.orders') }}" rel="nofollow"
+                    <a title="{{ __('front/header.orders') }}" rel="nofollow"
                     href="{{ route('orders') }}">
-                    {{ __('front\header.orders') }}
+                    {{ __('front/header.orders') }}
                     </a>
                   </div>
                   <div class="currency-item">
                   <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout_form').submit();">
-                    {{ __('front\header.logout') }}
+                    {{ __('front/header.logout') }}
                   </a>
                   </div>
 
@@ -84,7 +84,7 @@
 
           <div class="header_link_wishlist">
             <a href="{{route('wishlist.products.index') }}"
-              title="{{ __('front\header.my wishlist') }}">
+              title="{{ __('front/header.my wishlist') }}">
               <i class="header-icon-wishlist"></i>
               <div class="text-center wishlist-products-count"
                 style='position: absolute;right:14px;bottom:2px; background: #2d9ae8;border-radius: 50%;color: #fff;height:19px;min-width:19px;line-height:19px;font-size: 1.1rem;font-weight: 700;'>
@@ -98,7 +98,7 @@
               <div class="header-cart">
                 <div class="cart-left">
                   <a href="{{route('site.cart.index') }}"
-                    title="{{ __('front\header.my cart') }}">
+                    title="{{ __('front/header.my cart') }}">
                     <div class="shopping-cart">
                       <i class="zmdi zmdi-shopping-cart"></i>
                     </div>

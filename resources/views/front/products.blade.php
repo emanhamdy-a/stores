@@ -29,7 +29,7 @@
                 @if($count=count($products))
                 <div class="hidden-sm-down total-products">
                   <p>
-                    {{ __('front\products.product count',['count'=>$count]) }}
+                    {{ __('front/products.product count',['count'=>$count]) }}
                   </p>
                 </div>
                 @endif
@@ -86,7 +86,7 @@
                       </a>
                       @if($product->isNew())
                       <div class="product-flags new">
-                        {{ __('front\products.new') }}
+                        {{ __('front/products.new') }}
                       </div>
                       @endif
                     </div>
@@ -114,9 +114,9 @@
 
                           <div class="info-stock ml-auto">
                             <label class="control-label">
-                              {{ __('front\products.availability') }}</label>
+                              {{ __('front/products.availability') }}</label>
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            {{$product -> in_stock ? __('front\products.in stock') :  __('front\products.out of stock')}}
+                            {{$product -> in_stock ? __('front/products.in stock') :  __('front/products.out of stock')}}
                           </div>
                         </div>
 
@@ -146,18 +146,18 @@
                           <a class="add-to-cart" href="#!" data-product-id="{{ $product -> id }}"
                             data-slug="{{ $product -> slug }}">
                             <i class="novicon-cart"></i>
-                            <span>{{ __('front\products.add to cart') }}</span>
+                            <span>{{ __('front/products.add to cart') }}</span>
                           </a>
                         </form>
 
                         <a class="addToWishlist  wishlistProd_22" href="#" data-product-id="{{$product -> id}}">
                           <i class="fa fa-heart"></i>
-                          <span>{{ __('front\products.add to wishlist') }}</span>
+                          <span>{{ __('front/products.add to wishlist') }}</span>
                         </a>
 
                         <a href="#" class="quick-view hidden-sm-downadd-to-cart" data-product-id="{{$product -> id}}">
                           <i class="fa fa-eye"></i><span>
-                            {{ __('front\products.quick view') }}
+                            {{ __('front/products.quick view') }}
                           </span>
                         </a>
 
