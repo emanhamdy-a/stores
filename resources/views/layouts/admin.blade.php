@@ -78,6 +78,7 @@
 
 @notify_js
 @notify_render
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('assets/admin/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
@@ -129,17 +130,17 @@
 <script>
     var previousCounter = $('.notification-counter').text(); //8
     var notificationsCount = parseInt(previousCounter);
-    // Enable pusher logging - don't include this in production
-    var pusher = new Pusher('2203df2757e00ac59e6d', {
-        encrypted: true
+    var pusher = new Pusher('7a00fc12a1c8c28f27cd', {
+        encrypted: true,
+      cluster: 'mt1',
     });
-    //Pusher.logToConsole = true;
-    // Subscribe to the channel we specified in our Laravel Event
+
     var channel = pusher.subscribe('order');
-    // Bind a function to a Our Event
+
     channel.bind('App\\Events\\NewOrder', function(data) {
-        notificationsCount += 1;
-        $('.notification-counter').text(notificationsCount)
+      // alert(JSON.stringify(data));
+      notificationsCount += 1;
+      $('.notification-counter').text(notificationsCount)
     });
 </script>
 

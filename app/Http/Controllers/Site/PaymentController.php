@@ -74,6 +74,7 @@ class PaymentController extends Controller
 
       //fire event on order complete success for realtime notification
       event(new NewOrder($order));
+      return 'done';
 
       return redirect()->route('payment',$request->amount)->with([
         'success' => __('front/payment.success'),

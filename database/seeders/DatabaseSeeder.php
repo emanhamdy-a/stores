@@ -18,16 +18,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-      $this->call(SettingDatabaseSeeder::class);
+      $this->call(SettingDataBaseSeeder::class);
       $this->call(RoleDataBaseSeeder::class);
-      $this->call(AdminDatabaseSeeder::class);
-      $this->call(UserDatabaseSeeder::class);
-      $this->call(CategoryDatabaseSeeder::class);
-      $this->call(BrandDatabaseSeeder::class);
-      $this->call(TagDatabaseSeeder::class);
-      $this->call(ProductDatabaseSeeder::class);
-      $this->call(AttributeDatabaseSeeder::class);
-      $this->call(OptionDatabaseSeeder::class);
+      $this->call(AdminDataBaseSeeder::class);
+      $this->call(UserDataBaseSeeder::class);
+      $this->call(CategoryDataBaseSeeder::class);
+      $this->call(BrandDataBaseSeeder::class);
+      $this->call(TagDataBaseSeeder::class);
+      $this->call(ProductDataBaseSeeder::class);
+      $this->call(AttributeDataBaseSeeder::class);
+      $this->call(OptionDataBaseSeeder::class);
       $this->call(SliderDataBaseSeeder::class);
 
       $products=Product::all();

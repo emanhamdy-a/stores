@@ -141,7 +141,7 @@
       var mock = {name: '{{ $file->photo }}',fid: '{{ $file->id }}',size: '',type: '' };
       this.emit('addedfile',mock);
       this.options.thumbnail.call(this,mock,
-        "{{ $product->imagePath($file->photo) }}");
+        "{{ product_img($file->photo) }}");
       $('form').append('<input type="hidden" name="document[]" value="{{ $file->photo }}">')
       @endforeach
     @endif

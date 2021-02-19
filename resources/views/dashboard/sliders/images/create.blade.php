@@ -80,10 +80,10 @@
         @forelse($images as $image )
         <figure id='{{$image->id}}' class="col-lg-3 col-md-6 col-12 img" itemprop="associatedMedia" itemscope=""
           itemtype="http://schema.org/ImageObject">
-          <a href="{{$image->imagePath($image-> photo)}}" itemprop="contentUrl"
+          <a href="{{slider_img($image-> photo)}}" itemprop="contentUrl"
            data-size="480x360">
           <img class="img-thumbnail img-fluid"
-             src="{{$image->imagePath($image-> photo)}}"
+             src="{{slider_img($image-> photo)}}"
              itemprop="thumbnail" alt="Image description">
           </a>
         </figure>
@@ -138,7 +138,7 @@
       var mock = {name: '{{ $file->photo }}',fid: '{{ $file->id }}',size: '',type: '' };
       this.emit('addedfile',mock);
       this.options.thumbnail.call(this,mock,
-        "{{ $file->imagePath($file->photo) }}");
+        "{{ slider_img($file->photo) }}");
       @endforeach
     @endif
   },
