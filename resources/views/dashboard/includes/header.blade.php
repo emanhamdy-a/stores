@@ -89,28 +89,9 @@
                   <span class='notification-counter'> 0
                     </span>{{ __('admin/header.new') }}</span>
               </li>
-              <li class="scrollable-container media-list w-100">
-                <a href="javascript:void(0)">
-                  <div class="media">
-                    <div class="media-left align-self-center"><i
-                        class="ft-download-cloud icon-bg-circle bg-red bg-darken-1 order_icon hidden"></i></div>
-                    <div class="media-body">
-                      <h6 class="media-heading red darken-1 order_total">
-
-                      </h6>
-                      <p class="notification-text font-small-3 text-muted order_user">
-
-                      </p>
-                      <small>
-                        <time class="media-meta text-muted order_date"
-                            datetime="2015-06-11T18:29:20+08:00">
-
-                        </time>
-                      </small>
-                    </div>
-                  </div>
-                </a>
-              </li>
+              <span id='notify'>
+                <!-- 2015-06-11T18:29:20+08:00 -->
+              </span>
               <li class="dropdown-menu-footer">
                 <a class="dropdown-item text-muted text-center"
                 href="javascript:void(0)">{{ __('admin/header.read notifications') }}</a>

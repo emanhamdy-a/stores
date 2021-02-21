@@ -21,14 +21,14 @@ Route::group([
 ], function () {
 
 
-  route::get('/', [HomeController::class,'home'])
-    ->name('home');
-
-  route::get('/search', [SearchController::class,'search'])
-    ->name('search');
-
   Route::group(['namespace'=>'Site'],
   function(){
+
+    route::get('/', [HomeController::class,'home'])
+      ->name('home');
+
+    route::get('/search', [SearchController::class,'search'])
+      ->name('search');
 
     route::get('category/{slug}',[CategoryController::class,'productsBySlug'])
       ->name('category');
@@ -56,7 +56,7 @@ Route::group([
           ->name('site.cart.add');
         Route::post('/add/{slug?}', [CartController::class,'postAdd'])
           ->name('site.cart.add');
-        Route::post('/update/{slug}', [CartController::class,'postUpdate'])
+        Route::post('/update/{slug?}', [CartController::class,'postUpdate'])
           ->name('site.cart.update');
         Route::post('/update-all', [CartController::class,'postUpdateAll'])
           ->name('site.cart.update-all');

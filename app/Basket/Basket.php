@@ -32,7 +32,6 @@ class Basket
 	{
 		$this->storage = $storage;
 		$this->product = $product;
-		//$this->coupon = $coupon;
 	}
 
 	/**
@@ -45,57 +44,11 @@ class Basket
 	public function add(Product $product, $quantity)
 	{
 		if ($this->has($product)) {
-      return $product;
+      // return $product;
 			$quantity = $this->get($product)['quantity'] + $quantity;
 		}
 
 		$this->update($product, $quantity);
-	}
-
-	public function addCoupon(Coupon $coupon)
-	{
-		if (!$this->checkCoupon($coupon)) {
-			return false;
-		}
-
-		$product = $coupon->product;
-		$p = $this->get($product);
-
-		$this->storage->set($product->id, [
-			'product_id' => (int) $product->id,
-			'quantity' => $p['quantity'],
-			'coupon' => $coupon->id,
-		]);
-
-		return true;
-	}
-
-	public function checkCoupon(Coupon $coupon)
-	{
-		if (!$this->has($coupon->product)) {
-			return false;
-		}
-
-		if (!$coupon->active || !$coupon->isValid() || ($this->get($coupon->product)['quantity'] < $coupon->products_count)) {
-			return false;
-		}
-
-		if ($coupon->members()->find(auth()->guard('site')->id())) {
-			return false;
-		}
-
-		return true;
-	}
-
-	public function checkCouponById($id)
-	{
-		$coupon = Coupon::find($id);
-
-		if(!$coupon){
-			return false;
-		}
-
-		return $this->checkCoupon($coupon);
 	}
 
 	/**
@@ -112,22 +65,14 @@ class Basket
 			throw new QuantityExceededException;
 		}
 
-		if ($quantity == 0) {
-			$this->remove($product);
-
-			return;
-		}
-
-		if ($this->has($product)) {
-			$coupon = $this->get($product)['coupon'];
-		}else{
-			$coupon = null;
+    if ($quantity == 0) {
+      $this->remove($product);
+      return;
 		}
 
 		$this->storage->set($product->id, [
 			'product_id' => (int) $product->id,
 			'quantity' => (int) $quantity,
-			'coupon' => $coupon,
 		]);
 	}
 
@@ -186,7 +131,6 @@ class Basket
 
 		foreach ($products as $product) {
 			$product->quantity = $this->get($product)['quantity'];
-			$product->coupon = $this->get($product)['coupon'];
 			$items[] = $product;
 		}
 
@@ -213,7 +157,9 @@ class Basket
 				continue;
 			}
 
-			$total += $item->getTotal(true);
+      for ($i=1 ; $i <= $item->quantity ; $i++) {
+        $total += $item->getTotal(true);
+      }
 		}
 
 		return $total;

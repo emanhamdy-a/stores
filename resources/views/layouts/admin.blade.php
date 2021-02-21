@@ -139,9 +139,12 @@
 
     channel.bind('App\\Events\\NewOrder', function(data) {
       // alert(JSON.stringify(data));
+      var new_notify='<li class="scrollable-container media-list w-100">  <a href="javascript:void(0)">  <div class="media" >  <div class="media-left align-self-center">  <i class="ft-download-cloud icon-bg-circle bg-red bg-darken-1 order_icon"></i>  </div>  <div class="media-body">  <h6 class="media-heading red darken-1 order_total">' + data.order_total + '</h6>  <p class="notification-text font-small-3 text-muted order_user"> ' + data.user.name + ' </p>  <small>  <time class="media-meta text-muted order_date"  datetime="' + data.order_date + '">  </time>  </small>  </div>  </div>  </a>  </li>';
       notificationsCount += 1;
-      $('.notification-counter').text(notificationsCount)
+      $('.notification-counter').text(notificationsCount);
+      $('#notify').append(new_notify);
     });
+
 </script>
 
 <script>

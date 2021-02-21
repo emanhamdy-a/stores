@@ -73,7 +73,8 @@
       <p>الصوره الحاليه.</p>
       </div>
     </div>
-    <div class="card-body  my-gallery" itemscope="" itemtype="http://schema.org/ImageGallery"
+    <div class="card-body  my-gallery" itemscope=""
+      itemtype="http://schema.org/ImageGallery"
        data-pswp-uid="1">
       <div class="row">
       @isset($images)

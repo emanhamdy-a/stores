@@ -68,8 +68,11 @@
                                       <span class="input-group-addon
                                         bootstrap-touchspin-prefix" style="display: none;">
                                       </span>
-                                      <input id="quantity_wanted" class="js-cart-line-product-quantity form-control"
-                                        data-product-id="5" type="text" value="1" name="product-quantity-spin" min="1"
+                                      <input id="quantity_wanted" class="js-cart-line-product-quantity form-control quantity_wanted"
+                                        data-product-id="{{$product->id}}"
+                                        type="text"
+                                        data-product-slug="{{$product->slug}}"
+                                        value="{{ $product->quantity ?? ''}}" name="product-quantity-spin" min="0"
                                         style="display: block;">
                                       <span class="input-group-addon
                                         bootstrap-touchspin-postfix" style="display: none;">
@@ -181,5 +184,48 @@ $(document).on('click', '.remove-from-cart', function(e) {
     }
   });
 });
+
+$(document).on('click', '.input-group.bootstrap-touchspin .bootstrap-touchspin-down', function(e) {
+  e.preventDefault();
+  let quantity_input = $(this).parent().next().next();
+  value=quantity_input.val();
+  let id = quantity_input.attr('data-product-id');
+  if(value < 1){
+    $("[data-id-product="+id+"]").click();
+    return false;
+  }
+  update_cart(quantity_input);
+});
+
+$(document).on('click', '.input-group.bootstrap-touchspin .bootstrap-touchspin-up', function(e) {
+  e.preventDefault();
+  let quantity_input = $(this).parent().prev().prev();
+  update_cart(quantity_input);
+});
+
+function update_cart(quantity_input) {
+  let value = quantity_input.val();
+  let slug = quantity_input.attr('data-product-slug');
+  $.ajax({
+    type: 'post',
+    url: "{{ route('site.cart.update') }}",
+    data: {
+      'product_slug': slug,
+      'quantity': value,
+    },
+    success: function(data) {
+      if (data) {
+        $('.alert-modal').css('display', 'block');
+        $('.alert-text').text(data.msg);
+        $('.items-count').text(data.count);
+        $('.total').text(data.total);
+        if(data.exceeded){
+          $("[data-product-id="+data.id+"]").val(data.value);
+        }
+      }
+    }
+  });
+}
+
 </script>
 @stop

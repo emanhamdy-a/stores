@@ -80,13 +80,19 @@ class CartController extends Controller
    * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
    * @throws \App\Exceptions\QuantityExceededException
    */
-  public function postUpdate($slug, Request $request)
+  public function postUpdate($slug=null, Request $request)
   {
-    $_product = Product::where('slug', $slug)->firstOrFail();
+   $_product=Product::where('slug', $slug ?? $request->product_slug)
+    ->firstOrFail();
     try {
       $this->basket->update($_product, $request->quantity);
     } catch (QuantityExceededException $e) {
-      return trans('site.cart.msgs.exceeded');
+      return response()->json([
+        'msg'     => __('front/cart.quantity exceeded'),
+        'exceeded'=> true,
+        'id'      =>  $_product->id,
+        'value'   => $request->quantity - 1,
+       ]);
     }
 
     if (!$request->quantity) {
@@ -96,7 +102,12 @@ class CartController extends Controller
         'msg'   => __('front/cart.removed from cart'),
        ]);
     }
-    return trans('site.cart.msgs.updated');
+
+    return response()->json([
+    'total' => $this -> basket -> subTotal(),
+    'count' =>  __('front/cart.items in cart',['count'=>$this -> basket -> itemCount()]) ,
+    'msg'   => __('front/cart.cart updated'),
+    ]);
 
   }
 
